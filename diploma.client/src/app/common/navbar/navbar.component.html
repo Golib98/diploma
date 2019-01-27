@@ -1,0 +1,16 @@
+<mat-toolbar color="primary" fxLayout="row">
+
+  <div fxFlex="20%" fxLayoutAlign="center center">
+    <p>Diploma</p>
+  </div>
+  <div fxFlex fxLayoutAlign="space-between center">
+    <button
+      mat-button
+      *ngFor="let item of menuItems"
+      [routerLink]="item.routerLink">
+      {{item.label}}
+    </button>
+  </div>
+  <div fxFlex="20%"></div>
+
+</mat-toolbar>

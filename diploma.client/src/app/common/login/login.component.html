@@ -1,0 +1,28 @@
+<div *ngIf="loginService.loading">
+  Loading...
+</div>
+<div *ngIf="!loginService.loading">
+  <div *ngIf="!loginService.personDisplay" fxLayout="column">
+    <mat-form-field>
+      <input matInput
+             type="text"
+             placeholder="Username"
+             [(ngModel)]="loginService.username">
+    </mat-form-field>
+    <mat-form-field>
+      <input matInput
+             type="password"
+             placeholder="Password"
+             [(ngModel)]="loginService.password">
+    </mat-form-field>
+
+    <button mat-raised-button color="primary"
+            (click)="loginService.login()">Login
+    </button>
+  </div>
+
+  <div *ngIf="loginService.personDisplay">
+    Signed as {{loginService.personDisplay.username}}/{{loginService.personDisplay.fio}}
+    <a (click)="loginService.exit()" class="exit">Log out</a>
+  </div>
+</div>

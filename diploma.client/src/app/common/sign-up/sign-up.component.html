@@ -1,0 +1,41 @@
+<form fxLayout="column">
+  <mat-form-field>
+    <mat-select (selectionChange)="changeCurrentUserType($event.value)" placeholder="You are:">
+      <mat-option
+        *ngFor="let user of userTypes"
+        [value]="user.type">
+        {{user.title}}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+
+  <div *ngIf="!!currentUserType" fxLayout="column">
+
+    <mat-form-field>
+      <input matInput placeholder="Name">
+    </mat-form-field>
+
+    <mat-form-field>
+      <input matInput placeholder="Surname">
+    </mat-form-field>
+
+    <mat-form-field>
+      <input matInput placeholder="Patronymic">
+    </mat-form-field>
+
+    <mat-form-field *ngIf="currentUserType == RegistrationUserType.STUDENT">
+      <input matInput placeholder="E-mail">
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-select placeholder="University" [value]="currentUniversity">
+        <mat-option
+          *ngFor="let university of universities"
+          [value]="university.key">
+          {{university.value}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+
+  </div>
+</form>
