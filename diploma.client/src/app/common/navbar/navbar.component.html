@@ -1,7 +1,7 @@
-<mat-toolbar color="primary" fxLayout="row">
+<mat-toolbar class="navbar-shadow" color="primary" fxLayout="row">
 
   <div fxFlex="20%" fxLayoutAlign="center center">
-    <p>Diploma</p>
+    <p routerLink="/" class="main-diploma-title">Diploma</p>
   </div>
   <div fxFlex fxLayoutAlign="space-between center">
     <button
@@ -13,4 +13,7 @@
   </div>
   <div fxFlex="20%"></div>
 
+  <div *ngIf="loginService.personDisplay" style="cursor: pointer;" routerLink="/user-profile">
+    Signed as {{loginService.personDisplay.username}}
+  </div>
 </mat-toolbar>

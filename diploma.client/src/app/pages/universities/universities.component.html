@@ -1,0 +1,10 @@
+<app-navbar [menuItems]="menuItems"></app-navbar>
+
+
+<div class="university-cards" fxLayout="column" fxLayoutGap="10px">
+  <app-university-card
+    fxFlexAlign="center"
+    *ngFor="let card of universityCards"
+    [model]="card">
+  </app-university-card>
+</div>

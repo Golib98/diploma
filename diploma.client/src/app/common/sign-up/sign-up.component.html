@@ -1,6 +1,6 @@
 <form fxLayout="column">
   <mat-form-field>
-    <mat-select (selectionChange)="changeCurrentUserType($event.value)" placeholder="You are:">
+    <mat-select (selectionChange)="changeCurrentUserType($event.value)" placeholder="You are">
       <mat-option
         *ngFor="let user of userTypes"
         [value]="user.type">
@@ -12,23 +12,23 @@
   <div *ngIf="!!currentUserType" fxLayout="column">
 
     <mat-form-field>
-      <input matInput placeholder="Name">
+      <input matInput required placeholder="First name">
     </mat-form-field>
 
     <mat-form-field>
-      <input matInput placeholder="Surname">
+      <input matInput required placeholder="Last name">
     </mat-form-field>
 
     <mat-form-field>
-      <input matInput placeholder="Patronymic">
-    </mat-form-field>
-
-    <mat-form-field *ngIf="currentUserType == RegistrationUserType.STUDENT">
-      <input matInput placeholder="E-mail">
+      <input matInput required placeholder="E-mail">
     </mat-form-field>
 
     <mat-form-field>
-      <mat-select placeholder="University" [value]="currentUniversity">
+      <input matInput placeholder="Phone number ">
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-select placeholder="University" required [(value)]="currentUniversity">
         <mat-option
           *ngFor="let university of universities"
           [value]="university.key">
@@ -37,5 +37,31 @@
       </mat-select>
     </mat-form-field>
 
+    <mat-form-field>
+      <mat-select placeholder="Title" [(value)]="currentTitle" required>
+        <mat-option
+          *ngFor="let title of titles"
+          [value]="title.key">
+          {{title.value}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-select placeholder="Faculty" [(value)]="currentFaculty" required>
+        <mat-option
+          *ngFor="let faculty of faculties"
+          [value]="faculty.key">
+          {{faculty.value}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+
   </div>
+
+  <button mat-raised-button
+          color="primary"
+          fxFlexAlign="center"
+  >Sign up
+  </button>
 </form>

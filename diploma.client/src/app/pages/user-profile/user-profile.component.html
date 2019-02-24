@@ -1,0 +1,43 @@
+<app-navbar [menuItems]="menuItems"></app-navbar>
+
+<div>
+  <img src="/assets/img/iitu-univer.jpg" alt="iitu univer image" width="100%" height="300px">
+
+  <div
+    class="professor-profile mat-typography"
+    fxLayout="row"
+    fxLayoutAlign="center center">
+    <div fxFlex="10"></div>
+    <div fxFlex="80"
+         fxLayout="row wrap"
+         class="professor-profile-inner">
+      <div fxFlex="20" fxLayout="column" fxLayoutAlign="start center">
+        <div fxFlex="20">
+          <p>profile photo</p>
+          <a href="">Change photo</a>
+        </div>
+      </div>
+      <div fxFlex="80">
+        name title bla bla bla
+        <mat-tab-group>
+          <mat-tab label="Info">
+            <div fxLayout="row" fxLayoutAlign="start">
+              <div fxLayout="column" fxFlex="80">
+                <mat-form-field>
+                  <input matInput
+                         placeholder="Title"
+                         value="My Name"
+                         [disabled]="true">
+                </mat-form-field>
+              </div>
+            </div>
+          </mat-tab>
+          <mat-tab label="Projects">
+            <app-new-project></app-new-project>
+          </mat-tab>
+        </mat-tab-group>
+      </div>
+    </div>
+    <div fxFlex="10"></div>
+  </div>
+</div>

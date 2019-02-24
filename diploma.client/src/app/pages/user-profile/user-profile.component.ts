@@ -3,18 +3,19 @@ import {MenuItem} from "../../../model/MenuItem";
 import {MenuListService} from "../../services/menu-list.service";
 
 @Component({
-  selector: 'app-home',
-  templateUrl: './home.component.html',
-  styleUrls: ['./home.component.scss']
+  selector: 'app-user-profile',
+  templateUrl: './user-profile.component.html',
+  styleUrls: ['./user-profile.component.scss']
 })
-export class HomeComponent implements OnInit {
+export class UserProfileComponent implements OnInit {
 
   menuItems: MenuItem[];
 
   constructor(private menuListService: MenuListService) {
   }
 
-  ngOnInit(): void {
+  ngOnInit() {
     this.menuListService.menuList.then(value => this.menuItems = value);
   }
+
 }

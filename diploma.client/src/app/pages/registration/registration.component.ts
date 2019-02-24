@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
+import {MenuItem} from "../../../model/MenuItem";
+import {MenuListService} from "../../services/menu-list.service";
 
 @Component({
   selector: 'app-registration',
@@ -6,10 +8,13 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./registration.component.scss']
 })
 export class RegistrationComponent implements OnInit {
+  menuList: MenuItem[];
 
-  constructor() { }
+  constructor(private menuListService: MenuListService) {
+  }
 
   ngOnInit() {
+    this.menuListService.menuList.then(value => this.menuList = value);
   }
 
 }

@@ -1,1 +1,15 @@
-<app-sign-up></app-sign-up>
+<app-navbar [menuItems]="menuList"></app-navbar>
+
+<div class="registration mat-typography"
+     fxLayout="row"
+     fxLayoutAlign="space-around"
+     fxLayoutGap="30px">
+  <div fxFlex="40">
+    <h2>Registration</h2>
+    <app-sign-up></app-sign-up>
+  </div>
+  <div fxFlex="40">
+    <h2>Login</h2>
+    <app-login></app-login>
+  </div>
+</div>

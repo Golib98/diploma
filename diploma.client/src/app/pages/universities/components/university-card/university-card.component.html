@@ -1,0 +1,18 @@
+<mat-card class="university-card" fxLayout="row" fxLayoutAlign="center center">
+  <mat-card-header fxFlex="10">
+    <div mat-card-avatar class="university-card-header-image"></div>
+    <mat-card-title>{{model.label}}</mat-card-title>
+  </mat-card-header>
+  <mat-card-content fxFlex="50">
+    <p>
+      {{model.text}}
+    </p>
+  </mat-card-content>
+  <div fxFlex="30" fxFill class="university_card_image">
+    <img fxFill alt="Photo of a University">
+  </div>
+  <mat-card-actions fxFlex="10">
+    <button mat-button (click)="likeButtonEmitter.emit()">Like</button>
+    <button mat-button (click)="compareButtonEmitter.emit()">To compare list</button>
+  </mat-card-actions>
+</mat-card>

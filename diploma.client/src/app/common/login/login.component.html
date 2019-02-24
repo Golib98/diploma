@@ -1,6 +1,7 @@
 <div *ngIf="loginService.loading">
   Loading...
 </div>
+
 <div *ngIf="!loginService.loading">
   <div *ngIf="!loginService.personDisplay" fxLayout="column">
     <mat-form-field>
@@ -13,11 +14,14 @@
       <input matInput
              type="password"
              placeholder="Password"
-             [(ngModel)]="loginService.password">
+             [(ngModel)]="loginService.password"
+             (keyup.enter)="login()">
     </mat-form-field>
 
-    <button mat-raised-button color="primary"
-            (click)="loginService.login()">Login
+    <button mat-raised-button
+            color="primary"
+            fxFlexAlign="center"
+            (click)="login()">Login
     </button>
   </div>
 

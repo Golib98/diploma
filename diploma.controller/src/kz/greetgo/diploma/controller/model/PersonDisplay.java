@@ -2,7 +2,6 @@ package kz.greetgo.diploma.controller.model;
 
 import java.util.ArrayList;
 import java.util.List;
-import kz.greetgo.diploma.controller.model.UserCan;
 
 public class PersonDisplay {
   public String fio;

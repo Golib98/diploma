@@ -1,5 +1,6 @@
 package kz.greetgo.diploma.register.impl;
 
+import static kz.greetgo.diploma.controller.util.FilterUtil.skipNulls;
 import kz.greetgo.depinject.core.Bean;
 import kz.greetgo.depinject.core.BeanGetter;
 import kz.greetgo.diploma.controller.errors.IllegalLoginOrPassword;
@@ -11,8 +12,6 @@ import kz.greetgo.diploma.register.model.PersonLogin;
 import kz.greetgo.security.password.PasswordEncoder;
 import kz.greetgo.security.session.SessionIdentity;
 import kz.greetgo.security.session.SessionService;
-
-import static kz.greetgo.diploma.controller.util.FilterUtil.skipNulls;
 
 @Bean
 public class AuthRegisterImpl implements AuthRegister {
@@ -70,6 +69,7 @@ public class AuthRegisterImpl implements AuthRegister {
       throw new NullPointerException("No person with id = " + personId);
     }
 
+    ret.role = "PROFESSOR";
     ret.cans = skipNulls(authDao.get().loadCans(personId));
 
     return ret;

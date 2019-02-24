@@ -10,6 +10,7 @@ import {Pair} from "../../../model/Pair";
 })
 export class SignUpComponent implements OnInit {
   RegistrationUserType = RegistrationUserType;
+
   userTypes = [
     new RegistrationUser('Student', RegistrationUserType.STUDENT),
     new RegistrationUser('Professor', RegistrationUserType.PROFESSOR)
@@ -18,7 +19,18 @@ export class SignUpComponent implements OnInit {
     new Pair<number, string>(1, 'IITU'),
     new Pair<number, string>(2, 'IITU2')
   ];
+  titles = [
+    new Pair<number, string>(1, 'TITLE'),
+    new Pair<number, string>(2, 'TITLE2')
+  ];
+  faculties = [
+    new Pair<number, string>(1, 'Faculty'),
+    new Pair<number, string>(2, 'Faculty2')
+  ];
+
   currentUniversity: number;
+  currentTitle: number;
+  currentFaculty: number;
   currentUserType: RegistrationUserType;
 
   constructor() {
@@ -29,5 +41,9 @@ export class SignUpComponent implements OnInit {
 
   changeCurrentUserType(value: RegistrationUserType) {
     this.currentUserType = value;
+  }
+
+  verifyForm(): boolean {
+    return !!this.currentUniversity;
   }
 }

@@ -1,0 +1,7 @@
+<app-navbar [menuItems]="menuItems"></app-navbar>
+
+<section class="my-projects-section">
+  <app-my-project-card
+    *ngFor="let myProject of myProjects"
+    [myProject]="myProject"></app-my-project-card>
+</section>
