@@ -37,7 +37,7 @@ public class DebugServer implements HasAfterInject {
       "/diploma");
 
     webAppContextRegistrations.get().stream()
-      .sorted(Comparator.comparingDouble(WebAppContextRegistration::priority))
+      .sorted(Comparator.comparingDouble(WebAppContextRegistration::  priority))
       .forEachOrdered(r -> r.registerTo(webAppServlet));
 
     server.setHandler(webAppServlet);

@@ -6,6 +6,7 @@ import {HomeComponent} from './home.component';
 import {FlexLayoutModule} from "@angular/flex-layout";
 import {LoginModule} from "../../common/login/login.module";
 import {NavbarModule} from "../../common/navbar/navbar.module";
+import {MatCardModule} from "@angular/material";
 
 @NgModule({
   declarations: [HomeComponent],
@@ -14,7 +15,8 @@ import {NavbarModule} from "../../common/navbar/navbar.module";
     HomeRoutingModule,
     NavbarModule,
     FlexLayoutModule,
-    LoginModule
+    MatCardModule,
+    LoginModule,
   ]
 })
 export class HomeModule {

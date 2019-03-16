@@ -1,9 +1,8 @@
 package kz.greetgo.diploma.register.dao;
 
+import java.util.List;
 import kz.greetgo.diploma.controller.model.PersonRecord;
 import org.apache.ibatis.annotations.Select;
-
-import java.util.List;
 
 public interface PersonDao {
   @Select("with cans as (\n" +
@@ -22,4 +21,10 @@ public interface PersonDao {
     "     where blocked = 0\n" +
     "     order by surname, name")
   List<PersonRecord> list();
+
+  @Select("select concat_ws(' ', x.surname, x.name, x.patronymic) as fio\n" +
+    "from person x\n" +
+    "     join professor_assistant x2 on x.id = x2.assistant_id\n" +
+    "where x2.professor_id = #{professorId}")
+  List<PersonRecord> myAssistants(String professorId);
 }

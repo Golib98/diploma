@@ -1,7 +1,7 @@
 <app-navbar [menuItems]="menuItems"></app-navbar>
 
 <div>
-  <img src="/assets/img/iitu-univer.jpg" alt="iitu univer image" width="100%" height="300px">
+  <img src="/assets/img/iitu-univer.jpg" style="opacity: 0" alt="iitu univer image" width="100%" height="300px">
 
   <div
     class="professor-profile mat-typography"
@@ -33,7 +33,7 @@
             </div>
           </mat-tab>
           <mat-tab label="Projects">
-            <app-new-project></app-new-project>
+            <app-new-project (addButtonEventEmitter)="addProject($event)" ></app-new-project>
           </mat-tab>
         </mat-tab-group>
       </div>

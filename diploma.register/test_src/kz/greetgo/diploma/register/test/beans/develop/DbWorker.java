@@ -1,11 +1,13 @@
 package kz.greetgo.diploma.register.test.beans.develop;
 
-import static kz.greetgo.conf.sys_params.SysParams.*;
+import static kz.greetgo.conf.sys_params.SysParams.pgAdminUrl;
+import static kz.greetgo.conf.sys_params.SysParams.pgAdminUserid;
 import static kz.greetgo.diploma.register.test.util.DbUrlUtils.changeUrlDbName;
 import java.io.File;
 import java.io.PrintStream;
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.HashSet;
@@ -46,6 +48,20 @@ public class DbWorker {
     final String password = postgresDbConfig.get().password();
 
     try (Connection con = getPostgresAdminConnection()) {
+
+      try (PreparedStatement stt = con.prepareStatement(
+        "SELECT pg_terminate_backend(pg_stat_activity.pid)\n" +
+          "FROM pg_stat_activity\n" +
+          "WHERE pg_stat_activity.datname = ? \n" +
+          "  AND pid <> pg_backend_pid()")) {
+
+        logger.info("Terminating backend for " + dbName);
+        stt.setString(1, dbName);
+        stt.execute();
+
+      } catch (PSQLException e) {
+        System.err.println(e.getServerErrorMessage());
+      }
 
       try (Statement stt = con.createStatement()) {
         logger.info("drop database " + dbName);

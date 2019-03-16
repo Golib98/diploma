@@ -69,7 +69,6 @@ public class AuthRegisterImpl implements AuthRegister {
       throw new NullPointerException("No person with id = " + personId);
     }
 
-    ret.role = "PROFESSOR";
     ret.cans = skipNulls(authDao.get().loadCans(personId));
 
     return ret;

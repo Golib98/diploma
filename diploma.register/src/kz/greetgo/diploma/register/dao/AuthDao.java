@@ -10,10 +10,11 @@ public interface AuthDao {
   @Select("select * from person where username = #{username} and blocked = 0")
   PersonLogin selectByUsername(String username);
 
-  @Select("select surname||' '||name||' '||patronymic as fio, username" +
-    " from person where id = #{personId}")
+  @Select("select surname||' '||name||' '||patronymic as fio, username, x2.title as role" +
+    " from person x join role x2 on x.role_id = x2.id where x.id = #{personId}")
   PersonDisplay loadDisplayPerson(String personId);
 
   @Select("select user_can from person_cans where person_id = #{personId}")
   List<UserCan> loadCans(String personId);
+
 }

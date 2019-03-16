@@ -14,8 +14,15 @@ export class MenuListService {
 
     return this.loginService.refresh()
       .then(() => {
-        if (!this.loginService.isAuthenticated) return Promise.resolve(MenuItem.defaultList());
-        if (this.loginService.personDisplay.role === 'PROFESSOR') return Promise.resolve(MenuItem.professorList());
+
+        if (!this.loginService.isAuthenticated) {
+          return MenuItem.defaultList();
+        }
+
+        if (this.loginService.personDisplay.role === 'PROFESSOR') {
+          return MenuItem.professorList();
+        }
+
       })
 
   }

@@ -1,0 +1,6 @@
+<app-navbar [menuItems]="menuItems"></app-navbar>
+<div style="margin-top: 10px;"></div>
+<app-my-assistant-card
+  *ngFor="let myAssistant of myAssistants"
+  [myAssistant]="myAssistant"
+></app-my-assistant-card>

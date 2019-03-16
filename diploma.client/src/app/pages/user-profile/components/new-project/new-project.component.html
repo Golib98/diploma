@@ -1,14 +1,25 @@
 <form style="margin-top: 10px;" fxLayout="column" fxLayoutAlign="start" fxLayoutGap="10px">
 
   <mat-form-field>
-    <input matInput placeholder="Title">
+    <input [(ngModel)]="myProject.title"
+           name="title"
+           matInput
+           placeholder="Title">
   </mat-form-field>
 
   <mat-form-field>
-    <textarea matInput mat-autosize placeholder="Description"></textarea>
+    <textarea [(ngModel)]="myProject.description"
+              name='Description'
+              matInput
+              mat-autosize
+              placeholder="Description"></textarea>
   </mat-form-field>
 
-  <mat-checkbox fxFlexAlign="start">Is opened project</mat-checkbox>
+  <mat-checkbox [(ngModel)]="myProject.isOpened"
+                name="isOpened"
+                fxFlexAlign="start">Is opened project
+  </mat-checkbox>
 
-  <button mat-raised-button fxFlexAlign="start" color="primary">Add</button>
+  <button (click)="addButtonEventEmitter.emit(myProject)" mat-raised-button fxFlexAlign="start" color="primary">Add
+  </button>
 </form>

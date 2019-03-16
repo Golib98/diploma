@@ -5,8 +5,26 @@
 
   <changeSet author="pompei" id="create-function-moment">
     <sql endDelimiter=";;"><![CDATA[
-      create function moment() returns timestamp
-      language plpgsql as 'begin return clock_timestamp(); end '
+create function moment() returns timestamp
+language plpgsql as 'begin return clock_timestamp(); end ';;
+      
+CREATE OR REPLACE FUNCTION new_id()
+  RETURNS varchar(17) AS
+$$
+declare
+  chars CONSTANT char[]      := array [
+    'a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z',
+    'A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R','S','T','U','V','W','X','Y','Z',
+    '0','1','2','3','4','5','6','7','8','9']::char[62];
+  ret            varchar(17) := '';
+begin
+  for i in 1..17
+    loop
+      ret = ret || chars [ trunc(random() * 62) + 1];
+    end loop;
+  return ret;
+end;
+$$ LANGUAGE PLPGSQL volatile;;
     ]]></sql>
   </changeSet>
 

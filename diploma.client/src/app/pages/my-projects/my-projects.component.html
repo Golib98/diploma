@@ -1,7 +1,15 @@
 <app-navbar [menuItems]="menuItems"></app-navbar>
 
-<section class="my-projects-section">
-  <app-my-project-card
-    *ngFor="let myProject of myProjects"
-    [myProject]="myProject"></app-my-project-card>
+<section fxLayout="row"
+         fxLayoutAlign="space-around"
+         class="my-projects-section">
+  <div fxFlex="90" fxLayout="column" fxLayoutGap="10px">
+    <app-my-project-card
+      *ngFor="let myProject of myProjects"
+      [myProject]="myProject"
+      (editButtonEmitter)="editMyProject(myProject.title)"
+      (deleteButtonEmitter)="deleteMyProject(myProject.title)"
+    >
+    </app-my-project-card>
+  </div>
 </section>

@@ -14,9 +14,8 @@ export class PersonDisplay {
 
   assign(a: any) {
     this.fio = a.fio;
-    this.username = a.username;
     this.role = a.role;
-    // noinspection SuspiciousInstanceOfGuard
+    this.username = a.username;
     this.cans = (a.cans instanceof Array) ? a.cans.map(c => c) : [];
   }
 }

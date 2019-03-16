@@ -1,5 +1,6 @@
 package kz.greetgo.diploma.register.util;
 
+import javax.sql.DataSource;
 import kz.greetgo.db.DbProxyFactory;
 import kz.greetgo.db.GreetgoTransactionManager;
 import kz.greetgo.db.TransactionManager;
@@ -9,6 +10,7 @@ import kz.greetgo.depinject.core.replace.BeanReplacer;
 import kz.greetgo.diploma.controller.model.UserCan;
 import kz.greetgo.diploma.register.util.my_batis.CustomBooleanTypeHandler;
 import kz.greetgo.diploma.register.util.my_batis.CustomEnumTypeHandler;
+import kz.greetgo.diploma.register.util.sql.JdbcDiploma;
 import org.apache.ibatis.logging.log4j.Log4jImpl;
 import org.apache.ibatis.mapping.Environment;
 import org.apache.ibatis.session.Configuration;
@@ -20,8 +22,6 @@ import org.apache.ibatis.type.JdbcType;
 import org.apache.ibatis.type.TypeHandlerRegistry;
 import org.apache.log4j.Logger;
 
-import javax.sql.DataSource;
-
 public abstract class LocalSessionFactory implements BeanReplacer, HasAfterInject, DataSourceGetter {
   private final TransactionManager transactionManager = new GreetgoTransactionManager();
   private final TransactionFactory transactionFactory = new LocalTransactionFactory(transactionManager);
@@ -30,7 +30,9 @@ public abstract class LocalSessionFactory implements BeanReplacer, HasAfterInjec
   @Override
   public Object replaceBean(Object originalBean, Class<?> returnClass) {
 
-    if (!returnClass.isInterface()) { return originalBean; }
+    if (!returnClass.isInterface()) {
+      return originalBean;
+    }
 
     return dbProxyFactory.createProxyFor(originalBean, returnClass);
   }
@@ -64,7 +66,9 @@ public abstract class LocalSessionFactory implements BeanReplacer, HasAfterInjec
 
       @Override
       protected void logTrace(String message) {
-        if (logger.isTraceEnabled()) { logger.trace(message); }
+        if (logger.isTraceEnabled()) {
+          logger.trace(message);
+        }
       }
     });
 

@@ -1,30 +1,30 @@
 import {Injectable} from '@angular/core';
 import {HttpService} from "../../services/http.service";
-import {MyProject} from "../../../model/MyProject";
+import {MyProjectCard} from "../../../model/MyProjectCard";
+import {map} from "rxjs/operators";
 
 @Injectable({
   providedIn: 'root'
 })
 export class MyProjectsService {
 
-  constructor(private httpService: HttpService) {
+  defaultTimeout: number = 1000;
+
+  constructor(private http: HttpService) {
   }
 
-  get myProjects(): Promise<MyProject[]> {
-    // this.httpService.get()
-    let ret: MyProject[] = [];
+  get myProjects(): Promise<MyProjectCard[]> {
 
-    let model = new MyProject();
-    model.title = 'Title';
-    model.desc = 'Description';
-    model.updateDate = new Date();
-    ret.push(model);
+    return this.http.get("/projects/myProjects")
+      .pipe(map<any, MyProjectCard[]>(k => k.body))
+      .toPromise()
+      .then(res => res);
 
-    return new Promise<MyProject[]>(((resolve) => {
-      setTimeout(() => {
-        resolve(ret);
-      }, 1000)
-    }));
+  }
 
+  deleteMyProject(id: string): Promise<void> {
+    return this.http.get("/projects/deleteProject", {projectId: id})
+      .toPromise()
+      .then(res => null);
   }
 }

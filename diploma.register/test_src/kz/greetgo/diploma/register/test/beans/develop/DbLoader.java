@@ -1,36 +1,86 @@
 package kz.greetgo.diploma.register.test.beans.develop;
 
+import java.sql.Timestamp;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import kz.greetgo.depinject.core.Bean;
 import kz.greetgo.depinject.core.BeanGetter;
 import kz.greetgo.diploma.controller.model.UserCan;
 import kz.greetgo.diploma.register.beans.all.IdGenerator;
 import kz.greetgo.diploma.register.test.dao.AuthTestDao;
+import kz.greetgo.diploma.register.test.dao.ProjectTestDao;
 import kz.greetgo.security.password.PasswordEncoder;
 import org.apache.log4j.Logger;
-
-import java.sql.Timestamp;
-import java.text.SimpleDateFormat;
-import java.util.Date;
+import org.fest.util.Strings;
 
 @Bean
 public class DbLoader {
   final Logger logger = Logger.getLogger(getClass());
 
-
   public BeanGetter<AuthTestDao> authTestDao;
   public BeanGetter<IdGenerator> idGenerator;
   public BeanGetter<PasswordEncoder> passwordEncoder;
+  public BeanGetter<ProjectTestDao> projectTestDao;
 
   public void loadTestData() throws Exception {
 
     loadPersons();
+    loadRoles();
+    loadAssistants();
+    loadProjects();
 
     logger.info("FINISH");
   }
 
-  @SuppressWarnings("SpellCheckingInspection")
+  private void loadProjects() {
+    createProjectForProfessor("Title1", "pushkin");
+    createProjectForProfessor("Title2", "pushkin");
+    createProjectForProfessor("Title3", "pushkin");
+    createProjectForProfessor("Title4", "pushkin");
+    createProjectForProfessor("Title4", "esenin");
+  }
+
+  private void createProjectForProfessor(String title, String professor) {
+
+    String professorId = authTestDao.get().getPersonId(professor);
+    projectTestDao.get().insertProject(idGenerator.get().newId(), title, professorId);
+
+  }
+
+  private void loadAssistants() {
+    giveAssistantTo("pushkin", "stalin");
+    giveAssistantTo("pushkin", "esenin");
+  }
+
+  private void giveAssistantTo(String professor, String student) {
+
+    String professorId = authTestDao.get().getPersonId(professor);
+    String studentId = authTestDao.get().getPersonId(student);
+
+    authTestDao.get().insertPersonAssistant(professorId, studentId);
+  }
+
+  private void loadRoles() {
+    giveRoleToUser("pushkin", "PROFESSOR");
+    giveRoleToUser("stalin", "STUDENT");
+    giveRoleToUser("esenin", "STUDENT");
+  }
+
+  private void giveRoleToUser(String person, String role) {
+
+    String roleId = authTestDao.get().getRoleId(role);
+
+    if (Strings.isNullOrEmpty(roleId)) {
+      roleId = idGenerator.get().newId();
+      authTestDao.get().insertRole(roleId, role);
+    }
+
+    String personId = authTestDao.get().getPersonId(person);
+    authTestDao.get().updatePersonField(personId, "role_id", roleId);
+
+  }
+
   private void loadPersons() throws Exception {
-    logger.info("Start loading persons...");
 
     user("Пушкин Александр Сергеевич", "1799-06-06", "pushkin");
     user("Сталин Иосиф Виссарионович", "1878-12-18", "stalin");
@@ -46,7 +96,6 @@ public class DbLoader {
     add_can("stalin", UserCan.VIEW_USERS);
     add_can("stalin", UserCan.VIEW_ABOUT);
 
-    logger.info("Finish loading persons");
   }
 
   private void user(String fioStr, String birthDateStr, String accountName) throws Exception {

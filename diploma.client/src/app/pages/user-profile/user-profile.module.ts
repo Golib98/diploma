@@ -7,6 +7,7 @@ import {NavbarModule} from "../../common/navbar/navbar.module";
 import {FlexLayoutModule} from "@angular/flex-layout";
 import {MatButtonModule, MatCheckboxModule, MatFormFieldModule, MatInputModule, MatTabsModule} from "@angular/material";
 import {NewProjectComponent} from './components/new-project/new-project.component';
+import {FormsModule} from "@angular/forms";
 
 @NgModule({
   declarations: [
@@ -21,7 +22,8 @@ import {NewProjectComponent} from './components/new-project/new-project.componen
     MatInputModule,
     MatCheckboxModule,
     MatButtonModule,
-    UserProfileRoutingModule
+    UserProfileRoutingModule,
+    FormsModule,
   ]
 })
 export class UserProfileModule {

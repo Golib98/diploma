@@ -1,11 +1,21 @@
 <mat-card fxLayout="row" fxLayoutAlign="space-around">
   <div fxFlex="70" fxLayout="column" fxLayoutAlign="start start">
     <mat-card-title>{{myProject.title}}</mat-card-title>
-    <mat-card-content>{{myProject.desc}}</mat-card-content>
-    <mat-card-subtitle>{{myProject.updateDate | date}}</mat-card-subtitle>
+    <mat-card-content>{{myProject.description}}</mat-card-content>
+    <mat-card-subtitle>{{myProject.publishedDate | date}}</mat-card-subtitle>
   </div>
   <div fxLayout="column">
-    <button mat-button>Edit</button>
-    <button mat-button>Delete</button>
+    <button
+      mat-button
+      (click)="editButtonEmitter.emit()"
+      [disabled]="myProject.isButtonsDisabled"
+    >Edit
+    </button>
+    <button
+      mat-button
+      (click)="deleteButtonEmitter.emit()"
+      [disabled]="myProject.isButtonsDisabled"
+    > Delete
+    </button>
   </div>
 </mat-card>

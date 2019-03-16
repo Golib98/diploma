@@ -6,7 +6,7 @@
   <changeSet author="pompei" id="create-table-user_params">
     <sql endDelimiter=";;"><![CDATA[
       create table user_params (
-        person_id varchar(30) not null,
+        person_id varchar(30) not null, 
         name varchar(50) not null,
         value varchar(1000),
         primary key(person_id, name)
@@ -28,7 +28,7 @@
   <changeSet author="pompei" id="create-table-person">
     <sql endDelimiter=";;"><![CDATA[
       create table person (
-        id varchar(30) not null primary key,
+        id varchar(30) not null primary key default new_id(),
         username varchar(100) not null,
         surname varchar(255),
         name varchar(255),

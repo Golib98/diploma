@@ -1,5 +1,5 @@
-import {Component, Input} from '@angular/core';
-import {MyProject} from "../../../../../model/MyProject";
+import {Component, EventEmitter, Input, Output} from '@angular/core';
+import {MyProjectCard} from "../../../../../model/MyProjectCard";
 
 @Component({
   selector: 'app-my-project-card',
@@ -8,9 +8,10 @@ import {MyProject} from "../../../../../model/MyProject";
 })
 export class MyProjectCardComponent {
 
-  @Input() myProject: MyProject;
+  @Input() myProject: MyProjectCard;
+  @Output() editButtonEmitter = new EventEmitter<void>();
+  @Output() deleteButtonEmitter = new EventEmitter<void>();
 
   constructor() {
   }
-
 }

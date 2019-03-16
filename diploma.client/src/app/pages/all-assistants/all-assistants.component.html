@@ -1,0 +1,17 @@
+<app-navbar [menuItems]="menuItems"></app-navbar>
+
+<section style="margin-top: 10px;" fxLayout="row" fxLayoutGap="10px">
+
+  <app-assistants-filter
+    (findButtonEmitter) = "findAssistants($event)"
+    fxFlex="20">
+  </app-assistants-filter>
+
+  <div fxFlex="80">
+    <app-assistance-card
+      *ngFor="let assistant of assistantCards"
+      [assistant]="assistant"
+    ></app-assistance-card>
+  </div>
+
+</section>

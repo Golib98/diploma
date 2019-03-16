@@ -23,6 +23,14 @@ const routes: Routes = [
     loadChildren: './pages/my-projects/my-projects.module#MyProjectsModule'
   },
   {
+    path: 'my-assistants',
+    loadChildren: './pages/my-assistants/my-assistants.module#MyAssistantsModule'
+  },
+  {
+    path: 'all-assistants',
+    loadChildren: './pages/all-assistants/all-assistants.module#AllAssistantsModule'
+  },
+  {
     path: '',
     redirectTo: '/home',
     pathMatch: 'full'

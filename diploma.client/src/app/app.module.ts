@@ -6,7 +6,6 @@ import {HttpService} from "./services/http.service";
 import {HttpClientModule} from "@angular/common/http";
 import {RoutingModule} from "./routing.module";
 import {RouterModule} from "@angular/router";
-import {MatToolbarModule} from "@angular/material";
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 
 @NgModule({

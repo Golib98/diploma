@@ -56,7 +56,7 @@ public class AuthController implements Controller {
   @OnGet("/displayPerson")
   public PersonDisplay displayPerson(@ParSession("personId") String personId) {
     return authRegister.get().displayPerson(personId);
-  }
+  } 
 
   @AsIs
   @PublicAccess

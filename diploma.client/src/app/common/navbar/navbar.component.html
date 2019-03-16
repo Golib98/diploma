@@ -1,19 +1,34 @@
 <mat-toolbar class="navbar-shadow" color="primary" fxLayout="row">
 
-  <div fxFlex="20%" fxLayoutAlign="center center">
+  <div fxFlex="20" fxLayoutAlign="start">
     <p routerLink="/" class="main-diploma-title">Diploma</p>
   </div>
-  <div fxFlex fxLayoutAlign="space-between center">
-    <button
-      mat-button
-      *ngFor="let item of menuItems"
-      [routerLink]="item.routerLink">
-      {{item.label}}
-    </button>
-  </div>
-  <div fxFlex="20%"></div>
 
-  <div *ngIf="loginService.personDisplay" style="cursor: pointer;" routerLink="/user-profile">
-    Signed as {{loginService.personDisplay.username}}
+  <div fxFlex fxLayoutAlign="space-between center">
+    <ng-container *ngFor="let item of menuItems">
+
+      <button
+        mat-button
+        [routerLink]="item.routerLink"
+        [matMenuTriggerFor]="menu">
+        {{item.label}}
+      </button>
+
+      <mat-menu #menu="matMenu">
+        <button
+          mat-menu-item
+          *ngFor="let subItem of item.subMenu"
+          [routerLink]="subItem.routerLink"
+        >{{subItem.label}}</button>
+      </mat-menu>
+
+    </ng-container>
   </div>
+
+  <div fxFlex="20" fxLayoutAlign="end">
+    <div *ngIf="loginService.personDisplay" style="cursor: pointer;" routerLink="/user-profile">
+      Signed as {{loginService.personDisplay.username}}
+    </div>
+  </div>
+
 </mat-toolbar>
