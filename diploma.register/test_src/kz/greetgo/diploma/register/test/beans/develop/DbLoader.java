@@ -9,6 +9,7 @@ import kz.greetgo.diploma.controller.model.UserCan;
 import kz.greetgo.diploma.register.beans.all.IdGenerator;
 import kz.greetgo.diploma.register.test.dao.AuthTestDao;
 import kz.greetgo.diploma.register.test.dao.ProjectTestDao;
+import kz.greetgo.diploma.register.test.dao.UniversityTestDao;
 import kz.greetgo.security.password.PasswordEncoder;
 import org.apache.log4j.Logger;
 import org.fest.util.Strings;
@@ -21,15 +22,26 @@ public class DbLoader {
   public BeanGetter<IdGenerator> idGenerator;
   public BeanGetter<PasswordEncoder> passwordEncoder;
   public BeanGetter<ProjectTestDao> projectTestDao;
+  public BeanGetter<UniversityTestDao> universityTestDao;
 
   public void loadTestData() throws Exception {
+    logger.info("START");
 
     loadPersons();
     loadRoles();
     loadAssistants();
     loadProjects();
+    loadUniversities();
 
     logger.info("FINISH");
+  }
+
+  private void loadUniversities() {
+    String universityId = universityTestDao.get().insUniversity("IITU");
+
+    String professorId = authTestDao.get().getPersonId("pushkin");
+    authTestDao.get().updatePersonField(professorId, "university_id", universityId);
+    
   }
 
   private void loadProjects() {
@@ -95,7 +107,7 @@ public class DbLoader {
     add_can("pushkin", UserCan.VIEW_USERS);
     add_can("stalin", UserCan.VIEW_USERS);
     add_can("stalin", UserCan.VIEW_ABOUT);
-
+    
   }
 
   private void user(String fioStr, String birthDateStr, String accountName) throws Exception {

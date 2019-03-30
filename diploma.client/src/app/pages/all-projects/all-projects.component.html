@@ -1,0 +1,13 @@
+<app-navbar></app-navbar>
+<section fxLayout="row"
+         fxLayoutAlign="space-around"
+         class="my-projects-section">
+  <div fxFlex="90" fxLayout="column" fxLayoutGap="10px">
+    <app-all-project-card
+      *ngFor="let myProject of myProjects"
+      [myProject]="myProject"
+    >
+    </app-all-project-card>
+  </div>
+</section>
+

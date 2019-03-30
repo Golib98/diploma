@@ -5,6 +5,7 @@ import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
+import java.util.function.Consumer;
 import javax.sql.DataSource;
 import kz.greetgo.db.AbstractJdbcWithDataSource;
 import kz.greetgo.db.TransactionManager;
@@ -30,7 +31,7 @@ public class JdbcDiploma extends AbstractJdbcWithDataSource {
   }
 
 
-  public <T> void queryWithConsumer(SQL sql, RowConsumer<T> consumer) {
+  public void queryWithConsumer(SQL sql, Consumer<ResultSet> consumer) {
     execute(con -> {
       try (PreparedStatement ps = con.prepareStatement(sql.compile())) {
         try (ResultSet rs = sql.applyParameter(ps).executeQuery()) {

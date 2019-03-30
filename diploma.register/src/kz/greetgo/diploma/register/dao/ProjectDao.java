@@ -16,5 +16,5 @@ public interface ProjectDao {
 
   @Insert("insert into projects(professor_id, title, description) " +
     "VALUES (#{personId}, #{project.title}, #{project.description})")
-  void insProject(String personId, Project project);
+  void insProject(@Param("personId") String personId, @Param("project") Project project);
 }

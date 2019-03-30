@@ -1,10 +1,8 @@
 package kz.greetgo.diploma.debug.beans;
 
-import kz.greetgo.depinject.core.Bean;
-import kz.greetgo.diploma.debug.util.WebAppContextRegistration;
-import org.eclipse.jetty.servlet.FilterHolder;
-import org.eclipse.jetty.webapp.WebAppContext;
-
+import java.io.IOException;
+import java.time.LocalDateTime;
+import java.util.EnumSet;
 import javax.servlet.DispatcherType;
 import javax.servlet.Filter;
 import javax.servlet.FilterChain;
@@ -14,8 +12,10 @@ import javax.servlet.ServletRequest;
 import javax.servlet.ServletResponse;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import java.io.IOException;
-import java.util.EnumSet;
+import kz.greetgo.depinject.core.Bean;
+import kz.greetgo.diploma.debug.util.WebAppContextRegistration;
+import org.eclipse.jetty.servlet.FilterHolder;
+import org.eclipse.jetty.webapp.WebAppContext;
 
 @Bean
 public class PrintRequestParamsRegistration implements WebAppContextRegistration, Filter {
@@ -31,10 +31,12 @@ public class PrintRequestParamsRegistration implements WebAppContextRegistration
   }
 
   @Override
-  public void init(FilterConfig filterConfig) throws ServletException {}
+  public void init(FilterConfig filterConfig) throws ServletException {
+  }
 
   @Override
-  public void destroy() {}
+  public void destroy() {
+  }
 
 
   @Override
@@ -46,7 +48,9 @@ public class PrintRequestParamsRegistration implements WebAppContextRegistration
     HttpServletResponse response = (HttpServletResponse) servletResponse;
 
     {
-      StringBuilder out = new StringBuilder(request.getMethod());
+      StringBuilder out = new StringBuilder(LocalDateTime.now() + "");
+      out.append("      ");
+      out.append(request.getMethod());
       while (out.length() < 10) out.append(' ');
       out.append(' ');
       out.append(request.getRequestURI());

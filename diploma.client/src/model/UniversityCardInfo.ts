@@ -1,6 +1,6 @@
 export interface UniversityCardInfo {
   text: string;
-  label: string;
+  title: string;
   mainImageUrl: string;
   logoUrl: string;
 }

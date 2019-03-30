@@ -16,7 +16,7 @@ export class MyProjectsComponent implements OnInit {
 
   constructor(
     private menuListService: MenuListService,
-    private myProjectsService: MyProjectsService
+    private myProjectsService: MyProjectsService,
   ) {
   }
 

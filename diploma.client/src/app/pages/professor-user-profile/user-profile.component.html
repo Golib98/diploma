@@ -25,15 +25,21 @@
               <div fxLayout="column" fxFlex="80">
                 <mat-form-field>
                   <input matInput
-                         placeholder="Title"
-                         value="My Name"
+                         placeholder="Name"
+                         [value]="professorInfo.fio"
+                         [disabled]="true">
+                </mat-form-field>
+                <mat-form-field>
+                  <input matInput
+                         placeholder="University"
+                         [value]="professorInfo.university?.title"
                          [disabled]="true">
                 </mat-form-field>
               </div>
             </div>
           </mat-tab>
           <mat-tab label="Projects">
-            <app-new-project (addButtonEventEmitter)="addProject($event)" ></app-new-project>
+            <app-new-project (addButtonEventEmitter)="addProject($event)"></app-new-project>
           </mat-tab>
         </mat-tab-group>
       </div>

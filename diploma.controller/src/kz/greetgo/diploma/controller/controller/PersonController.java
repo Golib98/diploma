@@ -5,6 +5,7 @@ import kz.greetgo.depinject.core.Bean;
 import kz.greetgo.depinject.core.BeanGetter;
 import kz.greetgo.diploma.controller.model.AllAssistantsIn;
 import kz.greetgo.diploma.controller.model.PersonRecord;
+import kz.greetgo.diploma.controller.model.ProfessorInfo;
 import kz.greetgo.diploma.controller.register.PersonRegister;
 import kz.greetgo.diploma.controller.util.Controller;
 import kz.greetgo.mvc.annotations.Json;
@@ -39,4 +40,15 @@ public class PersonController implements Controller {
     return personRegister.get().myAssistants(personId);
   }
 
+  @ToJson
+  @OnGet("/professorInfo")
+  public ProfessorInfo getProfessorInfo(@ParSession("personId") String personId) {
+    return personRegister.get().professorInfo(personId);
+  }
+
+  @ToJson
+  @OnGet("/studentInfo")
+  public ProfessorInfo getStudentInfo(@ParSession("personId") String personId) {
+    return personRegister.get().studentInfo(personId);
+  }
 }

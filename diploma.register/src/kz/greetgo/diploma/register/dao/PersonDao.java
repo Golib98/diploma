@@ -2,6 +2,7 @@ package kz.greetgo.diploma.register.dao;
 
 import java.util.List;
 import kz.greetgo.diploma.controller.model.PersonRecord;
+import kz.greetgo.diploma.controller.model.ProfessorInfo;
 import org.apache.ibatis.annotations.Select;
 
 public interface PersonDao {
@@ -27,4 +28,17 @@ public interface PersonDao {
     "     join professor_assistant x2 on x.id = x2.assistant_id\n" +
     "where x2.professor_id = #{professorId}")
   List<PersonRecord> myAssistants(String professorId);
+
+  @Select("select concat_ws(' ', x.surname, x.name, x.patronymic) as fio,\n" +
+    " x2.title as \"university.title\" " +
+    "from person x\n" +
+    "     join university x2 on x.university_id = x2.id\n" +
+    "where x.id = #{professorId}")
+  ProfessorInfo professorInfo(String professorId);
+
+  @Select("select concat_ws(' ', x.surname, x.name, x.patronymic) as fio" +
+    "  \n" +
+    "from person x\n" +
+    "where x.id = #{studentId}")
+  ProfessorInfo studentInfo(String personId);
 }

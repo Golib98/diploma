@@ -17,8 +17,7 @@ export class MyProjectsService {
 
     return this.http.get("/projects/myProjects")
       .pipe(map<any, MyProjectCard[]>(k => k.body))
-      .toPromise()
-      .then(res => res);
+      .toPromise();
 
   }
 

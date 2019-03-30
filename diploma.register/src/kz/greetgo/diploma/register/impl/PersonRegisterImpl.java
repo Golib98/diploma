@@ -1,10 +1,13 @@
 package kz.greetgo.diploma.register.impl;
 
+import java.sql.ResultSet;
 import java.util.List;
+import java.util.function.Function;
 import kz.greetgo.depinject.core.Bean;
 import kz.greetgo.depinject.core.BeanGetter;
 import kz.greetgo.diploma.controller.model.AllAssistantsIn;
 import kz.greetgo.diploma.controller.model.PersonRecord;
+import kz.greetgo.diploma.controller.model.ProfessorInfo;
 import kz.greetgo.diploma.controller.model.Role;
 import kz.greetgo.diploma.controller.register.PersonRegister;
 import kz.greetgo.diploma.register.dao.PersonDao;
@@ -26,10 +29,10 @@ public class PersonRegisterImpl implements PersonRegister {
   public List<PersonRecord> listOf(AllAssistantsIn allAssistantsIn) {
 
     SQL sql = buildSql(allAssistantsIn);
-
+    
     return jdbc.get().queryForList(sql, rs -> {
       PersonRecord ret = new PersonRecord();
-      ret.fio = rs.getString("fio");
+      ret.fio =   rs.getString("fio");
       return ret;
     });
 
@@ -38,6 +41,18 @@ public class PersonRegisterImpl implements PersonRegister {
   @Override
   public List<PersonRecord> myAssistants(String personId) {
     return personDao.get().myAssistants(personId);
+  }
+
+  @Override
+  public ProfessorInfo professorInfo(String personId) {
+
+    return personDao.get().professorInfo(personId);
+    
+  }
+
+  @Override
+  public ProfessorInfo studentInfo(String personId) {
+    return personDao.get().studentInfo(personId);
   }
 
   private SQL buildSql(AllAssistantsIn allAssistantsIn) {

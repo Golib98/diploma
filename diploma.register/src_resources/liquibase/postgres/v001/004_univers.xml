@@ -2,12 +2,13 @@
 <databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
                    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
                    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-2.0.xsd">
-
-  <!-- v001 -->
-  <include file="liquibase/postgres/v001/000_common.xml"/>
-  <include file="liquibase/postgres/v001/001_person.xml"/>
-  <include file="liquibase/postgres/v001/002_roles.xml"/>
-  <include file="liquibase/postgres/v001/003_projects.xml"/>
-  <include file="liquibase/postgres/v001/004_univers.xml"/>
-  
+  <changeSet author="jgolibzhan" id="2">
+    <sql endDelimiter=";;"><![CDATA[
+create table university (
+  id text not null primary key default new_id(),
+  title text
+);;
+alter table person add column university_id text references university(id);;
+]]></sql>
+  </changeSet>
 </databaseChangeLog>

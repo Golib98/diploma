@@ -26,7 +26,7 @@
   </div>
 
   <div fxFlex="20" fxLayoutAlign="end">
-    <div *ngIf="loginService.personDisplay" style="cursor: pointer;" routerLink="/user-profile">
+    <div *ngIf="loginService.personDisplay" style="cursor: pointer;" [routerLink]="linkToProfile">
       Signed as {{loginService.personDisplay.username}}
     </div>
   </div>

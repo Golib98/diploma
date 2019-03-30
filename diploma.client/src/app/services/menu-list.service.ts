@@ -23,6 +23,10 @@ export class MenuListService {
           return MenuItem.professorList();
         }
 
+        if (this.loginService.personDisplay.role === 'STUDENT') {
+          return MenuItem.assistantList();
+        }
+
       })
 
   }

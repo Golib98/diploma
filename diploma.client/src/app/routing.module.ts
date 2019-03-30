@@ -15,8 +15,12 @@ const routes: Routes = [
     loadChildren: './pages/registration/registration.module#RegistrationModule'
   },
   {
-    path: 'user-profile',
-    loadChildren: './pages/user-profile/user-profile.module#UserProfileModule'
+    path: 'professor-user-profile',
+    loadChildren: './pages/professor-user-profile/user-profile.module#UserProfileModule'
+  },
+  {
+    path: 'assistant-user-profile',
+    loadChildren: './pages/assistant-user-profile/user-profile.module#UserProfileModule'
   },
   {
     path: 'my-projects',
@@ -29,6 +33,10 @@ const routes: Routes = [
   {
     path: 'all-assistants',
     loadChildren: './pages/all-assistants/all-assistants.module#AllAssistantsModule'
+  },
+  {
+    path: 'all-projects',
+    loadChildren: './pages/all-projects/all-projects.module#AllProjectsModule'
   },
   {
     path: '',

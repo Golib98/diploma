@@ -20,6 +20,7 @@ public class ProjectRegisterImpl implements ProjectRegister {
   @Override
   public void deleteProject(String projectId) {
     projectDao.get().setRemoved(projectId, true);
+    
   }
 
   @Override

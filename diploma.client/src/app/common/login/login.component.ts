@@ -20,7 +20,7 @@ export class LoginComponent implements OnInit {
     this.loginService.login()
       .then(ignore => {
         if (this.loginService.isAuthenticated)
-          this.router.navigate(['/user-profile'])
+          this.router.navigate(['/professor-user-profile'])
       })
   }
 }

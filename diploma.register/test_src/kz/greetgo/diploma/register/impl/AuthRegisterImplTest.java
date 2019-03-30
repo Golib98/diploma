@@ -1,5 +1,8 @@
 package kz.greetgo.diploma.register.impl;
 
+import static org.fest.assertions.api.Assertions.assertThat;
+import java.sql.PreparedStatement;
+import java.util.Arrays;
 import kz.greetgo.depinject.core.BeanGetter;
 import kz.greetgo.diploma.controller.errors.IllegalLoginOrPassword;
 import kz.greetgo.diploma.controller.model.PersonDisplay;
@@ -8,15 +11,12 @@ import kz.greetgo.diploma.controller.model.UserCan;
 import kz.greetgo.diploma.controller.register.AuthRegister;
 import kz.greetgo.diploma.register.test.dao.AuthTestDao;
 import kz.greetgo.diploma.register.test.util.ParentTestNg;
+import kz.greetgo.diploma.register.util.sql.JdbcDiploma;
 import kz.greetgo.security.password.PasswordEncoder;
 import kz.greetgo.security.session.SessionIdentity;
 import kz.greetgo.security.session.SessionService;
 import kz.greetgo.util.RND;
 import org.testng.annotations.Test;
-
-import java.util.Arrays;
-
-import static org.fest.assertions.api.Assertions.assertThat;
 
 public class AuthRegisterImplTest extends ParentTestNg {
 
@@ -25,6 +25,65 @@ public class AuthRegisterImplTest extends ParentTestNg {
   public BeanGetter<PasswordEncoder> passwordEncoder;
   public BeanGetter<AuthTestDao> authTestDao;
   public BeanGetter<SessionService> sessionService;
+  public BeanGetter<JdbcDiploma> jdbc;
+
+  @Test
+  public void testData() {
+
+
+    jdbc.get().execute(con -> {
+      con.setAutoCommit(false);
+      try (PreparedStatement ps = con.prepareStatement("insert into tmp_test(" +
+        "  id,\n" +
+        "  value,  \n" +
+        "  value2 ,\n" +
+        "  value3 ,\n" +
+        "  value4 ) values (?,?,?,?,?)")) {
+        for (int i = 0; i < 1_000_000; i++) {
+          ps.setString(1, RND.plusInt(1_000_000) + "");
+          ps.setString(2, RND.str(30));
+          ps.setString(3, RND.str(30));
+          ps.setString(4, RND.str(30));
+          ps.setString(5, RND.str(30));
+          ps.addBatch();
+        }
+
+        ps.executeBatch();
+        con.commit();
+      }
+
+      return null;
+    });
+
+
+    jdbc.get().execute(con -> {
+      con.setAutoCommit(false);
+      try (PreparedStatement ps = con.prepareStatement("insert into tmp_test_ref(" +
+        "  id,\n" +
+        "  value,  \n" +
+        "  value2 ) values (?,?,?)")) {
+        for (int i = 0; i < 1_000_000; i++) {
+          ps.setString(1, RND.plusInt(1_000_000) + "");
+          ps.setString(2, RND.str(30));
+          ps.setString(3, RND.str(30));
+          ps.addBatch();
+        }
+
+        ps.executeBatch();
+        con.commit();
+      }
+
+      return null;
+    });
+
+
+  }
+
+
+  public static void main(String[] args) {
+    int a;
+    System.out.println(RND.plusInt(100));
+  }
 
   @Test
   public void login() {

@@ -11,11 +11,19 @@ export class NavbarComponent implements OnInit {
 
   @Input() menuItems: MenuItem[];
 
+  linkToProfile = '';
+
   constructor(public loginService: LoginService) {
   }
 
-  ngOnInit() {
-    this.loginService.start();
+  async ngOnInit() {
+    await this.loginService.start();
+    if (this.loginService.personDisplay.role === 'STUDENT') {
+      this.linkToProfile = '/assistant-user-profile'
+    }
+    if (this.loginService.personDisplay.role === 'PROFESSOR') {
+      this.linkToProfile = '/professor-user-profile'
+    }
   }
 
 }

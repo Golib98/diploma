@@ -41,4 +41,27 @@ export class MenuItem {
 
     return ret;
   }
+
+  public static assistantList(): MenuItem[] {
+    let ret: MenuItem[] = [];
+
+
+    let professional: MenuItem = new MenuItem();
+    professional.label = 'Professional';
+    professional.subMenu.push(MenuItem.of('Organizations', '/universities'));
+    professional.subMenu.push(MenuItem.of('Projects', '/all-projects'));
+
+
+    ret.push(
+      professional,
+      MenuItem.of("Blogs", "/my-projects"),
+      MenuItem.of("News", ""),
+      MenuItem.of("Jobs", ""),
+      MenuItem.of("About", ""),
+      MenuItem.of("Help", ""),
+    )
+    ;
+
+    return ret;
+  }
 }
