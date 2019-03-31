@@ -25,10 +25,29 @@
     </ng-container>
   </div>
 
-  <div fxFlex="20" fxLayoutAlign="end">
-    <div *ngIf="loginService.personDisplay" style="cursor: pointer;" [routerLink]="linkToProfile">
+  <div fxFlex="20" fxLayoutAlign="end" *ngIf="loginService.personDisplay" style="cursor: pointer;">
+
+    <button
+      mat-button
+      [matMenuTriggerFor]="profile">
       Signed as {{loginService.personDisplay.username}}
-    </div>
+    </button>
+
+    <mat-menu #profile="matMenu">
+      <button
+        mat-menu-item
+        [routerLink]="linkToProfile"
+      >Profile
+      </button>
+
+      <button
+        mat-menu-item
+        (click)="logOut()"
+        routerLink="/home"
+      >Log out
+      </button>
+
+    </mat-menu>
   </div>
 
 </mat-toolbar>

@@ -4,12 +4,12 @@
     <mat-card-content>{{myProject.description}}</mat-card-content>
     <mat-card-subtitle>{{myProject.publishedDate | date}}</mat-card-subtitle>
   </div>
-  <div fxLayout="column">
+  <div fxLayout="column" fxLayoutAlign="center center">
     <button
       mat-button
-      (click)="toListButtonEmitter.emit()"
+      (click)="markProject(myProject.isLiked)"
       [disabled]="myProject.isButtonsDisabled"
-    >Edit
+    >{{myProject.isLiked ? 'Remove from list' : 'To List'}}
     </button>
   </div>
 </mat-card>

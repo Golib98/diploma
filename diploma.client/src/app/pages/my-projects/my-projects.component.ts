@@ -3,6 +3,8 @@ import {MenuListService} from "../../services/menu-list.service";
 import {MenuItem} from "../../../model/MenuItem";
 import {MyProjectCard} from "../../../model/MyProjectCard";
 import {MyProjectsService} from "./my-projects.service";
+import {MatDialog} from "@angular/material";
+import {PopupComponent} from "../../common/popup/popup.component";
 
 @Component({
   selector: 'app-my-projects',
@@ -17,6 +19,7 @@ export class MyProjectsComponent implements OnInit {
   constructor(
     private menuListService: MenuListService,
     private myProjectsService: MyProjectsService,
+    public dialog: MatDialog,
   ) {
   }
 
@@ -27,6 +30,12 @@ export class MyProjectsComponent implements OnInit {
 
   editMyProject(title: string) {
 
+    this.dialog.open(PopupComponent, {
+      width: '250px',
+      data: 'Project edited'
+    });
+
+
     let myProject = this.myProjects.find(value => value.title === title);
     myProject.isButtonsDisabled = true;
 
@@ -36,14 +45,14 @@ export class MyProjectsComponent implements OnInit {
 
   }
 
-  deleteMyProject(title: string) {
+  deleteMyProject(id: string) {
 
-    let myProject = this.myProjects.find(value => value.title === title);
+    let myProject = this.myProjects.find(value => value.id === id);
     myProject.isButtonsDisabled = true;
 
     this.myProjectsService.deleteMyProject(myProject.id)
       .then(() => {
-        this.myProjects = this.myProjects.filter(value => value.title !== title);
+        this.myProjects = this.myProjects.filter(value => value.id !== id);
       });
 
   }

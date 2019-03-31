@@ -1,11 +1,13 @@
-<app-navbar></app-navbar>
+<app-navbar [menuItems]="menuItems"></app-navbar>
 <section fxLayout="row"
          fxLayoutAlign="space-around"
-         class="my-projects-section">
+         class="my-projects-section" style="margin-top: 10px;">
   <div fxFlex="90" fxLayout="column" fxLayoutGap="10px">
     <app-all-project-card
       *ngFor="let myProject of myProjects"
       [myProject]="myProject"
+      (toListButtonEmitter)="likeProject(myProject.id)"
+      (removeFromListButtonEmitter)="dislikeProject(myProject.id)"
     >
     </app-all-project-card>
   </div>

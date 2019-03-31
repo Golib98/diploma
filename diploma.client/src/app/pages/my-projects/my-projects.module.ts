@@ -6,7 +6,8 @@ import {MyProjectsComponent} from './my-projects.component';
 import {NavbarModule} from "../../common/navbar/navbar.module";
 import {MyProjectCardComponent} from './components/my-project-card/my-project-card.component';
 import {FlexLayoutModule} from "@angular/flex-layout";
-import {MatButtonModule, MatCardModule, MatMenuModule} from "@angular/material";
+import {MatButtonModule, MatCardModule, MatDialogModule, MatMenuModule} from "@angular/material";
+import {PopupModule} from "../../common/popup/popup.module";
 
 @NgModule({
   declarations: [MyProjectsComponent, MyProjectCardComponent],
@@ -18,6 +19,8 @@ import {MatButtonModule, MatCardModule, MatMenuModule} from "@angular/material";
     MatCardModule,
     MatButtonModule,
     MatMenuModule,
+    MatDialogModule,
+    PopupModule,
   ]
 })
 export class MyProjectsModule {

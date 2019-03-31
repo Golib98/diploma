@@ -12,6 +12,12 @@ create table projects (
   published_date timestamp not null default now(),
   removed        boolean   not null default false
 );;
+
+create table student_like_project (
+  student_id text references person(id),
+  project_id text references projects(id),
+  primary key (student_id, project_id)
+);;
 ]]></sql>
   </changeSet>
 </databaseChangeLog>

@@ -7,9 +7,10 @@ import {AllProjectCard} from "../../../../../model/AllProjectCard";
   styleUrls: ['./all-project-card.component.scss']
 })
 export class AllProjectCardComponent implements OnInit {
-  
+
   @Input() myProject: AllProjectCard;
   @Output() toListButtonEmitter = new EventEmitter<void>();
+  @Output() removeFromListButtonEmitter = new EventEmitter<void>();
 
   constructor() {
   }
@@ -17,4 +18,8 @@ export class AllProjectCardComponent implements OnInit {
   ngOnInit() {
   }
 
+  markProject(isLiked: boolean) {
+    if (isLiked) this.removeFromListButtonEmitter.emit();
+    else this.toListButtonEmitter.emit();
+  }
 }

@@ -4,4 +4,5 @@ export class AllProjectCard {
   public description: string;
   public publishedDate: Date;
   public isButtonsDisabled: boolean = false;
+  public isLiked: boolean;
 }
