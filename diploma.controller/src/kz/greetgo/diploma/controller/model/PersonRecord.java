@@ -6,6 +6,7 @@ public class PersonRecord {
   public String id;
   public String fio;
   public String username;
+  public String university;
   public String birthDate;
   public String cans;
 

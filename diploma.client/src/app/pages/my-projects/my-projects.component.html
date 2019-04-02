@@ -7,7 +7,7 @@
     <app-my-project-card
       *ngFor="let myProject of myProjects"
       [myProject]="myProject"
-      (editButtonEmitter)="editMyProject(myProject.title)"
+      (editButtonEmitter)="editMyProject(myProject.id)"
       (deleteButtonEmitter)="deleteMyProject(myProject.id)"
     >
     </app-my-project-card>

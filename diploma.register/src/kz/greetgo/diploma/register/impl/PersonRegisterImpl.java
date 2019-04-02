@@ -1,8 +1,6 @@
 package kz.greetgo.diploma.register.impl;
 
-import java.sql.ResultSet;
 import java.util.List;
-import java.util.function.Function;
 import kz.greetgo.depinject.core.Bean;
 import kz.greetgo.depinject.core.BeanGetter;
 import kz.greetgo.diploma.controller.model.AllAssistantsIn;
@@ -29,10 +27,11 @@ public class PersonRegisterImpl implements PersonRegister {
   public List<PersonRecord> listOf(AllAssistantsIn allAssistantsIn) {
 
     SQL sql = buildSql(allAssistantsIn);
-    
+
     return jdbc.get().queryForList(sql, rs -> {
       PersonRecord ret = new PersonRecord();
-      ret.fio =   rs.getString("fio");
+      ret.fio = rs.getString("fio");
+      ret.university = rs.getString("university");
       return ret;
     });
 
@@ -47,7 +46,7 @@ public class PersonRegisterImpl implements PersonRegister {
   public ProfessorInfo professorInfo(String personId) {
 
     return personDao.get().professorInfo(personId);
-    
+
   }
 
   @Override
@@ -59,16 +58,23 @@ public class PersonRegisterImpl implements PersonRegister {
 
     SQL sql = new SQL()
       .select("x.username, concat_ws(' ', x.surname, x.name, x.patronymic) as fio")
+      .select("x3.title as university")
       .from("person x")
       .join("role x2 on x2.id = x.role_id")
+      .leftjoin("university x3 on x3.id = x.university_id")
       .where("x2.title = :role")
       .setValue("role", Role.STUDENT);
 
     if (allAssistantsIn != null) {
 
-      if (!Strings.isNullOrEmpty(allAssistantsIn.name)) {
+      if (!Strings.isNullOrEmpty(allAssistantsIn.firstName)) {
         sql.where("x.name ilike :name");
-        sql.setValue("name", allAssistantsIn.name);
+        sql.setValue("name", allAssistantsIn.firstName);
+      }
+
+      if (!Strings.isNullOrEmpty(allAssistantsIn.lastName)) {
+        sql.where("x.surname ilike :lastName");
+        sql.setValue("lastName", allAssistantsIn.lastName);
       }
 
       if (allAssistantsIn.birthDate != null) {

@@ -11,7 +11,9 @@ import {MenuItem} from "../../../model/MenuItem";
 })
 export class AllProjectsComponent implements OnInit {
   myProjects: AllProjectCard[];
+  unfilteredProjects: AllProjectCard[];
   menuItems: MenuItem[];
+  findText: string = '';
 
 
   constructor(
@@ -21,7 +23,10 @@ export class AllProjectsComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.allProjectsService.allProjects.then(value => this.myProjects = value);
+    this.allProjectsService.allProjects.then(value => {
+      this.myProjects = value;
+      this.unfilteredProjects = value;
+    });
     this.menuListService.menuList.then(value => this.menuItems = value);
   }
 
@@ -36,6 +41,12 @@ export class AllProjectsComponent implements OnInit {
     this.allProjectsService.dislikeProject(id).then(ignore => {
       let allProjectCard = this.myProjects.find(value => value.id === id);
       allProjectCard.isLiked = false;
+    })
+  }
+
+  find() {
+    this.myProjects = this.unfilteredProjects.filter(value => {
+      return value.title.toLowerCase().includes(this.findText.toLowerCase());
     })
   }
 }

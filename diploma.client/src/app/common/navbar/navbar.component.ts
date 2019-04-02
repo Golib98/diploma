@@ -1,6 +1,7 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {MenuItem} from "../../../model/MenuItem";
 import {LoginService} from "../login/login.service";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-navbar',
@@ -13,11 +14,16 @@ export class NavbarComponent implements OnInit {
 
   linkToProfile = '';
 
-  constructor(public loginService: LoginService) {
+  constructor(public loginService: LoginService,
+              private router: Router,) {
   }
 
   async ngOnInit() {
     await this.loginService.start();
+    if (!this.loginService.isAuthenticated) {
+      return
+    }
+
     if (this.loginService.personDisplay.role === 'STUDENT') {
       this.linkToProfile = '/assistant-user-profile'
     }
@@ -27,6 +33,8 @@ export class NavbarComponent implements OnInit {
   }
 
   logOut() {
-    this.loginService.exit()
+    this.loginService.exit().then(value => {
+      this.router.navigate(['/home'])
+    })
   }
 }

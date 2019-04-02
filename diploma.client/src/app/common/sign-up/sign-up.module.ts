@@ -3,6 +3,7 @@ import {CommonModule} from '@angular/common';
 import {SignUpComponent} from './sign-up.component';
 import {FlexLayoutModule} from "@angular/flex-layout";
 import {MatButtonModule, MatInputModule, MatSelectModule} from "@angular/material";
+import {FormsModule} from "@angular/forms";
 
 @NgModule({
   declarations: [SignUpComponent],
@@ -12,6 +13,7 @@ import {MatButtonModule, MatInputModule, MatSelectModule} from "@angular/materia
     MatSelectModule,
     MatInputModule,
     MatButtonModule,
+    FormsModule,
   ],
   exports: [
     SignUpComponent

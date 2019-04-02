@@ -6,21 +6,38 @@ import {MyProjectsComponent} from './my-projects.component';
 import {NavbarModule} from "../../common/navbar/navbar.module";
 import {MyProjectCardComponent} from './components/my-project-card/my-project-card.component';
 import {FlexLayoutModule} from "@angular/flex-layout";
-import {MatButtonModule, MatCardModule, MatDialogModule, MatMenuModule} from "@angular/material";
+import {
+  MatButtonModule,
+  MatCardModule,
+  MatCheckboxModule,
+  MatDialogModule,
+  MatFormFieldModule,
+  MatInputModule,
+  MatMenuModule
+} from "@angular/material";
 import {PopupModule} from "../../common/popup/popup.module";
+import {MyProjectEditDialogComponent} from './components/my-project-edit-dialog/my-project-edit-dialog.component';
+import {FormsModule} from "@angular/forms";
 
 @NgModule({
-  declarations: [MyProjectsComponent, MyProjectCardComponent],
+  declarations: [MyProjectsComponent, MyProjectCardComponent, MyProjectEditDialogComponent],
   imports: [
     CommonModule,
     MyProjectsRoutingModule,
     NavbarModule,
+    PopupModule,
     FlexLayoutModule,
     MatCardModule,
     MatButtonModule,
     MatMenuModule,
     MatDialogModule,
-    PopupModule,
+    MatCheckboxModule,
+    MatFormFieldModule,
+    MatInputModule,
+    FormsModule,
+  ],
+  entryComponents: [
+    MyProjectEditDialogComponent,
   ]
 })
 export class MyProjectsModule {

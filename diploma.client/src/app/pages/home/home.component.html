@@ -1,5 +1,15 @@
-<app-navbar [menuItems]="menuItems"></app-navbar>
+<app-navbar style="z-index: 1; position: relative"
+            [menuItems]="menuItems"></app-navbar>
 
-<div class="main_page_university mat-typography" fxLayout="row">
+<div style="z-index: 0"
+     class="main_page_university mat-typography"
+     fxLayout="column"
+     fxLayoutAlign="center center"
+     fxLayoutGap="40px">
+
+  <h1 style="font-size: 56px; color: white">Advance your research</h1>
+  <h2 style="color: white">Discover scientific knowledge, and make your research visible</h2>
+
+  <button mat-raised-button routerLink="/registration">Join for free</button>
 
 </div>

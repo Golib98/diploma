@@ -8,7 +8,8 @@ import {AllAssistantsIn} from "../../../../../model/AllAssistantsIn";
 })
 export class AssistantsFilterComponent implements OnInit {
 
-  name: string = "";
+  firstName: string = "";
+  lastName: string = "";
   birthDate: Date = null;
 
   @Output() findButtonEmitter: EventEmitter<AllAssistantsIn> = new EventEmitter<AllAssistantsIn>();
@@ -23,6 +24,6 @@ export class AssistantsFilterComponent implements OnInit {
   }
 
   find() {
-    this.findButtonEmitter.emit(new AllAssistantsIn(this.name, this.birthDate));
+    this.findButtonEmitter.emit(new AllAssistantsIn(this.firstName, this.lastName, this.birthDate));
   }
 }

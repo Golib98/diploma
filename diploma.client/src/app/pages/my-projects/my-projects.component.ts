@@ -4,7 +4,8 @@ import {MenuItem} from "../../../model/MenuItem";
 import {MyProjectCard} from "../../../model/MyProjectCard";
 import {MyProjectsService} from "./my-projects.service";
 import {MatDialog} from "@angular/material";
-import {PopupComponent} from "../../common/popup/popup.component";
+import {MyProjectEditDialogComponent} from "./components/my-project-edit-dialog/my-project-edit-dialog.component";
+import {MyProjectDetail} from "../../../model/MyProjectDetail";
 
 @Component({
   selector: 'app-my-projects',
@@ -19,7 +20,7 @@ export class MyProjectsComponent implements OnInit {
   constructor(
     private menuListService: MenuListService,
     private myProjectsService: MyProjectsService,
-    public dialog: MatDialog,
+    private matDialog: MatDialog,
   ) {
   }
 
@@ -28,20 +29,18 @@ export class MyProjectsComponent implements OnInit {
     this.myProjectsService.myProjects.then(value => this.myProjects = value);
   }
 
-  editMyProject(title: string) {
-
-    this.dialog.open(PopupComponent, {
-      width: '250px',
-      data: 'Project edited'
-    });
+  editMyProject(id: string) {
 
 
-    let myProject = this.myProjects.find(value => value.title === title);
+    let myProject = this.myProjects.find(value => value.id === id);
     myProject.isButtonsDisabled = true;
 
-    setTimeout(() => {
+    const matDialogRef = this.matDialog.open(MyProjectEditDialogComponent, {data: myProject});
+    matDialogRef.afterClosed().subscribe(value => {
       myProject.isButtonsDisabled = false;
-    }, 2000)
+      this.myProjectsService.updateProject(value);
+    })
+
 
   }
 

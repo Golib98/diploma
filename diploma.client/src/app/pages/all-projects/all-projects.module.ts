@@ -6,7 +6,8 @@ import {AllProjectsComponent} from './all-projects.component';
 import {NavbarModule} from "../../common/navbar/navbar.module";
 import {FlexLayoutModule} from "@angular/flex-layout";
 import {AllProjectCardComponent} from './components/all-project-card/all-project-card.component';
-import {MatButtonModule, MatCardModule, MatMenuModule} from "@angular/material";
+import {MatButtonModule, MatCardModule, MatFormFieldModule, MatInputModule, MatMenuModule} from "@angular/material";
+import {FormsModule} from "@angular/forms";
 
 @NgModule({
   declarations: [AllProjectsComponent, AllProjectCardComponent],
@@ -18,6 +19,9 @@ import {MatButtonModule, MatCardModule, MatMenuModule} from "@angular/material";
     MatCardModule,
     MatButtonModule,
     MatMenuModule,
+    MatFormFieldModule,
+    MatInputModule,
+    FormsModule,
   ]
 })
 export class AllProjectsModule {

@@ -38,10 +38,7 @@ public class DbLoader {
 
   private void loadUniversities() {
     String universityId = universityTestDao.get().insUniversity("IITU");
-
-    String professorId = authTestDao.get().getPersonId("pushkin");
-    authTestDao.get().updatePersonField(professorId, "university_id", universityId);
-    
+    authTestDao.get().updatePersonFieldAll("university_id", universityId);
   }
 
   private void loadProjects() {
@@ -76,6 +73,9 @@ public class DbLoader {
     giveRoleToUser("pushkin", "PROFESSOR");
     giveRoleToUser("stalin", "STUDENT");
     giveRoleToUser("esenin", "STUDENT");
+    giveRoleToUser("papa", "STUDENT");
+    giveRoleToUser("lomonosov", "STUDENT");
+    giveRoleToUser("mendeleev", "STUDENT");
   }
 
   private void giveRoleToUser(String person, String role) {
@@ -103,10 +103,6 @@ public class DbLoader {
     user("Менделеев Дмитрий Иванович", "1834-02-08", "mendeleev");
     user("Ломоносов Михаил Васильевич", "1711-11-19", "lomonosov");
     user("Бутлеров Александр Михайлович", "1828-09-15", "butlerov");
-
-    add_can("pushkin", UserCan.VIEW_USERS);
-    add_can("stalin", UserCan.VIEW_USERS);
-    add_can("stalin", UserCan.VIEW_ABOUT);
     
   }
 

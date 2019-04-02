@@ -1,6 +1,7 @@
 dependencies {
   compile project(':diploma.controller')
 
+  compile "kz.greetgo:greetgo.email:0.0.10"
   compile "kz.greetgo.db:greetgo.db:$greetgoDbVersion"
   compile "kz.greetgo.conf:greetgo.conf:$greetgoConfVersion"
   testCompile "kz.greetgo.conf:greetgo.sys_params:$greetgoConfVersion"

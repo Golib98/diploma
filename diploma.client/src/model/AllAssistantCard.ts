@@ -1,5 +1,6 @@
 export class AllAssistantCard {
   public name: string;
+  public university: string;
   public isButtonsDisabled: boolean = false;
   public photoUrl: string;
 

@@ -17,8 +17,10 @@ export class NewProjectComponent implements OnInit {
 
   ngOnInit() {
     this.myProject.isOpened = true;
-    // this.myProject.description = '';
-    // this.myProject.title = '';
   }
 
+  saveProject() {
+    this.addButtonEventEmitter.emit(this.myProject);
+    this.myProject = new MyProjectDetail();
+  }
 }

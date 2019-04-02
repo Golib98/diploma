@@ -5,6 +5,8 @@ import {MyProjectDetail} from "../../../model/MyProjectDetail";
 import {UserProfileService} from "./user-profile.service";
 import {LoginService} from "../../common/login/login.service";
 import {ProfessorInfo} from "../../../model/ProfessorInfo";
+import {MatDialog} from "@angular/material";
+import {PopupComponent} from "../../common/popup/popup.component";
 
 @Component({
   selector: 'app-user-profile',
@@ -21,6 +23,7 @@ export class UserProfileComponent implements OnInit {
     private menuListService: MenuListService,
     private userProfileService: UserProfileService,
     private loginService: LoginService,
+    public dialog: MatDialog,
   ) {
   }
 
@@ -35,6 +38,10 @@ export class UserProfileComponent implements OnInit {
     this.loading = true;
     this.userProfileService.addProject(myProject).then(ignore => {
       this.loading = false;
+      this.dialog.open(PopupComponent, {
+        width: '250px',
+        data: 'Project added'
+      });
     });
   }
 }

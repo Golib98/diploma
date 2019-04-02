@@ -1,7 +1,9 @@
 import {Component, OnInit} from '@angular/core';
 import {RegistrationUserType} from "../../../model/RegistrationUserType";
 import {RegistrationUser} from "../../../model/RegistrationUser";
-import {Pair} from "../../../model/Pair";
+import {UserToSave} from "../../../model/UserToSave";
+import {SignUpService} from "./sign-up.service";
+import {TextPair} from "../../../model/TextPair";
 
 @Component({
   selector: 'app-sign-up',
@@ -11,32 +13,34 @@ import {Pair} from "../../../model/Pair";
 export class SignUpComponent implements OnInit {
   RegistrationUserType = RegistrationUserType;
 
-  userTypes = [
+  userTypes: RegistrationUser[] = [
     new RegistrationUser('Student', RegistrationUserType.STUDENT),
     new RegistrationUser('Professor', RegistrationUserType.PROFESSOR)
   ];
-  universities = [
-    new Pair<number, string>(1, 'IITU'),
-    new Pair<number, string>(2, 'IITU2')
-  ];
-  titles = [
-    new Pair<number, string>(1, 'TITLE'),
-    new Pair<number, string>(2, 'TITLE2')
-  ];
-  faculties = [
-    new Pair<number, string>(1, 'Faculty'),
-    new Pair<number, string>(2, 'Faculty2')
-  ];
 
+  universities: TextPair[];
+  titles: TextPair[];
+  faculties: TextPair[];
+
+  currentUserType: RegistrationUserType;
   currentUniversity: number;
   currentTitle: number;
   currentFaculty: number;
-  currentUserType: RegistrationUserType;
+  currentLastName: string;
+  currentFirstName: string;
+  currentEmail: string;
+  currentPhone: string;
+  currentUsername: string;
 
-  constructor() {
+  constructor(private signUpService: SignUpService) {
   }
 
   ngOnInit() {
+    this.signUpService.dict.then(value => {
+      this.universities = value.universities;
+      this.faculties = value.faculties;
+      this.titles = value.titles;
+    });
   }
 
   changeCurrentUserType(value: RegistrationUserType) {
@@ -45,5 +49,14 @@ export class SignUpComponent implements OnInit {
 
   verifyForm(): boolean {
     return !!this.currentUniversity;
+  }
+
+  saveUser() {
+    const userToSave = new UserToSave();
+    userToSave.firstName = this.currentFirstName;
+    userToSave.lastName = this.currentLastName;
+    userToSave.email = this.currentEmail;
+    userToSave.phone = this.currentPhone;
+    userToSave.university = 'IITU';
   }
 }

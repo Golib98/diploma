@@ -25,7 +25,13 @@ public class ProjectRegisterImpl implements ProjectRegister {
 
   @Override
   public void addProject(String personId, Project project) {
+    if (project.id != null) {
+      projectDao.get().updateProject(project);
+      return;
+    }
+
     projectDao.get().insProject(personId, project);
+
   }
 
   @Override

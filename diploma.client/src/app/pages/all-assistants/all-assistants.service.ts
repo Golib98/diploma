@@ -21,7 +21,8 @@ export class AllAssistantsService {
         res.forEach(value => {
           let toAdd = new AllAssistantCard();
           toAdd.name = value.fio;
-          toAdd.photoUrl = value.fio + 'sdaf';
+          toAdd.photoUrl = value.fio + '  asd';
+          toAdd.university = value.university;
           ret.push(toAdd);
         });
         return ret;

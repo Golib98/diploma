@@ -1,24 +1,21 @@
 <app-navbar [menuItems]="menuItems"></app-navbar>
 
-<div>
-  <img src="/assets/img/iitu-univer.jpg" style="opacity: 0" alt="iitu univer image" width="100%" height="300px">
+<div fxLayoutAlign="center center">
 
-  <div
-    class="professor-profile mat-typography"
+  <mat-card
+    class="mat-typography"
     fxLayout="row"
-    fxLayoutAlign="center center">
+    fxLayoutAlign="center start"
+    fxFlex="90"
+    style="margin-top: 10px; height: 500px">
     <div fxFlex="10"></div>
     <div fxFlex="80"
-         fxLayout="row wrap"
-         class="professor-profile-inner">
+         fxLayout="row wrap">
       <div fxFlex="20" fxLayout="column" fxLayoutAlign="start center">
-        <div fxFlex="20">
-          <p>profile photo</p>
-          <a href="">Change photo</a>
-        </div>
+
+        <img src="/assets/img/user_profile.png" alt="" height="100px" width="100px">
       </div>
       <div fxFlex="80">
-        name title bla bla bla
         <mat-tab-group>
           <mat-tab label="Info">
             <div fxLayout="row" fxLayoutAlign="start">
@@ -27,13 +24,14 @@
                   <input matInput
                          placeholder="Name"
                          [value]="professorInfo.fio"
-                         [disabled]="true">
+                         readonly
+                  >
                 </mat-form-field>
                 <mat-form-field>
                   <input matInput
                          placeholder="University"
                          [value]="professorInfo.university?.title"
-                         [disabled]="true">
+                         readonly>
                 </mat-form-field>
               </div>
             </div>
@@ -45,5 +43,5 @@
       </div>
     </div>
     <div fxFlex="10"></div>
-  </div>
+  </mat-card>
 </div>

@@ -2,6 +2,7 @@ import {Injectable} from '@angular/core';
 import {HttpService} from "../../services/http.service";
 import {MyProjectCard} from "../../../model/MyProjectCard";
 import {map} from "rxjs/operators";
+import {MyProjectDetail} from "../../../model/MyProjectDetail";
 
 @Injectable({
   providedIn: 'root'
@@ -23,6 +24,18 @@ export class MyProjectsService {
 
   deleteMyProject(id: string): Promise<void> {
     return this.http.get("/projects/deleteProject", {projectId: id})
+      .toPromise()
+      .then(res => null);
+  }
+
+  updateProject(myProject: MyProjectCard): Promise<void> {
+
+    let myProjectDetail = new MyProjectDetail();
+    myProjectDetail.title = myProject.title;
+    myProjectDetail.description = myProject.description;
+    myProjectDetail.id = myProject.id;
+
+    return this.http.post('/projects/addProject', {project: JSON.stringify(myProjectDetail)})
       .toPromise()
       .then(res => null);
   }

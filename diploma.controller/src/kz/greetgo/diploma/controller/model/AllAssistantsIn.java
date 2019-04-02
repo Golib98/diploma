@@ -3,6 +3,7 @@ package kz.greetgo.diploma.controller.model;
 import java.util.Date;
 
 public class AllAssistantsIn {
-  public String name;
+  public String firstName;
+  public String lastName;
   public Date birthDate;
 }

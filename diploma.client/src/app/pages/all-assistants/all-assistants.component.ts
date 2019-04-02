@@ -27,7 +27,6 @@ export class AllAssistantsComponent implements OnInit {
   }
 
   findAssistants(allAssistantsIn: AllAssistantsIn) {
-    console.log(`emitted ${JSON.stringify(allAssistantsIn)}`);
     this.allAssistantsService.getAssistantCards(allAssistantsIn).then(value => this.assistantCards = value);
   }
 }

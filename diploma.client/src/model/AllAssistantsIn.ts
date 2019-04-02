@@ -1,9 +1,11 @@
 export class AllAssistantsIn {
-  public name: string;
+  public firstName: string;
+  public lastName: string;
   public birthDate: Date;
 
-  constructor(name: string, birthDate: Date) {
-    this.name = name;
+  constructor(name: string, lastName: string, birthDate: Date) {
+    this.firstName = name;
+    this.lastName = lastName;
     this.birthDate = birthDate;
   }
 }

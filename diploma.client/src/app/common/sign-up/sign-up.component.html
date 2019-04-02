@@ -11,20 +11,44 @@
 
   <div *ngIf="!!currentUserType" fxLayout="column">
 
+
     <mat-form-field>
-      <input matInput required placeholder="First name">
+      <input matInput
+             required
+             placeholder="Username"
+             name="Username"
+             [(ngModel)]="currentUsername">
     </mat-form-field>
 
     <mat-form-field>
-      <input matInput required placeholder="Last name">
+      <input matInput
+             required
+             placeholder="First name"
+             name="First name"
+             [(ngModel)]="currentFirstName">
     </mat-form-field>
 
     <mat-form-field>
-      <input matInput required placeholder="E-mail">
+      <input matInput
+             required
+             placeholder="Last name"
+             name="Last name"
+             [(ngModel)]="currentLastName">
     </mat-form-field>
 
     <mat-form-field>
-      <input matInput placeholder="Phone number ">
+      <input matInput
+             required
+             placeholder="E-mail"
+             name="E-mail"
+             [(ngModel)]="currentEmail">
+    </mat-form-field>
+
+    <mat-form-field>
+      <input matInput
+             placeholder="Phone number"
+             name="Phone number"
+             [(ngModel)]="currentPhone">
     </mat-form-field>
 
     <mat-form-field>
@@ -62,6 +86,7 @@
   <button mat-raised-button
           color="primary"
           fxFlexAlign="center"
+          (click)="saveUser()"
   >Sign up
   </button>
 </form>

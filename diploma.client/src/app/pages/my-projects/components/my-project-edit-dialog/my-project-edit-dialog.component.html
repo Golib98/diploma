@@ -20,6 +20,9 @@
                 fxFlexAlign="start">Is opened project
   </mat-checkbox>
 
-  <button (click)="saveProject()" mat-raised-button fxFlexAlign="start" color="primary">Add
+  <button mat-raised-button
+          fxFlexAlign="start"
+          color="primary"
+          [mat-dialog-close]="myProject">Save
   </button>
 </form>

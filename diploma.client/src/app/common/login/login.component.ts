@@ -19,8 +19,15 @@ export class LoginComponent implements OnInit {
   login() {
     this.loginService.login()
       .then(ignore => {
-        if (this.loginService.isAuthenticated)
-          this.router.navigate(['/professor-user-profile'])
+        if (!this.loginService.isAuthenticated) return;
+
+        if (this.loginService.personDisplay.role === 'STUDENT') {
+          this.router.navigate(['/assistant-user-profile'])
+        }
+
+        if (this.loginService.personDisplay.role === 'PROFESSOR') {
+          this.router.navigate(['/professor-user-profile']);
+        }
       })
   }
 }

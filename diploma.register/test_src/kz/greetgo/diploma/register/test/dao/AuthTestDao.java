@@ -18,6 +18,10 @@ public interface AuthTestDao {
                          @Param("fieldName") String fieldName,
                          @Param("fieldValue") Object fieldValue);
 
+  @Update("update person set ${fieldName} = #{fieldValue}")
+  void updatePersonFieldAll(@Param("fieldName") String fieldName,
+                            @Param("fieldValue") Object fieldValue);
+
   @Insert("insert into user_can (user_can, description) values (#{can}, 'description of '||#{can})" +
     " on conflict (user_can) do nothing")
   void upsert(@Param("can") String can);

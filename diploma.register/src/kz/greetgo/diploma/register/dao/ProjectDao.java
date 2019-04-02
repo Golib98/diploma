@@ -24,7 +24,7 @@ public interface ProjectDao {
     "select x.*, case when x2.student_id is not null then 1 else 0 end as isLiked\n" +
       "from projects x\n" +
       "     left join student_like_project x2 on x.id = x2.project_id and x2.student_id = #{studentId}\n" +
-      "where x.removed is false")
+      "where x.removed is false order by x.published_date desc")
   List<AllProjectCard> getAllProjects(String personId);
 
   @Insert("insert into student_like_project(student_id, project_id) " +
@@ -35,4 +35,7 @@ public interface ProjectDao {
   @Delete("delete from student_like_project where student_id = #{personId} and project_id = #{projectId}")
   void dislikeProject(@Param("personId") String personId,
                       @Param("projectId") String projectId);
+
+  @Update("update projects set title = #{x.title}, description = #{x.description} where id = #{x.id}")
+  void updateProject(@Param("x") Project project);
 }
