@@ -1,16 +1,13 @@
 package kz.greetgo.diploma.register.util;
 
-import kz.greetgo.db.DbType;
+import java.sql.Connection;
+import java.sql.SQLException;
+import java.util.Properties;
+import javax.sql.DataSource;
 import kz.greetgo.db.TransactionManager;
 import org.apache.ibatis.session.TransactionIsolationLevel;
 import org.apache.ibatis.transaction.Transaction;
 import org.apache.ibatis.transaction.TransactionFactory;
-
-import javax.sql.DataSource;
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.SQLException;
-import java.util.Properties;
 
 public class LocalTransactionFactory implements TransactionFactory {
 
@@ -21,7 +18,8 @@ public class LocalTransactionFactory implements TransactionFactory {
   }
 
   @Override
-  public void setProperties(Properties props) {}
+  public void setProperties(Properties props) {
+  }
 
   @Override
   public Transaction newTransaction(Connection conn) {

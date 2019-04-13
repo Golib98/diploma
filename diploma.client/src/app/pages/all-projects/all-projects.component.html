@@ -1,23 +1,41 @@
 <app-navbar [menuItems]="menuItems"></app-navbar>
+
 <section fxLayout="column"
-         fxLayoutAlign="space-around"
-         class="my-projects-section" style="margin-top: 10px;">
+         class="my-projects-section"
+         style="margin-top: 10px;">
+
   <div fxLayoutGap="20px" fxLayout="row" fxLayoutAlign="center center">
     <mat-form-field fxFlex="50">
-      <input matInput placeholder="Project title" (keyup)="find()" [(ngModel)]="findText">
+      <input matInput placeholder="Project title" (keyup)="filter()" [(ngModel)]="findText">
     </mat-form-field>
-    <button mat-raised-button color="primary" (click)="find()">
+    <button mat-raised-button color="primary" (click)="filter()">
       Find
     </button>
   </div>
-  <div fxLayout="column" fxLayoutGap="10px">
-    <app-all-project-card
-      *ngFor="let myProject of myProjects"
-      [myProject]="myProject"
-      (toListButtonEmitter)="likeProject(myProject.id)"
-      (removeFromListButtonEmitter)="dislikeProject(myProject.id)"
-    >
-    </app-all-project-card>
-  </div>
-</section>
 
+  <div fxLayout="row"
+       fxLayoutAlign="center"
+       fxLayoutGap="20px"
+       style="margin-top: 10px;">
+
+    <app-all-projects-filter fxflex="20"
+                             (findButtonEmitted)="find($event)"
+                             [professors]="professorsDict">
+    </app-all-projects-filter>
+
+    <div fxFlex="80"
+         fxLayout="column"
+         fxLayoutGap="10px">
+      <app-all-project-card
+        *ngFor="let myProject of myProjects"
+        [myProject]="myProject"
+        (toListButtonEmitter)="likeProject(myProject.id)"
+        (removeFromListButtonEmitter)="dislikeProject(myProject.id)"
+        (toRespondButtonEmitter)="respondToProject(myProject)"
+      >
+      </app-all-project-card>
+    </div>
+
+  </div>
+
+</section>

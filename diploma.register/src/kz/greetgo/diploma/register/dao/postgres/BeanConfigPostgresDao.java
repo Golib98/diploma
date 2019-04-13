@@ -6,4 +6,5 @@ import kz.greetgo.diploma.register.beans.all.DaoImplFactory;
 
 @BeanScanner
 @BeanConfig(factory = DaoImplFactory.class)
-public class BeanConfigPostgresDao {}
+public class BeanConfigPostgresDao {
+}

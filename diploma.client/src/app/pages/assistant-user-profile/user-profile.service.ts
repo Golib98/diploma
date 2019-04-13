@@ -23,4 +23,5 @@ export class UserProfileService {
       .pipe(map<any, StudentInfo>(k => k.body))
       .toPromise();
   }
+
 }

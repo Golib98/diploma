@@ -7,9 +7,13 @@
 create table projects (
   id             text not null primary key default new_id(),
   professor_id   text references person(id),
+  deadline       date,
   title          text,
   description    text,
   published_date timestamp not null default now(),
+  requirements   text,
+  suggestions    text,
+  isOpened       boolean,
   removed        boolean   not null default false
 );;
 
@@ -17,6 +21,18 @@ create table student_like_project (
   student_id text references person(id),
   project_id text references projects(id),
   primary key (student_id, project_id)
+);;
+
+create table project_attachments(
+  projectId text references projects(id),
+  fileName text,
+  fileId text
+);;
+
+create table project_respond (
+  project_id text references projects(id),
+  student_id text references person(id),
+  isAccepted boolean
 );;
 ]]></sql>
   </changeSet>

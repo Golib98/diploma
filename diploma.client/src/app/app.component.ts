@@ -9,5 +9,6 @@ import {LoginService} from "./common/login/login.service";
 export class AppComponent {
   title = 'diploma';
 
-  constructor(public login: LoginService) {}
+  constructor(public login: LoginService) {
+  }
 }

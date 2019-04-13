@@ -1,10 +1,11 @@
-<form style="margin-top: 10px;" fxLayout="column" fxLayoutAlign="start" fxLayoutGap="10px">
+<form style="margin-top: 10px;" fxLayout="column" fxLayoutAlign="start stretch" fxLayoutGap="10px">
 
   <mat-form-field>
     <input [(ngModel)]="myProject.title"
            name="title"
            matInput
-           placeholder="Title">
+           placeholder="Title"
+           required>
   </mat-form-field>
 
   <mat-form-field>
@@ -12,14 +13,50 @@
               name='Description'
               matInput
               mat-autosize
-              placeholder="Description"></textarea>
+              placeholder="Description"
+              required></textarea>
   </mat-form-field>
+
+  <mat-form-field>
+    <input matInput
+           [matDatepicker]="picker"
+           placeholder="Deadline"
+           [(ngModel)]="myProject.deadline"
+           name="deadline">
+    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+    <mat-datepicker #picker></mat-datepicker>
+  </mat-form-field>
+
 
   <mat-checkbox [(ngModel)]="myProject.isOpened"
                 name="isOpened"
                 fxFlexAlign="start">Is opened project
   </mat-checkbox>
 
-  <button (click)="saveProject()" mat-raised-button fxFlexAlign="start" color="primary">Add
+  <button mat-raised-button
+          fxFlexAlign="start"
+          color="primary"
+          (click)="fileInput.click()">
+    <mat-icon inline>attach_file</mat-icon>
+    Attach files
   </button>
+
+  <input hidden
+         type="file"
+         #fileInput
+         multiple
+         (change)="handleFile($event.target.files)">
+
+  <p *ngFor="let files of myProject.files" fxFlexAlign="start">
+    <mat-icon inline>attach_file</mat-icon>
+    {{files.name}}
+  </p>
+
+  <button (click)="saveProject()"
+          mat-raised-button
+          fxFlexAlign="start"
+          color="primary"
+          [disabled]="!(myProject.title && myProject.description  )">Add
+  </button>
+
 </form>

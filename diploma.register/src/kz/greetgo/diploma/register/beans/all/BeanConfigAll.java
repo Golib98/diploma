@@ -10,4 +10,5 @@ import kz.greetgo.diploma.register.impl.BeanConfigRegisterImpl;
 @BeanConfig
 @BeanScanner
 @Include({BeanConfigRegisterImpl.class, BeanConfigPostgresDao.class, BeanConfigControllers.class})
-public class BeanConfigAll {}
+public class BeanConfigAll {
+}

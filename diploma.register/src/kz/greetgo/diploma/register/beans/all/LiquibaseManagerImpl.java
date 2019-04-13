@@ -1,5 +1,7 @@
 package kz.greetgo.diploma.register.beans.all;
 
+import java.sql.Connection;
+import java.sql.DriverManager;
 import kz.greetgo.depinject.core.Bean;
 import kz.greetgo.depinject.core.BeanGetter;
 import kz.greetgo.diploma.register.configs.DbConfig;
@@ -9,9 +11,6 @@ import liquibase.database.Database;
 import liquibase.database.core.PostgresDatabase;
 import liquibase.database.jvm.JdbcConnection;
 import liquibase.resource.ClassLoaderResourceAccessor;
-
-import java.sql.Connection;
-import java.sql.DriverManager;
 
 @Bean
 public class LiquibaseManagerImpl implements LiquibaseManager {

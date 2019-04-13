@@ -1,0 +1,23 @@
+<mat-card fxLayout="row" fxLayoutAlign="space-around">
+  <div fxFlex="40" fxLayout="column" fxLayoutAlign="center start">
+    <mat-card-content>{{myAssistant.fio}}</mat-card-content>
+  </div>
+
+  <div fxFlex="20" fxLayout="column" fxLayoutAlign="center start">
+    <mat-card-content>{{myAssistant.projectTitle}}</mat-card-content>
+  </div>
+  <div fxLayout="column">
+    <button
+      mat-button
+      (click)="acceptButtonEmitter.emit()"
+      [disabled]="myAssistant.isButtonsDisabled"
+    >Accept
+    </button>
+    <button
+      mat-button
+      (click)="rejectButtonEmitter.emit()"
+      [disabled]="myAssistant.isButtonsDisabled"
+    >Reject
+    </button>
+  </div>
+</mat-card>

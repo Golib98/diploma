@@ -36,12 +36,21 @@ export class UserProfileComponent implements OnInit {
 
   addProject(myProject: MyProjectDetail) {
     this.loading = true;
-    this.userProfileService.addProject(myProject).then(ignore => {
-      this.loading = false;
-      this.dialog.open(PopupComponent, {
-        width: '250px',
-        data: 'Project added'
+
+    this.userProfileService.addFiles(myProject.files)
+      .then(value => {
+        myProject.fileIds = value;
+        myProject.files = null;1
+        return myProject;
+      })
+      .then(value => this.userProfileService.addProject(value))
+      .then(ignore => {
+        this.loading = false;
+        this.dialog.open(PopupComponent, {
+          width: '250px',
+          data: 'Project added'
+        });
       });
-    });
+
   }
 }

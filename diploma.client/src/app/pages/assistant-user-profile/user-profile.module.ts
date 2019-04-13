@@ -5,7 +5,7 @@ import {UserProfileRoutingModule} from './user-profile-routing.module';
 import {UserProfileComponent} from './user-profile.component';
 import {NavbarModule} from "../../common/navbar/navbar.module";
 import {FlexLayoutModule} from "@angular/flex-layout";
-import {MatCardModule} from "@angular/material";
+import {MatButtonModule, MatCardModule} from "@angular/material";
 import {FormsModule} from "@angular/forms";
 
 @NgModule({
@@ -17,6 +17,7 @@ import {FormsModule} from "@angular/forms";
     NavbarModule,
     FlexLayoutModule,
     MatCardModule,
+    MatButtonModule,
     UserProfileRoutingModule,
     FormsModule,
   ]

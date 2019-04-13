@@ -1,0 +1,21 @@
+<app-navbar [menuItems]="menuItems"></app-navbar>
+
+<div style="margin-top: 10px;"
+     fxLayout="row"
+     fxLayoutAlign="center center " class="mat-typography">
+
+  <div fxFlex="80"
+       fxLayout="column"
+       fxLayoutGap="10px"
+       fxLayoutAlign="space-around">
+    <div *ngIf="projects?.length == 0">
+      <h2>No accessed projects yet :(</h2>
+    </div>
+    <app-accessed-project *ngFor="let project of projects"
+                          [myProject]="project"
+                          (openButtonEmitter)="openProjectDialog($event)"
+    >
+    </app-accessed-project>
+  </div>
+
+</div>

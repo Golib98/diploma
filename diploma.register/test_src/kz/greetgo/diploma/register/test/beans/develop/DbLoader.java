@@ -57,8 +57,8 @@ public class DbLoader {
   }
 
   private void loadAssistants() {
-    giveAssistantTo("pushkin", "stalin");
-    giveAssistantTo("pushkin", "esenin");
+//    giveAssistantTo("pushkin", "stalin");
+//    giveAssistantTo("pushkin", "esenin");
   }
 
   private void giveAssistantTo(String professor, String student) {

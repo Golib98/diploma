@@ -1,6 +1,20 @@
 <app-navbar [menuItems]="menuItems"></app-navbar>
 <div style="margin-top: 10px;"></div>
-<app-my-assistant-card
-  *ngFor="let myAssistant of myAssistants"
-  [myAssistant]="myAssistant"
-></app-my-assistant-card>
+<mat-tab-group>
+
+  <mat-tab label="Assistants">
+    <app-my-assistant-card
+      *ngFor="let myAssistant of myAssistants"
+      [myAssistant]="myAssistant"
+    ></app-my-assistant-card>
+  </mat-tab>
+
+  <mat-tab label="Responds">
+    <app-responds
+      *ngFor="let myAssistant of myResponds"
+      [myAssistant]="myAssistant"
+      (acceptButtonEmitter)="acceptProject(myAssistant.id, myAssistant.projectTitle)"
+      (rejectButtonEmitter)="rejectProject(myAssistant.id, myAssistant.projectTitle)"
+    ></app-responds>
+  </mat-tab>
+</mat-tab-group>

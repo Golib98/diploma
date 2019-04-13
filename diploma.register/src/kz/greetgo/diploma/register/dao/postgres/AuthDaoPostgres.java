@@ -4,4 +4,5 @@ import kz.greetgo.depinject.core.Bean;
 import kz.greetgo.diploma.register.dao.AuthDao;
 
 @Bean
-public interface AuthDaoPostgres extends AuthDao {}
+public interface AuthDaoPostgres extends AuthDao {
+}

@@ -1,6 +1,5 @@
 package kz.greetgo.diploma.register.impl;
 
-import static kz.greetgo.diploma.controller.util.FilterUtil.skipNulls;
 import kz.greetgo.depinject.core.Bean;
 import kz.greetgo.depinject.core.BeanGetter;
 import kz.greetgo.diploma.controller.errors.IllegalLoginOrPassword;
@@ -68,8 +67,6 @@ public class AuthRegisterImpl implements AuthRegister {
     if (ret == null) {
       throw new NullPointerException("No person with id = " + personId);
     }
-
-    ret.cans = skipNulls(authDao.get().loadCans(personId));
 
     return ret;
   }

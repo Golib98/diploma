@@ -1,17 +1,16 @@
 package kz.greetgo.diploma.register.util;
 
+import java.lang.reflect.InvocationHandler;
+import java.lang.reflect.Method;
+import java.lang.reflect.Proxy;
+import java.util.Map;
+import java.util.concurrent.ConcurrentHashMap;
 import kz.greetgo.depinject.core.BeanFactory;
 import org.apache.ibatis.binding.MapperMethod;
 import org.apache.ibatis.builder.annotation.MapperAnnotationBuilder;
 import org.apache.ibatis.reflection.ExceptionUtil;
 import org.apache.ibatis.session.Configuration;
 import org.apache.ibatis.session.SqlSession;
-
-import java.lang.reflect.InvocationHandler;
-import java.lang.reflect.Method;
-import java.lang.reflect.Proxy;
-import java.util.Map;
-import java.util.concurrent.ConcurrentHashMap;
 
 public abstract class AbstractMybatisDaoImplFactory implements BeanFactory {
 

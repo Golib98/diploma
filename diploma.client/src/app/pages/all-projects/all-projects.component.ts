@@ -3,6 +3,8 @@ import {AllProjectCard} from "../../../model/AllProjectCard";
 import {AllProjectsService} from "./all-projects.service";
 import {MenuListService} from "../../services/menu-list.service";
 import {MenuItem} from "../../../model/MenuItem";
+import {AllProjectFilter} from "../../../model/gen/AllProjectFilter";
+import {ProfessorDict} from "../../../model/gen/ProfessorDict";
 
 @Component({
   selector: 'app-all-projects',
@@ -14,6 +16,7 @@ export class AllProjectsComponent implements OnInit {
   unfilteredProjects: AllProjectCard[];
   menuItems: MenuItem[];
   findText: string = '';
+  professorsDict: ProfessorDict[];
 
 
   constructor(
@@ -22,8 +25,8 @@ export class AllProjectsComponent implements OnInit {
   ) {
   }
 
-  ngOnInit() {
-    this.allProjectsService.allProjects.then(value => {
+  async ngOnInit() {
+    this.allProjectsService.allProjects(null).then(value => {
       this.myProjects = value;
       this.unfilteredProjects = value;
     });
@@ -44,9 +47,24 @@ export class AllProjectsComponent implements OnInit {
     })
   }
 
-  find() {
+  filter() {
     this.myProjects = this.unfilteredProjects.filter(value => {
       return value.title.toLowerCase().includes(this.findText.toLowerCase());
+    })
+  }
+
+  find(filter: AllProjectFilter) {
+
+    this.allProjectsService.allProjects(filter).then(value => {
+      this.myProjects = value;
+      this.unfilteredProjects = value;
+    });
+
+  }
+
+  respondToProject(projectId: AllProjectCard) {
+    this.allProjectsService.respond(projectId.id).then(value => {
+      projectId.isResponded = true;
     })
   }
 }

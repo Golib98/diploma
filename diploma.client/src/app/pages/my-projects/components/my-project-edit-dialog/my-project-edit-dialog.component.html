@@ -20,9 +20,22 @@
                 fxFlexAlign="start">Is opened project
   </mat-checkbox>
 
+
+  <mat-form-field>
+    <input matInput
+           placeholder="Deadline"
+           name="deadline"
+           [matDatepicker]="picker"
+           [formControl]="deadline"
+    >
+    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+    <mat-datepicker #picker></mat-datepicker>
+  </mat-form-field>
+
   <button mat-raised-button
           fxFlexAlign="start"
           color="primary"
           [mat-dialog-close]="myProject">Save
   </button>
+
 </form>

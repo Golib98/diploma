@@ -33,8 +33,8 @@ export class NavbarComponent implements OnInit {
   }
 
   logOut() {
-    this.loginService.exit().then(value => {
-      this.router.navigate(['/home'])
-    })
+    this.loginService.exit()
+      .then(ignore => this.router.navigate(['/home']))
+      .then(ignore => window.location.reload())
   }
 }

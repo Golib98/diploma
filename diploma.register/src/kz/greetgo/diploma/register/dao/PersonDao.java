@@ -23,7 +23,7 @@ public interface PersonDao {
     "     order by surname, name")
   List<PersonRecord> list();
 
-  @Select("select concat_ws(' ', x.surname, x.name, x.patronymic) as fio\n" +
+  @Select("select x.id, concat_ws(' ', x.surname, x.name, x.patronymic) as fio\n" +
     "from person x\n" +
     "     join professor_assistant x2 on x.id = x2.assistant_id\n" +
     "where x2.professor_id = #{professorId}")
@@ -41,4 +41,13 @@ public interface PersonDao {
     "from person x\n" +
     "where x.id = #{studentId}")
   ProfessorInfo studentInfo(String personId);
+
+  @Select("select x.id, p.title as projectTitle," +
+    " concat_ws(' ', x.surname, x.name, x.patronymic) as fio\n" +
+    "from person x\n" +
+    "     join project_respond x2 on x.id = x2.student_id\n" +
+    "     join projects p on x2.project_id = p.id " +
+    "where x2.project_id in (select id from projects where professor_id = #{professorId})" +
+    " and x2.isaccepted is null")
+  List<PersonRecord> myResponds(String personId);
 }

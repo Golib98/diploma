@@ -1,0 +1,16 @@
+<mat-card class="mat-typography" fxLayout="column" fxLayoutAlign="center start">
+  <h1 fxFlexAlign="center">Project info</h1>
+  <h3>Project title: {{project?.title}}</h3>
+  <h3>Project description: {{project?.description}}</h3>
+  <h3>Project published date: {{project?.publishedDate | date}}</h3>
+  <h3>Project deadline: {{project?.deadline | date}}</h3>
+  <h3>Project author: {{project?.author}}</h3>
+
+  <h3>
+    Attachments
+    <div *ngFor="let file of project?.fileIds">
+      <mat-icon inline>attachment</mat-icon>
+      <a (click)="downloadFile(file.id)">{{file.name}}</a>
+    </div>
+  </h3>
+</mat-card>

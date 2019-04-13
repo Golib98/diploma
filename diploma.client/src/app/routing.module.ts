@@ -39,6 +39,14 @@ const routes: Routes = [
     loadChildren: './pages/all-projects/all-projects.module#AllProjectsModule'
   },
   {
+    path: 'favorite-projects',
+    loadChildren: './pages/favorite-projects/favorite-projects.module#FavoriteProjectsModule'
+  },
+  {
+    path: 'accessed-projects',
+    loadChildren: './pages/accessed-projects/accessed-projects.module#AccessedProjectsModule'
+  },
+  {
     path: '',
     redirectTo: '/home',
     pathMatch: 'full'

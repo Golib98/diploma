@@ -54,6 +54,11 @@ public class PersonRegisterImpl implements PersonRegister {
     return personDao.get().studentInfo(personId);
   }
 
+  @Override
+  public List<PersonRecord> myResponds(String personId) {
+    return personDao.get().myResponds(personId);
+  }
+
   private SQL buildSql(AllAssistantsIn allAssistantsIn) {
 
     SQL sql = new SQL()

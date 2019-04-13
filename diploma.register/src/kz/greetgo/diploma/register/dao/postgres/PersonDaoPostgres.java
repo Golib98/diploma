@@ -4,4 +4,5 @@ import kz.greetgo.depinject.core.Bean;
 import kz.greetgo.diploma.register.dao.PersonDao;
 
 @Bean
-public interface PersonDaoPostgres extends PersonDao {}
+public interface PersonDaoPostgres extends PersonDao {
+}

@@ -1,9 +1,8 @@
 package kz.greetgo.diploma.register.beans.all;
 
-import kz.greetgo.depinject.core.Bean;
-
 import java.security.SecureRandom;
 import java.util.Random;
+import kz.greetgo.depinject.core.Bean;
 
 @Bean
 public class IdGenerator {

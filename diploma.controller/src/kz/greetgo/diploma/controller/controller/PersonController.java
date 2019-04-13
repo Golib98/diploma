@@ -41,6 +41,12 @@ public class PersonController implements Controller {
   }
 
   @ToJson
+  @OnGet("/myResponds")
+  public List<PersonRecord> myResponds(@ParSession("personId") String personId) {
+    return personRegister.get().myResponds(personId);
+  }
+
+  @ToJson
   @OnGet("/professorInfo")
   public ProfessorInfo getProfessorInfo(@ParSession("personId") String personId) {
     return personRegister.get().professorInfo(personId);

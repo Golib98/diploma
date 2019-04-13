@@ -1,6 +1,7 @@
-import {Component, EventEmitter, Inject} from '@angular/core';
+import {Component, Inject} from '@angular/core';
 import {MyProjectDetail} from "../../../../../model/MyProjectDetail";
 import {MAT_DIALOG_DATA, MatDialogRef} from "@angular/material";
+import {FormControl} from "@angular/forms";
 
 @Component({
   selector: 'app-my-project-edit-dialog',
@@ -10,8 +11,9 @@ import {MAT_DIALOG_DATA, MatDialogRef} from "@angular/material";
 export class MyProjectEditDialogComponent {
 
   myProject = new MyProjectDetail();
+  deadline: FormControl;
 
-  constructor(public myProjectEditDialogComponentMatDialogRef: MatDialogRef<MyProjectEditDialogComponent>,
+  constructor(public ref: MatDialogRef<MyProjectEditDialogComponent>,
               @Inject(MAT_DIALOG_DATA) public data: MyProjectDetail) {
     this.myProject = data;
   }

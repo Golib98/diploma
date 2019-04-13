@@ -12,7 +12,6 @@
     <div fxFlex="80"
          fxLayout="row wrap">
       <div fxFlex="20" fxLayout="column" fxLayoutAlign="start center">
-
         <img src="/assets/img/user_profile.png" alt="" height="100px" width="100px">
       </div>
       <div fxFlex="80">
@@ -23,6 +22,7 @@
                 <mat-form-field>
                   <input matInput
                          placeholder="Name"
+                         name="fio"
                          [value]="professorInfo.fio"
                          readonly
                   >
@@ -30,6 +30,7 @@
                 <mat-form-field>
                   <input matInput
                          placeholder="University"
+                         name="title"
                          [value]="professorInfo.university?.title"
                          readonly>
                 </mat-form-field>

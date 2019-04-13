@@ -7,6 +7,7 @@ import kz.greetgo.diploma.controller.model.RegistrationDict;
 import kz.greetgo.diploma.controller.model.TextPair;
 import kz.greetgo.diploma.controller.register.DictRegister;
 import kz.greetgo.diploma.register.dao.DictDao;
+import kz.greetgo.file_storage.FileStorage;
 
 @Bean
 public class DictRegisterImpl implements DictRegister {
@@ -29,6 +30,17 @@ public class DictRegisterImpl implements DictRegister {
     ret.titles.add(new TextPair("123", "Title2"));
 
     return ret;
-    
+
+  }
+
+  public BeanGetter<FileStorage> fileStorage;
+
+  public void initFS() {
+    fileStorage.get().storing()
+      .data(new byte[10])
+      .name("Asdf")
+      .mimeType("application/java-archive")
+      .store();
+
   }
 }

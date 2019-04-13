@@ -1,22 +1,21 @@
 <app-navbar [menuItems]="menuItems"></app-navbar>
 
-<div fxLayout="row" fxLayoutAlign="center center">
-  <mat-card fxFlex="90" style="margin-top: 10px;" fxLayout="column" fxLayoutAlign="start start ">
+<div class="mat-typography" fxLayout="row" fxLayoutAlign="center center" fxLayoutGap="30px" style="margin-top: 10px;">
+  <mat-card fxFlex="70" style="margin-top: 10px;" fxLayout="column" fxLayoutAlign="start start">
 
-    <mat-card-header>
-      <div mat-card-avatar class="example-header-image"></div>
-      <mat-card-title>{{studentInfo.fio}}</mat-card-title>
-      <mat-card-subtitle>About me</mat-card-subtitle>
-    </mat-card-header>
+    <div fxLayout="row" fxLayoutGap="30px" fxLayoutAlign="center center">
+      <img fxflex="30" src="/assets/img/user_profile.png" alt="" height="100px" width="100px">
+      <h1>{{studentInfo.fio}}</h1>
+    </div>
 
-    <mat-card-content>
-      Coding
-    </mat-card-content>
-    <mat-card-content>
-      Cricket
-    </mat-card-content>
-    <mat-card-content>
-      Enjoying
-    </mat-card-content>
+    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Asperiores consequatur corporis culpa dignissimos
+      distinctio ea ipsam magnam nemo nostrum omnis optio recusandae rem rerum, sint soluta temporibus, totam vero
+      vitae?</p>
+
+    <div fxLayout="row">
+      <button mat-button routerLink="/favorite-projects">Favorite projects</button>
+      <button mat-button routerLink="/accessed-projects">Accessed projects</button>
+    </div>
+
   </mat-card>
 </div>

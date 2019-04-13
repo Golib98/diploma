@@ -11,5 +11,11 @@
       [disabled]="myProject.isButtonsDisabled"
     >{{myProject.isLiked ? 'Remove from list' : 'To List'}}
     </button>
+    <button
+      mat-button
+      (click)="toRespondButtonEmitter.emit(myProject.id)"
+      [disabled]="myProject.isResponded"
+    >To Respond
+    </button>
   </div>
 </mat-card>

@@ -1,6 +1,5 @@
 import {Injectable} from '@angular/core';
 import {PersonDisplay} from "../../../model/PersonDisplay";
-import {UserCan} from "../../../model/UserCan";
 import {HttpService} from '../../services/http.service';
 
 @Injectable({
@@ -22,21 +21,6 @@ export class LoginService {
 
   public get isAuthenticated(): boolean {
     return !!this.personDisplay;
-  }
-
-  public get canViewUsers(): boolean {
-    return this.hasCan(UserCan.VIEW_USERS);
-  }
-
-  public get canViewAbout(): boolean {
-    return this.hasCan(UserCan.VIEW_ABOUT);
-  }
-
-  private hasCan(needCan: UserCan) {
-    if (!this.personDisplay) return false;
-    return this.personDisplay.cans
-      .map(can => can == needCan)
-      .reduce((prev, curr) => prev || curr, false);
   }
 
   async start() {

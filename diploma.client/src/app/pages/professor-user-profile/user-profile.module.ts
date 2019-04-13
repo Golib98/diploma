@@ -9,8 +9,11 @@ import {
   MatButtonModule,
   MatCardModule,
   MatCheckboxModule,
+  MatDatepickerModule,
   MatFormFieldModule,
+  MatIconModule,
   MatInputModule,
+  MatNativeDateModule,
   MatTabsModule
 } from "@angular/material";
 import {NewProjectComponent} from './components/new-project/new-project.component';
@@ -34,6 +37,9 @@ import {PopupModule} from "../../common/popup/popup.module";
     FormsModule,
     PopupModule,
     MatCardModule,
+    MatNativeDateModule,
+    MatDatepickerModule,
+    MatIconModule,
   ]
 })
 export class UserProfileModule {

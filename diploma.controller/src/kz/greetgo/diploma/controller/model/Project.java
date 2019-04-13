@@ -1,24 +1,17 @@
 package kz.greetgo.diploma.controller.model;
 
 import java.util.Date;
+import java.util.List;
 
 public class Project {
   public String id;
   public String title;
   public String description;
+  public String author;
   public Date updateDate;
+  public Date deadline;
   public Date publishedDate;
+  public String files;
+  public List<FileWrapper> fileIds;
   public boolean isOpened;
-
-  @Override
-  public String toString() {
-    return "Project{" +
-      "id='" + id + '\'' +
-      ", title='" + title + '\'' +
-      ", description='" + description + '\'' +
-      ", updateDate=" + updateDate +
-      ", publishedDate=" + publishedDate +
-      ", isOpened=" + isOpened +
-      '}';
-  }
 }

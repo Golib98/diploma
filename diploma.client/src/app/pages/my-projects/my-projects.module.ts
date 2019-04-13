@@ -10,14 +10,17 @@ import {
   MatButtonModule,
   MatCardModule,
   MatCheckboxModule,
+  MatDatepickerModule,
   MatDialogModule,
   MatFormFieldModule,
   MatInputModule,
-  MatMenuModule
+  MatMenuModule,
+  MatNativeDateModule
 } from "@angular/material";
 import {PopupModule} from "../../common/popup/popup.module";
 import {MyProjectEditDialogComponent} from './components/my-project-edit-dialog/my-project-edit-dialog.component';
-import {FormsModule} from "@angular/forms";
+import {FormsModule, ReactiveFormsModule} from "@angular/forms";
+import {PopupAskModule} from "../../common/popup-ask/popup-ask.module";
 
 @NgModule({
   declarations: [MyProjectsComponent, MyProjectCardComponent, MyProjectEditDialogComponent],
@@ -35,6 +38,10 @@ import {FormsModule} from "@angular/forms";
     MatFormFieldModule,
     MatInputModule,
     FormsModule,
+    PopupAskModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
+    ReactiveFormsModule,
   ],
   entryComponents: [
     MyProjectEditDialogComponent,

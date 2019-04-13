@@ -23,13 +23,17 @@ class OptionsBuilder {
 
   private get headers(): HttpHeaders {
     let ret: HttpHeaders = new HttpHeaders();
-    this.appendingHeaders.forEach(h => {ret = ret.append(h['key'], h['value']);});
+    this.appendingHeaders.forEach(h => {
+      ret = ret.append(h['key'], h['value']);
+    });
     return ret;
   }
 
   private get params(): HttpParams {
     let ret: HttpParams = new HttpParams();
-    this.appendingParams.forEach(h => {ret = ret.append(h['key'], h['value']);});
+    this.appendingParams.forEach(h => {
+      ret = ret.append(h['key'], h['value']);
+    });
     return ret;
   }
 
@@ -94,7 +98,8 @@ class RequestOptionsBlob extends RequestOptions {
 @Injectable()
 export class HttpService {
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient) {
+  }
 
   private prefix(): string {
     return environment.urlPrefix;
@@ -195,7 +200,7 @@ export class HttpService {
       .split('=')[1]
       .replace(/["]/g, '');
 
-    var link = document.createElement('a');
+    let link = document.createElement('a');
     link.href = url;
     link.download = filename;
     link.click();
@@ -218,5 +223,14 @@ export class HttpService {
       ob.appendHeader("token", this.token);
     }
     return ob;
+  }
+
+  postFile(urlSuffix: string, fileToUpload: File): Observable<HttpResponse<any>> {
+    let ob: OptionsBuilder = this.newOptionsBuilder();
+
+    const formData: FormData = new FormData();
+    formData.append('fileData', fileToUpload, fileToUpload.name);
+
+    return this.http.post(this.url(urlSuffix), formData, ob.getJson())
   }
 }

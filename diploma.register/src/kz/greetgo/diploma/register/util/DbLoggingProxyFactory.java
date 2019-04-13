@@ -1,6 +1,5 @@
 package kz.greetgo.diploma.register.util;
 
-import javax.sql.DataSource;
 import java.lang.reflect.InvocationHandler;
 import java.lang.reflect.Method;
 import java.lang.reflect.Proxy;
@@ -9,6 +8,7 @@ import java.sql.PreparedStatement;
 import java.text.DecimalFormat;
 import java.text.DecimalFormatSymbols;
 import java.util.Locale;
+import javax.sql.DataSource;
 
 public class DbLoggingProxyFactory {
 
@@ -229,7 +229,7 @@ public class DbLoggingProxyFactory {
             if (methodName.startsWith("execute")
               || methodName.equals("getUpdateCount")
               || methodName.equals("getResultSet")
-              ) {
+            ) {
               long time1 = System.nanoTime();
               Object ret = method.invoke(originalStatement, args);
               long time2 = System.nanoTime();

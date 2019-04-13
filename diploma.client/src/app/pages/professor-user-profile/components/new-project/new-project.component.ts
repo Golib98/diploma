@@ -22,5 +22,10 @@ export class NewProjectComponent implements OnInit {
   saveProject() {
     this.addButtonEventEmitter.emit(this.myProject);
     this.myProject = new MyProjectDetail();
+    this.myProject.isOpened = true;
+  }
+
+  handleFile(fileList: FileList) {
+    this.myProject.files = fileList;
   }
 }

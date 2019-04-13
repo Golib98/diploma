@@ -11,6 +11,7 @@ export class AllProjectCardComponent implements OnInit {
   @Input() myProject: AllProjectCard;
   @Output() toListButtonEmitter = new EventEmitter<void>();
   @Output() removeFromListButtonEmitter = new EventEmitter<void>();
+  @Output() toRespondButtonEmitter = new EventEmitter<string>();
 
   constructor() {
   }

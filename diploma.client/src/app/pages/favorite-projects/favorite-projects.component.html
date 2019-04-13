@@ -1,0 +1,20 @@
+<app-navbar [menuItems]="menuItems"></app-navbar>
+
+<div style="margin-top: 10px;"
+     fxLayout="row"
+     fxLayoutAlign="center center " class="mat-typography">
+
+  <div fxFlex="80"
+       fxLayout="column"
+       fxLayoutGap="10px"
+       fxLayoutAlign="space-around">
+    <div *ngIf="projects?.length == 0">
+      <h2>No favorite projects yet :(</h2>
+    </div>
+    <app-favorite-project *ngFor="let project of projects"
+                          [myProject]="project"
+                          (removeButtonEmitter)="removeProject($event)">
+    </app-favorite-project>
+  </div>
+
+</div>

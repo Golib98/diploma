@@ -1,22 +1,23 @@
 package kz.greetgo.diploma.debug.beans;
 
-import kz.greetgo.depinject.core.Bean;
-import kz.greetgo.diploma.debug.util.WebAppContextRegistration;
-import org.eclipse.jetty.servlet.FilterHolder;
-import org.eclipse.jetty.webapp.WebAppContext;
-
+import java.io.IOException;
+import java.util.EnumSet;
+import java.util.Enumeration;
 import javax.servlet.DispatcherType;
 import javax.servlet.Filter;
 import javax.servlet.FilterChain;
 import javax.servlet.FilterConfig;
+import javax.servlet.MultipartConfigElement;
 import javax.servlet.ServletException;
 import javax.servlet.ServletRequest;
 import javax.servlet.ServletResponse;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import java.io.IOException;
-import java.util.EnumSet;
-import java.util.Enumeration;
+import kz.greetgo.depinject.core.Bean;
+import kz.greetgo.diploma.debug.util.WebAppContextRegistration;
+import org.eclipse.jetty.server.Request;
+import org.eclipse.jetty.servlet.FilterHolder;
+import org.eclipse.jetty.webapp.WebAppContext;
 
 @Bean
 public class CrossOriginFilterRegistration implements WebAppContextRegistration, Filter {
@@ -32,10 +33,12 @@ public class CrossOriginFilterRegistration implements WebAppContextRegistration,
   }
 
   @Override
-  public void init(FilterConfig filterConfig) throws ServletException {}
+  public void init(FilterConfig filterConfig) throws ServletException {
+  }
 
   @Override
-  public void destroy() {}
+  public void destroy() {
+  }
 
   @Override
   public void doFilter(ServletRequest servletRequest, ServletResponse servletResponse, FilterChain filterChain) throws IOException, ServletException {
@@ -52,15 +55,20 @@ public class CrossOriginFilterRegistration implements WebAppContextRegistration,
 
     response.addHeader("Access-Control-Allow-Methods", "POST, GET, PUT, OPTIONS, DELETE");
     response.addHeader("Access-Control-Allow-Headers", "origin,x-requested-with,access-control-request-headers," +
-      "content-type,access-control-request-method,accept,token,set-cookie");
+      "content-type,access-control-request-method,accept,token,set-cookie,content-disposition");
     response.addHeader("Access-Control-Max-Age", "1800");
+    response.addHeader("Access-Control-Expose-Headers", "Content-Disposition");
 
     if ("OPTIONS".equals(request.getMethod())) {
       response.setStatus(200);
       return;
     }
 
+    MultipartConfigElement multipartConfigElement = new MultipartConfigElement((String) null);
+    request.setAttribute(Request.__MULTIPART_CONFIG_ELEMENT, multipartConfigElement);
+
     filterChain.doFilter(request, response);
+
   }
 
   @SuppressWarnings("unused")

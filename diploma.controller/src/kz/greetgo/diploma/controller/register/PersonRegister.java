@@ -15,4 +15,6 @@ public interface PersonRegister {
   ProfessorInfo professorInfo(String personId);
 
   ProfessorInfo studentInfo(String personId);
+
+  List<PersonRecord> myResponds(String personId);
 }
