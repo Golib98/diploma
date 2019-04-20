@@ -40,7 +40,7 @@ export class UserProfileComponent implements OnInit {
     this.userProfileService.addFiles(myProject.files)
       .then(value => {
         myProject.fileIds = value;
-        myProject.files = null;1
+        myProject.files = null;
         return myProject;
       })
       .then(value => this.userProfileService.addProject(value))

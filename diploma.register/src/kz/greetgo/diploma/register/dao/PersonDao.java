@@ -1,10 +1,12 @@
 package kz.greetgo.diploma.register.dao;
 
 import java.util.List;
+import kz.greetgo.depinject.core.Bean;
 import kz.greetgo.diploma.controller.model.PersonRecord;
 import kz.greetgo.diploma.controller.model.ProfessorInfo;
 import org.apache.ibatis.annotations.Select;
 
+@Bean
 public interface PersonDao {
   @Select("with cans as (\n" +
     "  select person_id, string_agg(user_can, ', ' order by user_can asc) as cans\n" +

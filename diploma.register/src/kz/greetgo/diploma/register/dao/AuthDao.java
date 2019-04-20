@@ -1,11 +1,14 @@
 package kz.greetgo.diploma.register.dao;
 
 import java.util.List;
+import kz.greetgo.depinject.core.Bean;
 import kz.greetgo.diploma.controller.model.PersonDisplay;
 import kz.greetgo.diploma.controller.model.UserCan;
 import kz.greetgo.diploma.register.model.PersonLogin;
+import edu.umd.cs.findbugs.annotations.ReturnValuesAreNonnullByDefault;
 import org.apache.ibatis.annotations.Select;
 
+@Bean
 public interface AuthDao {
   @Select("select * from person where username = #{username} and blocked = 0")
   PersonLogin selectByUsername(String username);

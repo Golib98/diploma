@@ -24,7 +24,10 @@ export class AccessedProjectsComponent implements OnInit {
 
   ngOnInit() {
     this.menuListService.menuList.then(value => this.menuItems = value);
-    this.accessedProjectsService.accessedProjects.then(value => this.projects = value);
+    this.accessedProjectsService.accessedProjects.then(value => {
+      this.projects = value;
+      console.log(value);
+    });
   }
 
   openProjectDialog(projectId: string) {

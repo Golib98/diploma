@@ -21,7 +21,6 @@ import org.testng.annotations.Test;
 public class AuthRegisterImplTest extends ParentTestNg {
 
   public BeanGetter<AuthRegister> authRegister;
-
   public BeanGetter<PasswordEncoder> passwordEncoder;
   public BeanGetter<AuthTestDao> authTestDao;
   public BeanGetter<SessionService> sessionService;

@@ -7,5 +7,6 @@ export class UserToSave {
   public faculty: string;
   public title: string;
   public university: string;
+  public userName: string;
 
 }

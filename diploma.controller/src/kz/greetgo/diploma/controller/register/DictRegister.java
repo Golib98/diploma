@@ -6,4 +6,6 @@ public interface DictRegister {
   RegistrationDict getRegistrationDict();
 
   void initFS();
+
+  void sendMail();
 }

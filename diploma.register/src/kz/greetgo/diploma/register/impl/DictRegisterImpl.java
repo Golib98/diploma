@@ -7,6 +7,8 @@ import kz.greetgo.diploma.controller.model.RegistrationDict;
 import kz.greetgo.diploma.controller.model.TextPair;
 import kz.greetgo.diploma.controller.register.DictRegister;
 import kz.greetgo.diploma.register.dao.DictDao;
+import kz.greetgo.email.Email;
+import kz.greetgo.email.EmailSender;
 import kz.greetgo.file_storage.FileStorage;
 
 @Bean
@@ -43,4 +45,18 @@ public class DictRegisterImpl implements DictRegister {
       .store();
 
   }
+
+  public BeanGetter<EmailSender> emailSender;
+
+  @Override
+  public void sendMail() {
+    Email email = new Email();
+    email.setTo("golibjon98@gmail.com");
+    email.setFrom("golibjon98@gmail.com");
+    email.setSubject("theme");
+    email.setBody("body");
+
+    emailSender.get().send(email);
+  }
+
 }

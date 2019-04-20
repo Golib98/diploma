@@ -26,7 +26,6 @@ export class MyAssistantsComponent implements OnInit {
     this.myAssistantsService.myAssistants.then(value => this.myAssistants = value);
     this.myAssistantsService.myResponds.then(value => {
       this.myResponds = value;
-      console.log(value);
     });
   }
 
@@ -34,14 +33,22 @@ export class MyAssistantsComponent implements OnInit {
     this.myAssistantsService.acceptProject(assistantId, projectTitle)
       .then(ignore => {
 
-        this.myAssistants.push(this.myResponds.find(value => {
-          return value.id === assistantId && value.projectTitle === projectTitle
-        }));
+        let myAssistantCard = this.myResponds
+          .find(value => value.id === assistantId && value.projectTitle === projectTitle);
+
+        myAssistantCard.name = myAssistantCard.fio;
+        let exists = this.myAssistants.find(value => value.name === myAssistantCard.name);
+
+        console.log('exists', exists);
+
+        if (!exists) {
+          this.myAssistants.push(myAssistantCard);
+        }
 
         this.myResponds = this.myResponds
           .filter(value1 => {
             return !(value1.id === assistantId && value1.projectTitle === projectTitle);
-          })
+          });
 
       });
   }

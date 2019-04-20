@@ -86,6 +86,14 @@
   <button mat-raised-button
           color="primary"
           fxFlexAlign="center"
+          [disabled]="!(
+          currentUsername
+          && currentEmail
+          && currentFirstName
+          && currentLastName
+          && currentUniversity
+          && currentTitle
+          )"
           (click)="saveUser()"
   >Sign up
   </button>

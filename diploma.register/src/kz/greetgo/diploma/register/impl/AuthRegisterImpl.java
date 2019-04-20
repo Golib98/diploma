@@ -16,9 +16,7 @@ import kz.greetgo.security.session.SessionService;
 public class AuthRegisterImpl implements AuthRegister {
 
   public BeanGetter<AuthDao> authDao;
-
   public BeanGetter<PasswordEncoder> passwordEncoder;
-
   public BeanGetter<SessionService> sessionService;
 
   @Override

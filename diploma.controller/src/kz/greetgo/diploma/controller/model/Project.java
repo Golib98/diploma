@@ -14,4 +14,5 @@ public class Project {
   public String files;
   public List<FileWrapper> fileIds;
   public boolean isOpened;
+  public boolean isResponded;
 }

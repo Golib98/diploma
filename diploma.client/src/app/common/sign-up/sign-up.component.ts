@@ -47,6 +47,10 @@ export class SignUpComponent implements OnInit {
     this.currentUserType = value;
   }
 
+  verify = !(
+    this.currentUsername
+  );
+
   verifyForm(): boolean {
     return !!this.currentUniversity;
   }
@@ -55,8 +59,11 @@ export class SignUpComponent implements OnInit {
     const userToSave = new UserToSave();
     userToSave.firstName = this.currentFirstName;
     userToSave.lastName = this.currentLastName;
+    userToSave.userName = this.currentUsername;
+    userToSave.faculty = this.faculties[this.currentFaculty].value;
     userToSave.email = this.currentEmail;
     userToSave.phone = this.currentPhone;
     userToSave.university = 'IITU';
+
   }
 }

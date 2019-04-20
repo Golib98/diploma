@@ -1,4 +1,4 @@
-package kz.greetgo.diploma.register.dao.postgres;
+package kz.greetgo.diploma.register.dao;
 
 import kz.greetgo.depinject.core.BeanConfig;
 import kz.greetgo.depinject.core.BeanScanner;

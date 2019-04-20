@@ -1,6 +1,7 @@
 package kz.greetgo.diploma.register.dao;
 
 import java.util.List;
+import kz.greetgo.depinject.core.Bean;
 import kz.greetgo.diploma.controller.model.AllProjectCard;
 import kz.greetgo.diploma.controller.model.FileWrapper;
 import kz.greetgo.diploma.controller.model.ProfessorDict;
@@ -11,6 +12,7 @@ import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Select;
 import org.apache.ibatis.annotations.Update;
 
+@Bean
 public interface ProjectDao {
   @Select("select  *  from projects where professor_id = #{projectId} and removed is false order by published_date desc")
   List<Project> getMyProjects(String personId);
@@ -60,7 +62,8 @@ public interface ProjectDao {
   @Insert("insert into project_respond(project_id, student_id) values (#{project}, #{student})")
   void insRespond(@Param("project") String projectId, @Param("student") String studentId);
 
-  @Select("select x.*, pr.isAccepted::int from projects x\n" +
+  @Select("select x.*, pr.isAccepted::int as isResponded " +
+    "from projects x\n" +
     "join project_respond pr on x.id = pr.project_id\n" +
     "where pr.student_id = #{personId}")
   List<Project> getAccessedProjects(String personId);
@@ -94,7 +97,7 @@ public interface ProjectDao {
               @Param("projId") String projectId);
 
   @Insert("insert  into professor_assistant(professor_id, assistant_id) " +
-    "VALUES (#{profId}, #{studId})")
+    "VALUES (#{profId}, #{studId}) on conflict do nothing ")
   void addProfessorAssistant(@Param("studId") String assistantId,
                              @Param("profId") String professorId);
 
