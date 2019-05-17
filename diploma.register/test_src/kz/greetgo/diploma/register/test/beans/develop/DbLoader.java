@@ -5,6 +5,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import kz.greetgo.depinject.core.Bean;
 import kz.greetgo.depinject.core.BeanGetter;
+import kz.greetgo.diploma.controller.model.University;
 import kz.greetgo.diploma.controller.model.UserCan;
 import kz.greetgo.diploma.register.beans.all.IdGenerator;
 import kz.greetgo.diploma.register.test.dao.AuthTestDao;
@@ -37,8 +38,48 @@ public class DbLoader {
   }
 
   private void loadUniversities() {
-    String universityId = universityTestDao.get().insUniversity("IITU");
-    authTestDao.get().updatePersonFieldAll("university_id", universityId);
+    {
+      University university = new University();
+      university.title = "IITU";
+      university.description = "International IT University (IITU)";
+      university.logo = "iitu.png";
+      String universityId = universityTestDao.get().insUniversity(university);
+      authTestDao.get().updatePersonFieldAll("university_id", universityId);
+    }
+
+    {
+      University university = new University();
+      university.title = "AUPET";
+      university.description = "Almaty University of Power Engineering and Telecommunications (AUPET)";
+      university.logo = "aupet.png";
+      universityTestDao.get().insUniversity(university);
+    }
+
+    {
+      University university = new University();
+      university.title = "KazNAU";
+      university.description = "Kazakh Research Institute of Livestock and Feed Production";
+      university.logo = "kazres.png";
+      universityTestDao.get().insUniversity(university);
+    }
+
+    {
+      University university = new University();
+      university.title = "KazNU";
+      university.description = "Kazakh National University (KazNU)";
+      university.logo = "kaznu.png";
+      universityTestDao.get().insUniversity(university);
+    }
+
+    {
+      University university = new University();
+      university.title = "Satbayev University";
+      university.description = "Satbayev University";
+      university.logo = "kaznu.png";
+      universityTestDao.get().insUniversity(university);
+    }
+
+
   }
 
   private void loadProjects() {
@@ -103,7 +144,7 @@ public class DbLoader {
     user("Менделеев Дмитрий Иванович", "1834-02-08", "mendeleev");
     user("Ломоносов Михаил Васильевич", "1711-11-19", "lomonosov");
     user("Бутлеров Александр Михайлович", "1828-09-15", "butlerov");
-    
+
   }
 
   private void user(String fioStr, String birthDateStr, String accountName) throws Exception {

@@ -12,7 +12,7 @@ import {UniversitiesService} from "./universities.service";
 export class UniversitiesComponent implements OnInit {
 
   menuItems: MenuItem[];
-  universityCards: UniversityCardInfo[] = [];
+  universityCards: UniversityCardInfo[];
 
   constructor(
     private menuListService: MenuListService,
@@ -21,7 +21,10 @@ export class UniversitiesComponent implements OnInit {
 
   ngOnInit() {
     this.menuListService.menuList.then(value => this.menuItems = value);
-    this.universitiesService.universities.then(value => this.universityCards = value);
+    this.universitiesService.universities.then(value => {
+      console.log(value);
+      this.universityCards = value
+    });
   }
 
 }

@@ -1,5 +1,6 @@
 import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {UniversityCardInfo} from "../../../../../model/UniversityCardInfo";
+import {DomSanitizer} from "@angular/platform-browser";
 
 @Component({
   selector: 'app-university-card',
@@ -12,10 +13,20 @@ export class UniversityCardComponent implements OnInit {
   @Output() likeButtonEmitter: EventEmitter<VoidFunction>;
   @Output() compareButtonEmitter: EventEmitter<VoidFunction>;
 
-  constructor() {
+  url;
+
+
+  constructor(private domSanitizer: DomSanitizer) {
   }
 
   ngOnInit() {
+
+    console.log(this.model);
+
+    this.url = 'assets/img/' +
+      this.model.logo;
+
+
   }
 
 }

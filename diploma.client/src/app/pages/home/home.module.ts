@@ -6,7 +6,7 @@ import {HomeComponent} from './home.component';
 import {FlexLayoutModule} from "@angular/flex-layout";
 import {LoginModule} from "../../common/login/login.module";
 import {NavbarModule} from "../../common/navbar/navbar.module";
-import {MatButtonModule, MatCardModule} from "@angular/material";
+import {MatButtonModule, MatCardModule, MatDividerModule} from "@angular/material";
 import {RouterModule} from "@angular/router";
 
 @NgModule({
@@ -15,6 +15,7 @@ import {RouterModule} from "@angular/router";
     CommonModule,
     HomeRoutingModule,
     NavbarModule,
+    MatDividerModule,
     FlexLayoutModule,
     MatCardModule,
     MatButtonModule,

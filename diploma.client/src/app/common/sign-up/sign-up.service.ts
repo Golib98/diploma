@@ -2,6 +2,7 @@ import {Injectable} from '@angular/core';
 import {HttpService} from "../../services/http.service";
 import {RegistrationDict} from "../../../model/RegistrationDict";
 import {map} from "rxjs/operators";
+import {UserToSave} from "../../../model/UserToSave";
 
 @Injectable({
   providedIn: 'root'
@@ -20,4 +21,11 @@ export class SignUpService {
 
   }
 
+  signup(userToSave: UserToSave): Promise<void> {
+
+    return this.http.post('/auth/signup', {userToSave: JSON.stringify(userToSave)})
+      .pipe(map<any, void>(k => k.body))
+      .toPromise();
+
+  }
 }

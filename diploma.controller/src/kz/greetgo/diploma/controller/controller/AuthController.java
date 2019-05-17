@@ -4,10 +4,12 @@ import static kz.greetgo.diploma.controller.util.DiplomaViews.G_SESSION;
 import kz.greetgo.depinject.core.Bean;
 import kz.greetgo.depinject.core.BeanGetter;
 import kz.greetgo.diploma.controller.model.PersonDisplay;
+import kz.greetgo.diploma.controller.model.UserToSave;
 import kz.greetgo.diploma.controller.register.AuthRegister;
 import kz.greetgo.diploma.controller.security.PublicAccess;
 import kz.greetgo.diploma.controller.util.Controller;
 import kz.greetgo.mvc.annotations.AsIs;
+import kz.greetgo.mvc.annotations.Json;
 import kz.greetgo.mvc.annotations.Par;
 import kz.greetgo.mvc.annotations.ParSession;
 import kz.greetgo.mvc.annotations.ToJson;
@@ -56,7 +58,7 @@ public class AuthController implements Controller {
   @OnGet("/displayPerson")
   public PersonDisplay displayPerson(@ParSession("personId") String personId) {
     return authRegister.get().displayPerson(personId);
-  } 
+  }
 
   @AsIs
   @PublicAccess
@@ -67,5 +69,12 @@ public class AuthController implements Controller {
     cookies.forName(G_SESSION)
       .path("/")
       .remove();
+  }
+
+  @OnPost("/signup")
+  @PublicAccess
+  public void signup(@Json @Par("userToSave") UserToSave userToSave) {
+    authRegister.get().signUpPerson(userToSave);
+    
   }
 }

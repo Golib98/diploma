@@ -1,7 +1,10 @@
 .main_page_university {
-  height: 400px;
-  //background: url("/assets/img/background_sky.jpg") no-repeat center;
-  background-color: rgb(63, 81, 181);
+  h1 {
+    margin-top: 20px;
+  }
+
+  height: 750px;
+  background: url("~src/assets/img/background_sky.jpg") no-repeat center;
   background-size: cover;
 
   .has_border {
@@ -11,4 +14,10 @@
 
 .login-mini {
   background-color: rgba(255, 255, 255, 0.7)
+}
+
+.cards {
+  div {
+    max-width: 15rem;
+  }
 }

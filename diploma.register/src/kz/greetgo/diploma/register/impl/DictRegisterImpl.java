@@ -1,10 +1,12 @@
 package kz.greetgo.diploma.register.impl;
 
 import java.util.ArrayList;
+import java.util.List;
 import kz.greetgo.depinject.core.Bean;
 import kz.greetgo.depinject.core.BeanGetter;
 import kz.greetgo.diploma.controller.model.RegistrationDict;
 import kz.greetgo.diploma.controller.model.TextPair;
+import kz.greetgo.diploma.controller.model.University;
 import kz.greetgo.diploma.controller.register.DictRegister;
 import kz.greetgo.diploma.register.dao.DictDao;
 import kz.greetgo.email.Email;
@@ -57,6 +59,14 @@ public class DictRegisterImpl implements DictRegister {
     email.setBody("body");
 
     emailSender.get().send(email);
+  }
+
+  @Override
+  public List<University> getUniList() {
+
+    List<University> ret =  dictDao.get().getAllUni();
+
+    return ret;
   }
 
 }

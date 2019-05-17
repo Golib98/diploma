@@ -13,7 +13,7 @@ export class MenuItem {
   public static defaultList(): MenuItem[] {
     let ret: MenuItem[] = [];
     ret.push(
-      MenuItem.of("Universities", "/universities"),
+      MenuItem.of("Organizations", "/universities"),
       MenuItem.of("Rankings", ""),
       MenuItem.of("Best Students", ""),
       MenuItem.of("News", ""),
@@ -34,7 +34,7 @@ export class MenuItem {
     assistants.subMenu.push(MenuItem.of('All assistants', '/all-assistants'));
 
     ret.push(
-      MenuItem.of("Universities", "/universities"),
+      MenuItem.of("Organizations", "/universities"),
       assistants,
       MenuItem.of("My projects", "/my-projects"),
     );

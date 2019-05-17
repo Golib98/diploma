@@ -5,12 +5,16 @@ import kz.greetgo.depinject.core.BeanGetter;
 import kz.greetgo.diploma.controller.errors.IllegalLoginOrPassword;
 import kz.greetgo.diploma.controller.model.PersonDisplay;
 import kz.greetgo.diploma.controller.model.SessionHolder;
+import kz.greetgo.diploma.controller.model.UserToSave;
 import kz.greetgo.diploma.controller.register.AuthRegister;
 import kz.greetgo.diploma.register.dao.AuthDao;
 import kz.greetgo.diploma.register.model.PersonLogin;
+import kz.greetgo.email.Email;
+import kz.greetgo.email.EmailSender;
 import kz.greetgo.security.password.PasswordEncoder;
 import kz.greetgo.security.session.SessionIdentity;
 import kz.greetgo.security.session.SessionService;
+import kz.greetgo.util.RND;
 
 @Bean
 public class AuthRegisterImpl implements AuthRegister {
@@ -72,5 +76,28 @@ public class AuthRegisterImpl implements AuthRegister {
   @Override
   public void deleteSession(String sessionId) {
     sessionService.get().removeSession(sessionId);
+  }
+
+  public BeanGetter<EmailSender> emailSender;
+
+  @Override
+  public void signUpPerson(UserToSave userToSave) {
+
+    String roleId = authDao.get().loadRoleId(userToSave.type);
+    String univerId = authDao.get().loadUniverId("IITU");
+
+    String pass = RND.str(10);
+    String encodedPass = passwordEncoder.get().encode(pass);
+
+    authDao.get().insertPerson(userToSave, roleId, univerId, encodedPass);
+
+    Email email = new Email();
+    email.setBody("You pass is " + pass + "<br> and login " + userToSave.userName);
+    email.setFrom("golibjon98@gmail.com");
+    email.setTo(userToSave.email);
+    email.setSubject("Registration in diploma!");
+
+    new Thread(() -> emailSender.get().send(email)).start();
+
   }
 }

@@ -6,7 +6,10 @@
     <sql endDelimiter=";;"><![CDATA[
 create table university (
   id text not null primary key default new_id(),
-  title text
+  title text,
+  description text,
+  logo text,
+  mainImage text
 );;
 alter table person add column university_id text references university(id);;
 ]]></sql>

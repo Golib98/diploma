@@ -1,3 +1,5 @@
+import {RegistrationUserType} from "./RegistrationUserType";
+
 export class UserToSave {
 
   public firstName: string;
@@ -8,5 +10,6 @@ export class UserToSave {
   public title: string;
   public university: string;
   public userName: string;
+  public type: RegistrationUserType;
 
 }

@@ -1,6 +1,5 @@
 package kz.greetgo.diploma.controller.controller;
 
-import java.util.Collections;
 import java.util.List;
 import kz.greetgo.depinject.core.Bean;
 import kz.greetgo.depinject.core.BeanGetter;
@@ -16,15 +15,15 @@ import kz.greetgo.mvc.annotations.on_methods.OnGet;
 @ControllerPrefix("/universities")
 public class UniversitiesController implements Controller {
 
+  public BeanGetter<DictRegister> dictRegister;
+
   @ToJson
   @OnGet("/getAllUniversities")
   @PublicAccess
   public List<University> getAllUniversities() {
-    return Collections.singletonList(new University());
+    return dictRegister.get().getUniList();
   }
 
-  public BeanGetter<DictRegister> dictRegister;
-  
   @ToJson
   @OnGet("/sendmail")
   @PublicAccess

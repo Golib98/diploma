@@ -1,15 +1,71 @@
-<app-navbar style="z-index: 1; position: relative"
-            [menuItems]="menuItems"></app-navbar>
+<app-navbar [menuItems]="menuItems"></app-navbar>
 
-<div style="z-index: 0"
-     class="main_page_university mat-typography"
-     fxLayout="column"
-     fxLayoutAlign="center center"
-     fxLayoutGap="40px">
+<div
+  class="main_page_university mat-typography"
+  fxLayout="column"
+  fxLayoutAlign="center center"
+  fxLayoutGap="40px">
 
-  <h1 style="font-size: 56px; color: white">Advance your research</h1>
-  <h2 style="color: white">Discover scientific knowledge, and make your research visible</h2>
+  <h1 style="font-size: 42px;">What is Research Assistant?</h1>
+
+  <img src="assets/img/123.png" alt="logo" width="280" height="300">
+
+  <h2 style="max-width: 1024px;">Research assistant search system involves a reciprocal relationship between research
+    supervisors and research
+    assistants. Due to the development of a system to help professors find assistant for scientific research, teaching
+    assistantship or graduate assistantship.</h2>
 
   <button mat-raised-button routerLink="/registration">Join for free</button>
 
+</div>
+
+<div
+  fxLayout="row"
+  fxLayoutAlign="space-around"
+  fxLayoutGap="5rem"
+  class="cards mat-typography"
+  style="background-color: #fafafa">
+
+  <div><img src="assets/img/1.png" alt="1">
+    <h3>
+      Organization
+      All organization content, aggregated and organized in a matter of weeks, not months or years.
+    </h3>
+  </div>
+  <div><img src="assets/img/2.png" alt="2">
+    <h3>
+      Professor
+      Better student-advisor match helps to optimize faculty investment into the right student.
+    </h3></div>
+  <div><img src="assets/img/3.png" alt="3">
+    <h3>
+      Assistant
+      More time spent on research, less on searching for resources.
+    </h3>
+  </div>
+
+</div>
+
+<div class="mat-typography"
+     fxLayout="column"
+     style="background-color: #f0f7f7;  ">
+
+  <div style="padding-top: 30px;">
+    <mat-divider></mat-divider>
+  </div>
+  <br>
+  <br>
+  <br>
+  <br>
+  <div>
+    <span routerLink="/universities">Organizations </span>
+    <span routerLink="/home">About </span>
+    <span routerLink="/help">Help </span>
+  </div>
+  <br>
+  <br>
+  <br>
+  <br>
+  <div fxFlexAlign="end">© ResearchAssistant 2019. All rights reserved.</div>
+  <br>
 </div>
