@@ -14,6 +14,24 @@
               mat-autosize
               placeholder="Description"></textarea>
   </mat-form-field>
+  <mat-form-field>
+    <input [(ngModel)]="myProject.requirements"
+           name='reqs'
+           matInput
+           placeholder="Requirements">
+  </mat-form-field>
+  <mat-form-field>
+    <input [(ngModel)]="myProject.suggestions"
+           name='suggestions'
+           matInput
+           placeholder="Suggestions">
+  </mat-form-field>
+  <mat-form-field>
+    <input [(ngModel)]="myProject.link"
+           name='link'
+           matInput
+           placeholder="Link">
+  </mat-form-field>
 
   <mat-checkbox [(ngModel)]="myProject.isOpened"
                 name="isOpened"
@@ -26,8 +44,7 @@
            placeholder="Deadline"
            name="deadline"
            [matDatepicker]="picker"
-           [formControl]="deadline"
-    >
+           [formControl]="deadline">
     <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
     <mat-datepicker #picker></mat-datepicker>
   </mat-form-field>

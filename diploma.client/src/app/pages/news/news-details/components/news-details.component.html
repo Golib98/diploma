@@ -1,0 +1,22 @@
+<app-navbar [menuItems]="menuItems"></app-navbar>
+<div
+  class="mat-typography"
+  style="margin-top: 1rem;"
+  fxLayout="row"
+  fxLayoutAlign="center center">
+
+  <div fxFlex="80">
+
+    <h1>{{news.title}}</h1>
+
+    <h2>
+      {{news.body}}
+    </h2>
+
+
+    <p>Published By: {{news.publishedBy}}</p>
+    <p>Published At: {{news.publishedAt | date}}</p>
+
+  </div>
+
+</div>

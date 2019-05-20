@@ -12,6 +12,7 @@ create table projects (
   description    text,
   published_date timestamp not null default now(),
   requirements   text,
+  link   text,
   suggestions    text,
   isOpened       boolean,
   removed        boolean   not null default false

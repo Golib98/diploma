@@ -20,8 +20,8 @@ public interface ProjectDao {
   @Update("update projects set removed = #{removed}::boolean where id = #{projectId}")
   void setRemoved(@Param("projectId") String projectId, @Param("removed") boolean removed);
 
-  @Select("insert into projects(professor_id, title, description, isopened, deadline) " +
-    "VALUES (#{personId}, #{project.title}, #{project.description}, #{project.isOpened}::boolean, #{project.deadline})" +
+  @Select("insert into projects(professor_id, title, description, isopened, deadline, requirements, suggestions, link) " +
+    "VALUES (#{personId}, #{project.title}, #{project.description}, #{project.isOpened}::boolean, #{project.deadline},#{project.requirements},#{project.suggestions},#{project.link})" +
     " returning id")
   String insProject(@Param("personId") String personId, @Param("project") Project project);
 
@@ -43,7 +43,10 @@ public interface ProjectDao {
 
   @Update("update projects set title = #{x.title}, " +
     "description = #{x.description}, " +
-    "deadline = #{x.deadline} " +
+    "deadline = #{x.deadline}, " +
+    "suggestions = #{x.suggestions}," +
+    "requirements = #{x.requirements}," +
+    "link = #{x.link} " +
     "where id = #{x.id}")
   void updateProject(@Param("x") Project project);
 

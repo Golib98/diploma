@@ -44,7 +44,7 @@ export class UserProfileComponent implements OnInit {
         return myProject;
       })
       .then(value => this.userProfileService.addProject(value))
-      .then(ignore => {
+      .then(() => {
         this.loading = false;
         this.dialog.open(PopupComponent, {
           width: '250px',

@@ -35,9 +35,13 @@
         patronymic varchar(255),
         birth_date date,
         encoded_password varchar(255),
-        blocked smallint not null default 1
+        blocked smallint not null default 1,
+        email text,
+        phone text,
+        title text,
+        faculty text
       )
     ]]></sql>
   </changeSet>
-  
+
 </databaseChangeLog>

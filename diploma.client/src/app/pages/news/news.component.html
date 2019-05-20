@@ -1,0 +1,28 @@
+<app-navbar [menuItems]="menuItems"></app-navbar>
+<div fxLayout="row" fxLayoutAlign="center center">
+  <div style="margin-top: 1rem;" fxFlex="80"
+       class="mat-typography"
+       fxLayout="row wrap"
+       fxLayoutGap="1rem"
+       fxLayoutAlign="start center">
+
+    <div fxFlex="48"
+         *ngFor="let n of news"
+    >
+      <div fxLayout="column">
+        <div class="news-image"
+             [ngStyle]="{'background-image': 'url(assets/img/' + n.image + ')'}"
+        ></div>
+
+        <br>
+
+        <h3 class="news-title" [routerLink]="['details', n.id]">{{n.title}}</h3>
+
+        <div fxLayout="row" fxLayoutAlign="space-around">
+          <h4>{{n.publishedBy}}</h4>
+          <h4>{{n.publishedAt | date}}</h4>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -47,6 +47,10 @@ const routes: Routes = [
     loadChildren: './pages/accessed-projects/accessed-projects.module#AccessedProjectsModule'
   },
   {
+    path: 'news',
+    loadChildren: './pages/news/news.module#NewsModule'
+  },
+  {
     path: '',
     redirectTo: '/home',
     pathMatch: 'full'

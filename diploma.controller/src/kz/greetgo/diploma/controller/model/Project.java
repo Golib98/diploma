@@ -12,6 +12,9 @@ public class Project {
   public Date deadline;
   public Date publishedDate;
   public String files;
+  public String requirements;
+  public String suggestions;
+  public String link;
   public List<FileWrapper> fileIds;
   public boolean isOpened;
   public boolean isResponded;

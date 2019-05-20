@@ -27,6 +27,24 @@
     <mat-datepicker #picker></mat-datepicker>
   </mat-form-field>
 
+  <mat-form-field>
+    <input [(ngModel)]="myProject.requirements"
+           name="requirements"
+           matInput
+           placeholder="Requirements">
+  </mat-form-field>
+  <mat-form-field>
+    <input [(ngModel)]="myProject.suggestions"
+           name="suggestions"
+           matInput
+           placeholder="Suggestion">
+  </mat-form-field>
+  <mat-form-field>
+    <input [(ngModel)]="myProject.link"
+           name="link"
+           matInput
+           placeholder="Link">
+  </mat-form-field>
 
   <mat-checkbox [(ngModel)]="myProject.isOpened"
                 name="isOpened"

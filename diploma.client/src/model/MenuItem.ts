@@ -14,9 +14,7 @@ export class MenuItem {
     let ret: MenuItem[] = [];
     ret.push(
       MenuItem.of("Organizations", "/universities"),
-      MenuItem.of("Rankings", ""),
-      MenuItem.of("Best Students", ""),
-      MenuItem.of("News", ""),
+      MenuItem.of("News", "/news"),
       MenuItem.of("Jobs", ""),
       MenuItem.of("About", ""),
       MenuItem.of("Help", ""),
@@ -55,7 +53,7 @@ export class MenuItem {
     ret.push(
       professional,
       MenuItem.of("Blogs", "/my-projects"),
-      MenuItem.of("News", ""),
+      MenuItem.of("News", "/news"),
       MenuItem.of("Jobs", ""),
       MenuItem.of("About", ""),
       MenuItem.of("Help", ""),

@@ -4,25 +4,34 @@
                    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-2.0.xsd">
   <changeSet author="jgolibzhan" id="2">
     <sql endDelimiter=";;"><![CDATA[
-INSERT INTO university (id, title) VALUES ('I6FFpl2EguURDarqU', 'IITU');
-INSERT INTO role (id, title) VALUES ('LFI7ebdw2Q84vgyOv', 'PROFESSOR');
-INSERT INTO role (id, title) VALUES ('MNpMpDhmwkdXQg1MV', 'STUDENT');
-INSERT INTO person (id, username, surname, name, patronymic, birth_date, encoded_password, blocked, role_id, university_id) VALUES ('79NwbP3r9q9rzBiK1', 'beria', 'Берия', 'Лаврентий', 'Павлович', '1899-03-17', 'Xrv$wO97FWF3qBrm9qYx0I2CudVsVLC9EEdZ0WC0GUM', 0, null, 'I6FFpl2EguURDarqU');
-INSERT INTO person (id, username, surname, name, patronymic, birth_date, encoded_password, blocked, role_id, university_id) VALUES ('WK62sR8vFQWq9J5RN', 'putin', 'Путин', 'Владимир', 'Владимирович', '1952-10-07', 'Xrv$wO97FWF3qBrm9qYx0I2CudVsVLC9EEdZ0WC0GUM', 0, null, 'I6FFpl2EguURDarqU');
-INSERT INTO person (id, username, surname, name, patronymic, birth_date, encoded_password, blocked, role_id, university_id) VALUES ('wBQKmoOGtYezZXrUs', 'butlerov', 'Бутлеров', 'Александр', 'Михайлович', '1828-09-15', 'Xrv$wO97FWF3qBrm9qYx0I2CudVsVLC9EEdZ0WC0GUM', 0, null, 'I6FFpl2EguURDarqU');
-INSERT INTO person (id, username, surname, name, patronymic, birth_date, encoded_password, blocked, role_id, university_id) VALUES ('2IkHH67FHk6gdpEaV', 'pushkin', 'Пушкин', 'Александр', 'Сергеевич', '1799-06-06', 'Xrv$wO97FWF3qBrm9qYx0I2CudVsVLC9EEdZ0WC0GUM', 0, 'LFI7ebdw2Q84vgyOv', 'I6FFpl2EguURDarqU');
-INSERT INTO person (id, username, surname, name, patronymic, birth_date, encoded_password, blocked, role_id, university_id) VALUES ('zyCNjSDpxwjU5H9dF', 'stalin', 'Сталин', 'Иосиф', 'Виссарионович', '1878-12-18', 'Xrv$wO97FWF3qBrm9qYx0I2CudVsVLC9EEdZ0WC0GUM', 0, 'MNpMpDhmwkdXQg1MV', 'I6FFpl2EguURDarqU');
-INSERT INTO person (id, username, surname, name, patronymic, birth_date, encoded_password, blocked, role_id, university_id) VALUES ('B13VIQKxv4xnRooH6', 'esenin', 'Есенин', 'Сергей', 'Александрович', '1895-09-21', 'Xrv$wO97FWF3qBrm9qYx0I2CudVsVLC9EEdZ0WC0GUM', 0, 'MNpMpDhmwkdXQg1MV', 'I6FFpl2EguURDarqU');
-INSERT INTO person (id, username, surname, name, patronymic, birth_date, encoded_password, blocked, role_id, university_id) VALUES ('r2NJ6PqvNHL0X0qfu', 'papa', 'Назарбаев', 'Нурсултан', 'Абишевич', '1940-07-06', 'Xrv$wO97FWF3qBrm9qYx0I2CudVsVLC9EEdZ0WC0GUM', 0, 'MNpMpDhmwkdXQg1MV', 'I6FFpl2EguURDarqU');
-INSERT INTO person (id, username, surname, name, patronymic, birth_date, encoded_password, blocked, role_id, university_id) VALUES ('Wol2sdeqnmtuKryv5', 'lomonosov', 'Ломоносов', 'Михаил', 'Васильевич', '1711-11-19', 'Xrv$wO97FWF3qBrm9qYx0I2CudVsVLC9EEdZ0WC0GUM', 0, 'MNpMpDhmwkdXQg1MV', 'I6FFpl2EguURDarqU');
-INSERT INTO person (id, username, surname, name, patronymic, birth_date, encoded_password, blocked, role_id, university_id) VALUES ('3CGnyv0ADkL3tvKag', 'mendeleev', 'Менделеев', 'Дмитрий', 'Иванович', '1834-02-08', 'Xrv$wO97FWF3qBrm9qYx0I2CudVsVLC9EEdZ0WC0GUM', 0, 'MNpMpDhmwkdXQg1MV', 'I6FFpl2EguURDarqU');
-INSERT INTO professor_assistant (professor_id, assistant_id) VALUES ('2IkHH67FHk6gdpEaV', 'zyCNjSDpxwjU5H9dF');
-INSERT INTO professor_assistant (professor_id, assistant_id) VALUES ('2IkHH67FHk6gdpEaV', 'B13VIQKxv4xnRooH6');
-INSERT INTO projects (id, professor_id, deadline, title, description, published_date, requirements, suggestions, isopened, removed) VALUES ('duoIO0KMsFwFgW9E1', '2IkHH67FHk6gdpEaV', null, 'Title1', 'Description', '2019-04-06 18:28:53.326073', null, null, null, false);
-INSERT INTO projects (id, professor_id, deadline, title, description, published_date, requirements, suggestions, isopened, removed) VALUES ('bLbIyxQEU62Fxb2Wi', '2IkHH67FHk6gdpEaV', null, 'Title2', 'Description', '2019-04-06 18:28:53.363096', null, null, null, false);
-INSERT INTO projects (id, professor_id, deadline, title, description, published_date, requirements, suggestions, isopened, removed) VALUES ('FBeJV5m0cb80NHsjE', '2IkHH67FHk6gdpEaV', null, 'Title3', 'Description', '2019-04-06 18:28:53.453014', null, null, null, false);
-INSERT INTO projects (id, professor_id, deadline, title, description, published_date, requirements, suggestions, isopened, removed) VALUES ('ZqamKtSWZxTqe9xaZ', '2IkHH67FHk6gdpEaV', null, 'Title4', 'Description', '2019-04-06 18:28:53.477853', null, null, null, false);
-INSERT INTO projects (id, professor_id, deadline, title, description, published_date, requirements, suggestions, isopened, removed) VALUES ('lqylutsrsDwhYD4S3', 'B13VIQKxv4xnRooH6', null, 'Title4', 'Description', '2019-04-06 18:28:53.501825', null, null, null, false);
+INSERT INTO public.role (id, title) VALUES ('Vfc6aZ0wV3Vw3BhIs', 'PROFESSOR');
+INSERT INTO public.role (id, title) VALUES ('xgkdmHrQrbVyp6W83', 'STUDENT');
+
+
+INSERT INTO public.university (id, title, description, logo, mainimage) VALUES ('UVx3Fb1gjvQXGA1L8', 'IITU', 'International IT University (IITU)', 'iitu.png', null);
+INSERT INTO public.university (id, title, description, logo, mainimage) VALUES ('N0BuxcvycJ3SRsBAn', 'AUPET', 'Almaty University of Power Engineering and Telecommunications (AUPET)', 'aupet.png', null);
+INSERT INTO public.university (id, title, description, logo, mainimage) VALUES ('nKyfYaX9uA3qXfJsP', 'KazNAU', 'Kazakh Research Institute of Livestock and Feed Production', 'kazres.png', null);
+INSERT INTO public.university (id, title, description, logo, mainimage) VALUES ('UqRhfS8ujiHkMW6U7', 'KazNU', 'Kazakh National University (KazNU)', 'kaznu.png', null);
+INSERT INTO public.university (id, title, description, logo, mainimage) VALUES ('a1E1iU87Iislexes3', 'Satbayev University', 'Satbayev University', 'satbay.png', null);
+
+INSERT INTO public.person (id, username, surname, name, patronymic, birth_date, encoded_password, blocked, role_id, university_id) VALUES ('bwtADBUCm1VbRF1ki', 'putin', 'Путин', 'Владимир', 'Владимирович', '1952-10-07', 'Xrv$wO97FWF3qBrm9qYx0I2CudVsVLC9EEdZ0WC0GUM', 0, null, 'UVx3Fb1gjvQXGA1L8');
+INSERT INTO public.person (id, username, surname, name, patronymic, birth_date, encoded_password, blocked, role_id, university_id) VALUES ('d52cbL9Oh5VQctN4v', 'papa', 'Назарбаев', 'Нурсултан', 'Абишевич', '1940-07-06', 'Xrv$wO97FWF3qBrm9qYx0I2CudVsVLC9EEdZ0WC0GUM', 0, null, 'UVx3Fb1gjvQXGA1L8');
+INSERT INTO public.person (id, username, surname, name, patronymic, birth_date, encoded_password, blocked, role_id, university_id) VALUES ('LWAhTb3jcI4pIRcsq', 'mendeleev', 'Менделеев', 'Дмитрий', 'Иванович', '1834-02-08', 'Xrv$wO97FWF3qBrm9qYx0I2CudVsVLC9EEdZ0WC0GUM', 0, null, 'UVx3Fb1gjvQXGA1L8');
+INSERT INTO public.person (id, username, surname, name, patronymic, birth_date, encoded_password, blocked, role_id, university_id) VALUES ('J3MWihCpyfge208EM', 'lomonosov', 'Ломоносов', 'Михаил', 'Васильевич', '1711-11-19', 'Xrv$wO97FWF3qBrm9qYx0I2CudVsVLC9EEdZ0WC0GUM', 0, null, 'UVx3Fb1gjvQXGA1L8');
+INSERT INTO public.person (id, username, surname, name, patronymic, birth_date, encoded_password, blocked, role_id, university_id) VALUES ('ela8x2CdsY3kdMIsM', 'butlerov', 'Бутлеров', 'Александр', 'Михайлович', '1828-09-15', 'Xrv$wO97FWF3qBrm9qYx0I2CudVsVLC9EEdZ0WC0GUM', 0, null, 'UVx3Fb1gjvQXGA1L8');
+INSERT INTO public.person (id, username, surname, name, patronymic, birth_date, encoded_password, blocked, role_id, university_id) VALUES ('Q11a5RpZ7VvjamkJr', 'mussabayev_bakitzhan', 'Mussabayev', 'Bakitzhan', null, '1956-09-15', 'Xrv$wO97FWF3qBrm9qYx0I2CudVsVLC9EEdZ0WC0GUM', 0, 'Vfc6aZ0wV3Vw3BhIs', 'UVx3Fb1gjvQXGA1L8');
+INSERT INTO public.person (id, username, surname, name, patronymic, birth_date, encoded_password, blocked, role_id, university_id) VALUES ('K8ucf9zCWDKnuHwQS', 'zhansaya', 'Adyrbek', 'Zhansaya', null, '1799-06-06', 'Xrv$wO97FWF3qBrm9qYx0I2CudVsVLC9EEdZ0WC0GUM', 0, 'xgkdmHrQrbVyp6W83', 'UVx3Fb1gjvQXGA1L8');
+INSERT INTO public.person (id, username, surname, name, patronymic, birth_date, encoded_password, blocked, role_id, university_id) VALUES ('rWjDHeFInIOkeDPVQ', 'tom', 'Zeinelkozha', 'Tomiris', null, '1878-12-18', 'Xrv$wO97FWF3qBrm9qYx0I2CudVsVLC9EEdZ0WC0GUM', 0, 'xgkdmHrQrbVyp6W83', 'UVx3Fb1gjvQXGA1L8');
+INSERT INTO public.person (id, username, surname, name, patronymic, birth_date, encoded_password, blocked, role_id, university_id) VALUES ('qHW55DQuLIHFxRv5I', 'ulan', 'Zheniserov', 'Ulan', null, '1899-03-17', 'Xrv$wO97FWF3qBrm9qYx0I2CudVsVLC9EEdZ0WC0GUM', 0, 'xgkdmHrQrbVyp6W83', 'UVx3Fb1gjvQXGA1L8');
+INSERT INTO public.person (id, username, surname, name, patronymic, birth_date, encoded_password, blocked, role_id, university_id) VALUES ('a6femwE6E9qVau7go', 'daniyar', 'Asset', 'Daniyar', null, '1895-09-21', 'Xrv$wO97FWF3qBrm9qYx0I2CudVsVLC9EEdZ0WC0GUM', 0, 'xgkdmHrQrbVyp6W83', 'UVx3Fb1gjvQXGA1L8');
+
+INSERT INTO public.projects (id, professor_id, deadline, title, description, published_date, requirements, suggestions, isopened, removed) VALUES ('8o9NiRlFfOtJWRRkd', null, null, 'Title1', 'Description', '2019-05-17 11:38:42.557032', null, null, null, false);
+INSERT INTO public.projects (id, professor_id, deadline, title, description, published_date, requirements, suggestions, isopened, removed) VALUES ('VWviEYHla5Y6I7iQg', null, null, 'Title2', 'Description', '2019-05-17 11:38:42.578544', null, null, null, false);
+INSERT INTO public.projects (id, professor_id, deadline, title, description, published_date, requirements, suggestions, isopened, removed) VALUES ('o4TUmvWUexlmoqQDq', null, null, 'Title3', 'Description', '2019-05-17 11:38:42.603287', null, null, null, false);
+INSERT INTO public.projects (id, professor_id, deadline, title, description, published_date, requirements, suggestions, isopened, removed) VALUES ('LtRO8mg9DiYeMGjcx', null, null, 'Title4', 'Description', '2019-05-17 11:38:42.628462', null, null, null, false);
+INSERT INTO public.projects (id, professor_id, deadline, title, description, published_date, requirements, suggestions, isopened, removed) VALUES ('duzmTDUZEc4RBmCDK', null, null, 'Title4', 'Description', '2019-05-17 11:38:42.652639', null, null, null, false);
+
+
 ]]></sql>
   </changeSet>
 </databaseChangeLog>

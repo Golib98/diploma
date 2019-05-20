@@ -20,7 +20,7 @@ public interface EmailSendConfig {
   String serverHost();
 
   @Description("Пароль акаунта на сервере отправки писем")
-  @DefaultStrValue("asdfasdf")
+  @DefaultStrValue("aogaasiftgvyivsh")
   String serverPassword();
 
   @Description("Порт сервера отправки писем")
@@ -28,7 +28,7 @@ public interface EmailSendConfig {
   int serverPort();
 
   @Description("Имя акаунта на сервере отправки писем")
-  @DefaultStrValue("golibjon98")
+  @DefaultStrValue("golibjon98@gmail.com")
   String serverUsername();
 
   @Description("Хост сервера отправки писем")

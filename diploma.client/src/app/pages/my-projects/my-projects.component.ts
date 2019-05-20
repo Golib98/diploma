@@ -38,7 +38,11 @@ export class MyProjectsComponent implements OnInit {
     let myProject = this.myProjects.find(value => value.id === id);
     myProject.isButtonsDisabled = true;
 
-    const matDialogRef = this.matDialog.open(MyProjectEditDialogComponent, {data: myProject});
+    const matDialogRef = this.matDialog.open(MyProjectEditDialogComponent, {
+      data: myProject,
+      height: '90%',
+      width: '50%',
+    });
     matDialogRef.afterClosed().subscribe(value => {
       myProject.isButtonsDisabled = false;
       this.myProjectsService.updateProject(value);
