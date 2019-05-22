@@ -24,9 +24,7 @@ export class MyAssistantsComponent implements OnInit {
   ngOnInit() {
     this.menuListService.menuList.then(value => this.menuItems = value);
     this.myAssistantsService.myAssistants.then(value => this.myAssistants = value);
-    this.myAssistantsService.myResponds.then(value => {
-      this.myResponds = value;
-    });
+    this.myAssistantsService.myResponds.then(value => this.myResponds = value);
   }
 
   acceptProject(assistantId: string, projectTitle: string) {
