@@ -16,6 +16,7 @@ export class MenuItem {
       MenuItem.of("Organizations", "/universities"),
       MenuItem.of("News", "/news"),
       MenuItem.of("Jobs", "/jobs"),
+      MenuItem.of("Blogs", "/blogs"),
       MenuItem.of("About", ""),
       MenuItem.of("Help", ""),
       MenuItem.of("Login/Sign Up", "/registration")
@@ -52,7 +53,7 @@ export class MenuItem {
 
     ret.push(
       professional,
-      MenuItem.of("Blogs", "/my-projects"),
+      MenuItem.of("Blogs", "/blogs"),
       MenuItem.of("News", "/news"),
       MenuItem.of("Jobs", "/jobs"),
       MenuItem.of("About", ""),

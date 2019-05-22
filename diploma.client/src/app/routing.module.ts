@@ -55,6 +55,10 @@ const routes: Routes = [
     loadChildren: './pages/jobs/jobs.module#JobsModule'
   },
   {
+    path: 'blogs',
+    loadChildren: './pages/blogs/blogs.module#BlogsModule'
+  },
+  {
     path: '',
     redirectTo: '/home',
     pathMatch: 'full'
