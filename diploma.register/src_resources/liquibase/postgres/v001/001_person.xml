@@ -39,7 +39,9 @@
         email text,
         phone text,
         title text,
-        faculty text
+        faculty text,
+        degree text,
+        sphere text
       )
     ]]></sql>
   </changeSet>

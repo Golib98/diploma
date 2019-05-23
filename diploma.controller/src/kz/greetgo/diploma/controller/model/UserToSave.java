@@ -9,5 +9,7 @@ public class UserToSave {
   public String title;
   public String university;
   public String userName;
+  public String degree;
+  public String sphere;
   public RegistrationUserType type;
 }

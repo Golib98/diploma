@@ -54,6 +54,27 @@ export class SignUpComponent implements OnInit {
   verify = !(
     this.currentUsername
   );
+  degrees: string[] = ['Bachelor', 'Master', 'PhD'];
+  currentDegree: string;
+  spheres: string[] = [
+    'Engineering & Technology',
+    'Social Sciences',
+    'Natural Sciences & Mathematics',
+    'Medicine & Health',
+    'Agriculture & Forestry',
+    'Education & Training',
+    'Computer Science & IT',
+    'Applied Sciences & Professions',
+    'Arts, Design & Architecture',
+    'Business & Management',
+    'Environmental Studies & Earth Sciences',
+    'Hospitality, Leisure & Sports',
+    'Humanities',
+    'Journalism & Media',
+    'Law',
+    'Medicine & Health',
+  ];
+  currentSphere: string;
 
   verifyForm(): boolean {
     return !!this.currentUniversity;
@@ -71,7 +92,13 @@ export class SignUpComponent implements OnInit {
     userToSave.phone = this.currentPhone;
     userToSave.university = this.universities.find(value => value.key === this.currentUniversity).value;
     userToSave.type = this.currentUserType;
-    userToSave.title = this.titles.find(value => value.key === this.currentTitle).value;
+    const textPair = this.titles.find(value => value.key === this.currentTitle);
+    if (textPair) {
+      userToSave.title = textPair.value;
+    }
+    userToSave.degree = this.currentDegree;
+    userToSave.sphere = this.currentSphere;
+
     this.signUpService.signup(userToSave)
       .then(() => {
         this.dialog.open(PopupComponent, {

@@ -39,16 +39,16 @@
         </mat-form-field>
         <mat-form-field>
           <input matInput
-                 placeholder="Title"
+                 placeholder="Degree"
                  name="title2"
-                 [value]="professorInfo.title"
+                 [value]="professorInfo.degree || ''"
                  readonly>
         </mat-form-field>
         <mat-form-field>
           <input matInput
-                 placeholder="Faculty"
+                 placeholder="Sphere"
                  name="faculty"
-                 [value]="professorInfo.faculty"
+                 [value]="professorInfo.sphere || ''"
                  readonly>
         </mat-form-field>
       </div>

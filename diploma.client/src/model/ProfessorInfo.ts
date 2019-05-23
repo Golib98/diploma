@@ -8,5 +8,7 @@ export class ProfessorInfo {
   public phone: string;
   public title: string;
   public faculty: string;
+  public degree: string;
+  public sphere: string;
 
 }

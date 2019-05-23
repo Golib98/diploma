@@ -11,5 +11,7 @@ export class UserToSave {
   public university: string;
   public userName: string;
   public type: RegistrationUserType;
+  public degree: string;
+  public sphere: string;
 
 }

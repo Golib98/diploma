@@ -61,7 +61,7 @@
       </mat-select>
     </mat-form-field>
 
-    <mat-form-field>
+    <mat-form-field *ngIf="currentUserType === RegistrationUserType.PROFESSOR">
       <mat-select placeholder="Title" [(value)]="currentTitle" required>
         <mat-option
           *ngFor="let title of titles"
@@ -71,12 +71,32 @@
       </mat-select>
     </mat-form-field>
 
-    <mat-form-field>
+    <mat-form-field *ngIf="currentUserType === RegistrationUserType.PROFESSOR">
       <mat-select placeholder="Faculty" [(value)]="currentFaculty" required>
         <mat-option
           *ngFor="let faculty of faculties"
           [value]="faculty.key">
           {{faculty.value}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <mat-form-field *ngIf="currentUserType === RegistrationUserType.STUDENT">
+      <mat-select placeholder="Degree" [(value)]="currentDegree" required>
+        <mat-option
+          *ngFor="let title of degrees"
+          [value]="title">
+          {{title}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <mat-form-field *ngIf="currentUserType === RegistrationUserType.STUDENT">
+      <mat-select placeholder="Sphere" [(value)]="currentSphere" required>
+        <mat-option
+          *ngFor="let faculty of spheres"
+          [value]="faculty">
+          {{faculty}}
         </mat-option>
       </mat-select>
     </mat-form-field>
@@ -92,7 +112,10 @@
           && currentFirstName
           && currentLastName
           && currentUniversity
-          && currentTitle
+          && (currentTitle || (!currentTitle && currentUserType === RegistrationUserType.STUDENT))
+          && (currentFaculty || (!currentFaculty && currentUserType === RegistrationUserType.STUDENT))
+          && (currentDegree || (!currentDegree && currentUserType === RegistrationUserType.PROFESSOR))
+          && (currentSphere || (!currentSphere && currentUserType === RegistrationUserType.PROFESSOR))
           )"
           (click)="saveUser()"
   >Sign up

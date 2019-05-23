@@ -8,5 +8,7 @@ public class ProfessorInfo {
   public String email;
   public String phone;
   public String faculty;
+  public String degree;
+  public String sphere  ;
 
 }

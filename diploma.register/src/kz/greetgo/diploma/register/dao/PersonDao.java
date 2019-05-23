@@ -33,6 +33,7 @@ public interface PersonDao {
 
   @Select("select concat_ws(' ', x.surname, x.name, x.patronymic) as fio,\n" +
     " x.email, x.phone, x.title, x.faculty, " +
+    " x.sphere, x.degree, " +
     " x2.title as \"university.title\" " +
     "from person x\n" +
     "     join university x2 on x.university_id = x2.id\n" +

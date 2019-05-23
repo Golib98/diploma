@@ -25,7 +25,7 @@ public interface AuthDao {
 
   @Insert("insert into person (username, surname, name, patronymic, " +
     "birth_date, encoded_password, role_id, " +
-    "university_id, blocked, email, faculty, title, phone) values (" +
+    "university_id, blocked, email, faculty, title, phone, degree, sphere) values (" +
     "#{userToSave.userName}, " +
     "#{userToSave.lastName}, " +
     "#{userToSave.firstName}, " +
@@ -35,7 +35,7 @@ public interface AuthDao {
     "#{roleId}, " +
     "#{univerId}, 0," +
     " #{userToSave.email}, #{userToSave.faculty}, " +
-    " #{userToSave.title}, #{userToSave.phone})")
+    " #{userToSave.title}, #{userToSave.phone}, #{userToSave.degree}, #{userToSave.sphere})")
   void insertPerson(@Param("userToSave") UserToSave userToSave,
                     @Param("roleId") String roleId,
                     @Param("univerId") String univerId,
