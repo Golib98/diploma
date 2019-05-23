@@ -23,6 +23,8 @@ export class SignUpService {
 
   signup(userToSave: UserToSave): Promise<void> {
 
+    console.log({userToSave});
+
     return this.http.post('/auth/signup', {userToSave: JSON.stringify(userToSave)})
       .pipe(map<any, void>(k => k.body))
       .toPromise();

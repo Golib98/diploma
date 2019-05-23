@@ -25,8 +25,8 @@ export class SignUpComponent implements OnInit {
   faculties: TextPair[];
 
   currentUserType: RegistrationUserType;
-  currentUniversity: number;
-  currentTitle: number;
+  currentUniversity: string;
+  currentTitle: string;
   currentFaculty: number;
   currentLastName: string;
   currentFirstName: string;
@@ -69,8 +69,9 @@ export class SignUpComponent implements OnInit {
     userToSave.faculty = 'IS';
     userToSave.email = this.currentEmail;
     userToSave.phone = this.currentPhone;
-    userToSave.university = 'IITU';
+    userToSave.university = this.universities.find(value => value.key === this.currentUniversity).value;
     userToSave.type = this.currentUserType;
+    userToSave.title = this.titles.find(value => value.key === this.currentTitle).value;
     this.signUpService.signup(userToSave)
       .then(() => {
         this.dialog.open(PopupComponent, {

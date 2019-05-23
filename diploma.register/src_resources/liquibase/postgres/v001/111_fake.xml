@@ -32,6 +32,42 @@ INSERT INTO public.projects (id, professor_id, deadline, title, description, pub
 INSERT INTO public.projects (id, professor_id, deadline, title, description, published_date, requirements, suggestions, isopened, removed) VALUES ('duzmTDUZEc4RBmCDK', null, null, 'Title4', 'Description', '2019-05-17 11:38:42.652639', null, null, null, false);
 
 
+INSERT INTO public.news (id, title, body, publishedat, publishedby, image) VALUES ('nihRfaYb5m4ttSB0C', 'Dear teachers, doctoral students invite you to the Scientific Workshop!', 'Dear teachers, doctoral students invite you to the Scientific Workshop!
+3.05.2019 (Friday) at 11.00 in the Conference hall the following topics will be held:
+“Development of an expert system for the early detection of cancer patients of the Republic of Kazakhstan”, speaker: Seidakhmetova K.S.
+
+“Payment framework based on the blockchain, as a solution for the implementation of the high-tech basis of the payment system of Kazakhstan”, speaker: A. Zhusupova
+
+“Research and development of an adaptive online educational process based on smart technologies”, speaker: E. Yulenov
+
+“Development of methods and models for the extraction of knowledge from unstructured data” speaker: Umarov F.
+', '2019-05-20 20:20:59.021546', 'IITU', 'newsiitu.jpg');
+INSERT INTO public.news (id, title, body, publishedat, publishedby, image) VALUES ('SvzlUcAKncdbEyyDU', 'Alumni meeting', 'When? - 25.05.2019 at 15:00 
+Where? – IITU, Assembly Hall of the Educational and Sports Complex named after Gumarbek Daukeev
+Almaty University of Power Engineering and Telecommunications invites you to the Annual Meeting of Alumni from different years of graduation in order to:
+
+- continuity of the connection of generations;
+
+- Strengthen the relationship of the university with graduates;
+
+- propaganda of professional achievements of graduates;
+
+- expansion of scientific and technical cooperation of the university with enterprises.
+
+  The meeting will be held on May 25, 2019 at 15:00, in the assembly hall of the Training and Sports Complex named after Gumarbek Daukeev.
+', '2019-05-20 20:20:59.051668', 'AUPET', 'newsaupet.jpg');
+INSERT INTO public.news (id, title, body, publishedat, publishedby, image) VALUES ('5gf3CbOXQB4yqaVPM', 'Alumni meeting', 'When? - 14.05.2019 at 10:00 am
+Where? – Almaty, al-Farabi Ave., 71.
+May 25, Faculty of History, Archeology and Ethnology, KazNU. Al-Farabi invites you to a solemn event to celebrate the Day of graduates!
+
+From 10 am graduates of different generations will gather at the Arc de Triomphe "Magіlіk el." They will lay flowers at the monument to the great scientist of the East Abu-Nasyr al-Farabi and the monument to academician U.A. Dzholdasbekova. The grand meeting will be held at the Palace of Students. W.A. Dzholdasbekova. Participants will hear the report of the rector, academician G. Mutanov and the report of the Alumni Association. The program also includes a gala concert.
+
+From 13 o''clock meetings with graduates will be continued at faculties. Graduates of the Faculty of History, Archeology and Ethnology will visit the Al-Farabi library, academic buildings and audiences, talk with the new generation of students, and get acquainted with the achievements of the faculty. The best students will be awarded scholarships. It is expected the arrival of graduates who graduated from the university 50,40,30,25,10 years ago !!!
+
+By tradition, the holiday will end with the Graduates'' Evening Ball in the library. al-Farabi.
+
+Graduates Day will be held at: Almaty, al-Farabi Ave., 71. Start: May 25, 2019 at 10 am
+', '2019-05-20 20:20:59.076438', 'KazNU', 'newskaznu.jpg');
 ]]></sql>
   </changeSet>
 </databaseChangeLog>

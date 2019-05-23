@@ -84,7 +84,7 @@ public class AuthRegisterImpl implements AuthRegister {
   public void signUpPerson(UserToSave userToSave) {
 
     String roleId = authDao.get().loadRoleId(userToSave.type);
-    String univerId = authDao.get().loadUniverId("IITU");
+    String univerId = authDao.get().loadUniverId(userToSave.university);
 
     String pass = RND.str(10);
     String encodedPass = passwordEncoder.get().encode(pass);
@@ -96,6 +96,8 @@ public class AuthRegisterImpl implements AuthRegister {
     email.setFrom("golibjon98@gmail.com");
     email.setTo(userToSave.email);
     email.setSubject("Registration in diploma!");
+
+    System.out.println("PASS " + pass);
 
     new Thread(() -> emailSender.get().send(email)).start();
 
