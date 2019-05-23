@@ -1,5 +1,6 @@
 import {Component, EventEmitter, OnInit, Output} from '@angular/core';
 import {MyProjectDetail} from "../../../../../model/MyProjectDetail";
+import {spheres} from "../../../my-projects/components/my-project-edit-dialog/my-project-edit-dialog.component";
 
 @Component({
   selector: 'app-new-project',
@@ -9,6 +10,8 @@ import {MyProjectDetail} from "../../../../../model/MyProjectDetail";
 export class NewProjectComponent implements OnInit {
 
   myProject = new MyProjectDetail();
+
+  spheres: string[] = spheres;
 
   @Output() addButtonEventEmitter = new EventEmitter<MyProjectDetail>();
 

@@ -6,6 +6,7 @@ import {SignUpService} from "./sign-up.service";
 import {TextPair} from "../../../model/TextPair";
 import {MatDialog} from "@angular/material";
 import {PopupComponent} from "../popup/popup.component";
+import {spheres} from 'src/app/pages/my-projects/components/my-project-edit-dialog/my-project-edit-dialog.component';
 
 @Component({
   selector: 'app-sign-up',
@@ -56,24 +57,7 @@ export class SignUpComponent implements OnInit {
   );
   degrees: string[] = ['Bachelor', 'Master', 'PhD'];
   currentDegree: string;
-  spheres: string[] = [
-    'Engineering & Technology',
-    'Social Sciences',
-    'Natural Sciences & Mathematics',
-    'Medicine & Health',
-    'Agriculture & Forestry',
-    'Education & Training',
-    'Computer Science & IT',
-    'Applied Sciences & Professions',
-    'Arts, Design & Architecture',
-    'Business & Management',
-    'Environmental Studies & Earth Sciences',
-    'Hospitality, Leisure & Sports',
-    'Humanities',
-    'Journalism & Media',
-    'Law',
-    'Medicine & Health',
-  ];
+  spheres: string[] = spheres;
   currentSphere: string;
 
   verifyForm(): boolean {

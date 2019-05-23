@@ -33,6 +33,15 @@
            placeholder="Link">
   </mat-form-field>
 
+
+  <mat-select placeholder="Sphere" [(value)]="myProject.sphere" required>
+    <mat-option
+      *ngFor="let faculty of spheres"
+      [value]="faculty">
+      {{faculty}}
+    </mat-option>
+  </mat-select>
+
   <mat-checkbox [(ngModel)]="myProject.isOpened"
                 name="isOpened"
                 fxFlexAlign="start">Is opened project

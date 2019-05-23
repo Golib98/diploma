@@ -1,10 +1,40 @@
 <mat-toolbar class="navbar-shadow" color="primary" fxLayout="row">
 
-  <div fxFlex="20" fxLayoutAlign="start">
+  <div fxFlex="20" fxLayoutAlign="start" fxHide.xs>
     <p routerLink="/" class="main-diploma-title">Research assistant</p>
   </div>
 
-  <div fxFlex fxLayoutAlign="space-between center">
+  <div fxHide.gt-md fxShow.xs fxFlex fxLayoutAlign="space-between center">
+
+    <button mat-icon-button [matMenuTriggerFor]="animals">
+      <mat-icon>menu</mat-icon>
+    </button>
+
+    <mat-menu #animals="matMenu">
+
+      <div *ngFor="let item of menuItems">
+
+        <button
+          mat-menu-item
+          [routerLink]="item.routerLink"
+          [matMenuTriggerFor]="menu">
+          {{item.label}}
+        </button>
+
+        <mat-menu #menu="matMenu">
+          <button
+            mat-menu-item
+            *ngFor="let subItem of item.subMenu"
+            [routerLink]="subItem.routerLink"
+          >{{subItem.label}}</button>
+        </mat-menu>
+      </div>
+
+    </mat-menu>
+
+  </div>
+
+  <div fxShow.gt-md fxHide.xs fxFlex fxLayoutAlign="space-between center">
     <ng-container *ngFor="let item of menuItems">
 
       <button

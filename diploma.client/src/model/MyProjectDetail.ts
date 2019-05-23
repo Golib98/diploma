@@ -11,4 +11,5 @@ export class MyProjectDetail {
   public isOpened: boolean;
   public files: FileList;
   public fileIds: FileWrapper[];
+  public sphere: string;
 }

@@ -15,7 +15,8 @@ create table projects (
   link   text,
   suggestions    text,
   isOpened       boolean,
-  removed        boolean   not null default false
+  removed        boolean   not null default false,
+  sphere text
 );;
 
 create table student_like_project (

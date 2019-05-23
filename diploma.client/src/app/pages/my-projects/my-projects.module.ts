@@ -15,7 +15,8 @@ import {
   MatFormFieldModule,
   MatInputModule,
   MatMenuModule,
-  MatNativeDateModule
+  MatNativeDateModule,
+  MatSelectModule
 } from "@angular/material";
 import {PopupModule} from "../../common/popup/popup.module";
 import {MyProjectEditDialogComponent} from './components/my-project-edit-dialog/my-project-edit-dialog.component';
@@ -42,6 +43,7 @@ import {PopupAskModule} from "../../common/popup-ask/popup-ask.module";
     MatDatepickerModule,
     MatNativeDateModule,
     ReactiveFormsModule,
+    MatSelectModule,
   ],
   entryComponents: [
     MyProjectEditDialogComponent,

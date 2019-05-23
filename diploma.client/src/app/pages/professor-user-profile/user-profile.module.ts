@@ -14,6 +14,7 @@ import {
   MatIconModule,
   MatInputModule,
   MatNativeDateModule,
+  MatSelectModule,
   MatTabsModule
 } from "@angular/material";
 import {NewProjectComponent} from './components/new-project/new-project.component';
@@ -28,6 +29,7 @@ import {PopupModule} from "../../common/popup/popup.module";
     CommonModule,
     NavbarModule,
     FlexLayoutModule,
+    MatSelectModule,
     MatTabsModule,
     MatFormFieldModule,
     MatInputModule,

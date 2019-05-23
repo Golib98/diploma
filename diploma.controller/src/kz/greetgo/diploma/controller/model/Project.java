@@ -18,4 +18,5 @@ public class Project {
   public List<FileWrapper> fileIds;
   public boolean isOpened;
   public boolean isResponded;
+  public String sphere;
 }

@@ -18,4 +18,27 @@ export class MyProjectEditDialogComponent {
     this.myProject = data;
   }
 
+  spheres = spheres;
+
+
 }
+
+export const spheres: string[] = [
+  'Engineering & Technology',
+  'Social Sciences',
+  'Natural Sciences & Mathematics',
+  'Medicine & Health',
+  'Agriculture & Forestry',
+  'Education & Training',
+  'Computer Science & IT',
+  'Applied Sciences & Professions',
+  'Arts, Design & Architecture',
+  'Business & Management',
+  'Environmental Studies & Earth Sciences',
+  'Hospitality, Leisure & Sports',
+  'Humanities',
+  'Journalism & Media',
+  'Law',
+  'Medicine & Health',
+];
+
