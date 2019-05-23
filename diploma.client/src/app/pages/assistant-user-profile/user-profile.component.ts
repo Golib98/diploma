@@ -3,6 +3,7 @@ import {MenuItem} from "../../../model/MenuItem";
 import {MenuListService} from "../../services/menu-list.service";
 import {UserProfileService} from "./user-profile.service";
 import {StudentInfo} from "../../../model/StudentInfo";
+import {ProfessorInfo} from "../../../model/ProfessorInfo";
 
 @Component({
   selector: 'app-user-profile',
@@ -10,6 +11,8 @@ import {StudentInfo} from "../../../model/StudentInfo";
   styleUrls: ['./user-profile.component.scss']
 })
 export class UserProfileComponent implements OnInit {
+
+  professorInfo: ProfessorInfo = new ProfessorInfo();
 
   menuItems: MenuItem[];
   loading: boolean = false;
@@ -23,8 +26,8 @@ export class UserProfileComponent implements OnInit {
 
   ngOnInit() {
     this.menuListService.menuList.then(value => this.menuItems = value);
-    this.userProfileService.studentInfo.then(value => {
-      this.studentInfo = value;
+    this.userProfileService.professorInfo.then(value => {
+      this.professorInfo = value;
     })
   }
 }

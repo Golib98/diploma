@@ -3,6 +3,7 @@ import {HttpService} from "../../services/http.service";
 import {MyProjectDetail} from "../../../model/MyProjectDetail";
 import {map} from "rxjs/operators";
 import {StudentInfo} from "../../../model/StudentInfo";
+import {ProfessorInfo} from "../../../model/ProfessorInfo";
 
 @Injectable({
   providedIn: 'root'
@@ -11,6 +12,14 @@ export class UserProfileService {
 
   constructor(private http: HttpService) {
   }
+
+
+  public get professorInfo(): Promise<ProfessorInfo> {
+    return this.http.get("/person/professorInfo")
+      .pipe(map<any, ProfessorInfo>(k => k.body))
+      .toPromise();
+  }
+
 
   public addProject(project: MyProjectDetail): Promise<void> {
     return this.http.post("/projects/addProject", {project: JSON.stringify(project)})
