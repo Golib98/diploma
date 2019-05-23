@@ -53,4 +53,7 @@ public interface PersonDao {
     "where x2.project_id in (select id from projects where professor_id = #{professorId})" +
     " and x2.isaccepted is null")
   List<PersonRecord> myResponds(String personId);
+
+  @Select("select email from person where id = #{z}")
+  String getEmail(String fromIf);
 }

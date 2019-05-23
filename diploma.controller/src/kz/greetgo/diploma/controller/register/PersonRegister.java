@@ -17,4 +17,6 @@ public interface PersonRegister {
   ProfessorInfo studentInfo(String personId);
 
   List<PersonRecord> myResponds(String personId);
+
+  void sendMail(String fromIf, String toId, String topic, String body);
 }

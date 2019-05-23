@@ -5,6 +5,7 @@
   <mat-tab label="Assistants">
     <app-my-assistant-card
       *ngFor="let myAssistant of myAssistants"
+      (sendMailButtonEmitter)="sendMail(myAssistant, $event)"
       [myAssistant]="myAssistant"
     ></app-my-assistant-card>
   </mat-tab>

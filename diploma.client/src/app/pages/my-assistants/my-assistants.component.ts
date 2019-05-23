@@ -60,4 +60,15 @@ export class MyAssistantsComponent implements OnInit {
           })
       })
   }
+
+  sendMail(myAssistant: MyAssistantCard, mail: { topic: string, body: string }) {
+
+    console.log('asdasd');
+
+    this.myAssistantsService.sendMailTo(myAssistant.id, mail)
+      .then(value => {
+        console.log(value);
+      })
+
+  }
 }

@@ -11,6 +11,8 @@ import kz.greetgo.diploma.controller.register.PersonRegister;
 import kz.greetgo.diploma.register.dao.PersonDao;
 import kz.greetgo.diploma.register.util.sql.JdbcDiploma;
 import kz.greetgo.diploma.register.util.sql.SQL;
+import kz.greetgo.email.Email;
+import kz.greetgo.email.EmailSender;
 import org.fest.util.Strings;
 
 @Bean
@@ -57,6 +59,25 @@ public class PersonRegisterImpl implements PersonRegister {
   @Override
   public List<PersonRecord> myResponds(String personId) {
     return personDao.get().myResponds(personId);
+  }
+
+  public BeanGetter<EmailSender> emailSender;
+
+  @Override
+  public void sendMail(String fromIf, String toId, String topic, String body) {
+
+    String emailFrom = personDao.get().getEmail(fromIf);
+    String emailTo = personDao.get().getEmail(toId);
+
+    new Thread(() -> {
+      Email email = new Email();
+      email.setTo(emailTo);
+      email.setFrom(emailFrom);
+      email.setBody(body);
+      email.setSubject(topic);
+      emailSender.get().send(email);
+    }).start();
+
   }
 
   private SQL buildSql(AllAssistantsIn allAssistantsIn) {

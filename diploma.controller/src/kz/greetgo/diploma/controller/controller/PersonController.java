@@ -57,4 +57,12 @@ public class PersonController implements Controller {
   public ProfessorInfo getStudentInfo(@ParSession("personId") String personId) {
     return personRegister.get().studentInfo(personId);
   }
+
+  @OnPost("/sendMail")
+  public void sendMail(@ParSession("personId") String personId,
+                       @Par("personId") String toPerson,
+                       @Par("topic") String topic,
+                       @Par("body") String body) {
+    personRegister.get().sendMail(personId, toPerson, topic, body);
+  }
 }

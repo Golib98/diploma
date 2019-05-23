@@ -1,0 +1,14 @@
+<div fxLayout="column">
+
+  <mat-form-field class="example-full-width">
+    <input [(ngModel)]="topic" matInput placeholder="Topic">
+  </mat-form-field>
+
+  <mat-form-field class="example-full-width">
+    <textarea [(ngModel)]="body" matInput placeholder="Body..." rows="20"></textarea>
+  </mat-form-field>
+
+
+  <button mat-raised-button (click)="sendMail()">Send</button>
+
+</div>

@@ -62,4 +62,14 @@ export class MyAssistantsService {
       .pipe(map<any, void>(k => k.body))
       .toPromise();
   }
+
+  sendMailTo(id: string, mail: { topic: string; body: string }): Promise<void> {
+    return this.http.post('/person/sendMail', {
+      personId: id,
+      topic: mail.topic,
+      body: mail.body
+    })
+      .pipe(map<any, void>(k => k.body))
+      .toPromise();
+  }
 }
