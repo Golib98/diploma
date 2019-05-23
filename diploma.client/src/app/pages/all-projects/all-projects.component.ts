@@ -5,6 +5,7 @@ import {MenuListService} from "../../services/menu-list.service";
 import {MenuItem} from "../../../model/MenuItem";
 import {AllProjectFilter} from "../../../model/gen/AllProjectFilter";
 import {ProfessorDict} from "../../../model/gen/ProfessorDict";
+import {spheres} from "../my-projects/components/my-project-edit-dialog/my-project-edit-dialog.component";
 
 @Component({
   selector: 'app-all-projects',
@@ -17,7 +18,9 @@ export class AllProjectsComponent implements OnInit {
   menuItems: MenuItem[];
   findText: string = '';
   professorsDict: ProfessorDict[];
+  isChosen = false;
 
+  spheres = spheres;
 
   constructor(
     private allProjectsService: AllProjectsService,

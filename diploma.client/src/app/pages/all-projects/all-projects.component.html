@@ -1,6 +1,6 @@
 <app-navbar [menuItems]="menuItems"></app-navbar>
 
-<section fxLayout="column"
+<section *ngIf="isChosen" fxLayout="column"
          class="my-projects-section"
          style="margin-top: 10px;">
 
@@ -38,4 +38,16 @@
 
   </div>
 
+</section>
+
+<section *ngIf="!isChosen" style="margin-top: 10px;">
+
+  <div fxLayout="row wrap" fxLayoutAlign="center center" fxLayoutGap="1rem">
+    <mat-card *ngFor="let sp of spheres"
+              style="height: 10rem;   line-height: 6rem; vertical-align: middle;"
+              fxFlex="30"
+              (click)="isChosen = true">
+      {{sp}}
+    </mat-card>
+  </div>
 </section>
