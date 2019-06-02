@@ -23,7 +23,6 @@ import kz.greetgo.mvc.annotations.on_methods.OnPost;
 public class ProjectController implements Controller {
 
   public BeanGetter<ProjectRegister> projectRegister;
-  public BeanGetter<FileRegister> fileRegister;
 
   @ToJson
   @OnGet("/myProjects")

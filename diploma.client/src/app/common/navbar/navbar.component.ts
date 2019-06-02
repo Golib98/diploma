@@ -34,7 +34,7 @@ export class NavbarComponent implements OnInit {
 
   logOut() {
     this.loginService.exit()
-      .then(ignore => this.router.navigate(['/home']))
-      .then(ignore => window.location.reload())
+      .then(() => this.router.navigate(['/home']))
+      .then(() => window.location.reload())
   }
 }
