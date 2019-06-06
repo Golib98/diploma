@@ -4,7 +4,9 @@ import java.util.List;
 import kz.greetgo.depinject.core.Bean;
 import kz.greetgo.diploma.controller.model.PersonRecord;
 import kz.greetgo.diploma.controller.model.ProfessorInfo;
+import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Select;
+import org.apache.ibatis.annotations.Update;
 
 @Bean
 public interface PersonDao {
@@ -57,4 +59,7 @@ public interface PersonDao {
 
   @Select("select email from person where id = #{z}")
   String getEmail(String fromIf);
+
+  @Update("update person set ${name} = #{val} where id = #{personId}")
+  void updatePerson(@Param("name") String name, @Param("personId") String personId, @Param("val") String val);
 }

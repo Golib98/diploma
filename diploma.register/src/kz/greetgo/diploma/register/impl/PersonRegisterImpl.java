@@ -1,5 +1,6 @@
 package kz.greetgo.diploma.register.impl;
 
+import java.util.Arrays;
 import java.util.List;
 import kz.greetgo.depinject.core.Bean;
 import kz.greetgo.depinject.core.BeanGetter;
@@ -80,6 +81,34 @@ public class PersonRegisterImpl implements PersonRegister {
 
   }
 
+  @Override
+  public void save(String personId, ProfessorInfo professorInfo) {
+
+    String[] s = professorInfo.fio.split("\\s+");
+
+    int i = 0;
+    for (String s1 : s) {
+      if (i == 0) {
+        personDao.get().updatePerson("surname", personId, s1);
+      }
+      
+      if (i == 1) {
+        personDao.get().updatePerson("name", personId, s1);
+      }
+      
+      if (i == 2) {
+        personDao.get().updatePerson("patronymic", personId, s1);
+      }
+
+      i++;
+    }
+
+    personDao.get().updatePerson("email", personId, professorInfo.email);
+
+    personDao.get().updatePerson("phone", personId, professorInfo.phone);
+    
+  }
+
   private SQL buildSql(AllAssistantsIn allAssistantsIn) {
 
     SQL sql = new SQL()
@@ -112,4 +141,14 @@ public class PersonRegisterImpl implements PersonRegister {
 
     return sql;
   }
+
+
+  public static void main(String[] args) {
+
+    String s = "asdf     asdf";
+
+    System.out.println(Arrays.toString(s.split("\\s+")));
+    
+  }
+  
 }

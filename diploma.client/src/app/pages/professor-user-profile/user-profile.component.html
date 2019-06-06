@@ -21,9 +21,12 @@
               <div fxLayout="column" fxFlex="80">
                 <mat-form-field>
                   <input matInput
+                         #fio
                          placeholder="Name"
                          name="fio"
-                         [value]="professorInfo.fio"
+                         (dblclick)="fio.readOnly = false; fio.focus()"
+                         (blur)="fio.readOnly = true; save()"
+                         [(ngModel)]="professorInfo.fio"
                          readonly
                   >
                 </mat-form-field>
@@ -31,35 +34,41 @@
                   <input matInput
                          placeholder="Organization"
                          name="title"
-                         [value]="professorInfo.university?.title"
+                         [(ngModel)]="professorInfo.university.title"
                          readonly>
                 </mat-form-field>
                 <mat-form-field>
                   <input matInput
                          placeholder="Email"
                          name="email"
-                         [value]="professorInfo.email"
+                         (dblclick)="email.readOnly = false"
+                         (blur)="email.readOnly = true; save()"
+                         [(ngModel)]="professorInfo.email"
+                         #email
                          readonly>
                 </mat-form-field>
                 <mat-form-field>
                   <input matInput
                          placeholder="Phone"
                          name="phone"
-                         [value]="professorInfo.phone"
+                         (dblclick)="phone.readOnly = false"
+                         (blur)="phone.readOnly = true; save()"
+                         [(ngModel)]="professorInfo.phone"
+                         #phone
                          readonly>
                 </mat-form-field>
                 <mat-form-field>
                   <input matInput
                          placeholder="Title"
                          name="title2"
-                         [value]="professorInfo.title"
+                         [(ngModel)]="professorInfo.title"
                          readonly>
                 </mat-form-field>
                 <mat-form-field>
                   <input matInput
                          placeholder="Faculty"
                          name="faculty"
-                         [value]="professorInfo.faculty"
+                         [(ngModel)]="professorInfo.faculty"
                          readonly>
                 </mat-form-field>
               </div>

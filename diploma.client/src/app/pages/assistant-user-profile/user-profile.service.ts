@@ -33,4 +33,9 @@ export class UserProfileService {
       .toPromise();
   }
 
+  save(professorInfo: ProfessorInfo) {
+    return this.http.post('/person/save-professor-info', {professorInfo: JSON.stringify(professorInfo)})
+      .pipe(map<any, void>(k => null))
+      .toPromise();
+  }
 }

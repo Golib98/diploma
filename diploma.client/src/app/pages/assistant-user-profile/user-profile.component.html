@@ -10,9 +10,12 @@
       <div fxFlex="70" fxLayout="column">
         <mat-form-field>
           <input matInput
+                 #fio
                  placeholder="Name"
                  name="fio"
-                 [value]="professorInfo.fio"
+                 (dblclick)="fio.readOnly = false; fio.focus()"
+                 (blur)="fio.readOnly = true; save()"
+                 [(ngModel)]="professorInfo.fio"
                  readonly
           >
         </mat-form-field>
@@ -27,14 +30,20 @@
           <input matInput
                  placeholder="Email"
                  name="email"
-                 [value]="professorInfo.email"
+                 (dblclick)="email.readOnly = false"
+                 (blur)="email.readOnly = true; save()"
+                 [(ngModel)]="professorInfo.email"
+                 #email
                  readonly>
         </mat-form-field>
         <mat-form-field>
           <input matInput
                  placeholder="Phone"
                  name="phone"
-                 [value]="professorInfo.phone"
+                 (dblclick)="phone.readOnly = false"
+                 (blur)="phone.readOnly = true; save()"
+                 [(ngModel)]="professorInfo.phone"
+                 #phone
                  readonly>
         </mat-form-field>
         <mat-form-field>

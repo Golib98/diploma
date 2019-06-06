@@ -65,4 +65,10 @@ public class PersonController implements Controller {
                        @Par("body") String body) {
     personRegister.get().sendMail(personId, toPerson, topic, body);
   }
+
+  @OnPost("/save-professor-info")
+  public void saveProfessorInfo(@ParSession("personId") String personId,
+                                @Json @Par("professorInfo") ProfessorInfo professorInfo) {
+    personRegister.get().save(personId, professorInfo);
+  }
 }

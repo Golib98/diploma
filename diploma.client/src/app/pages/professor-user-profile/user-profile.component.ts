@@ -3,7 +3,6 @@ import {MenuItem} from "../../../model/MenuItem";
 import {MenuListService} from "../../services/menu-list.service";
 import {MyProjectDetail} from "../../../model/MyProjectDetail";
 import {UserProfileService} from "./user-profile.service";
-import {LoginService} from "../../common/login/login.service";
 import {ProfessorInfo} from "../../../model/ProfessorInfo";
 import {MatDialog} from "@angular/material";
 import {PopupComponent} from "../../common/popup/popup.component";
@@ -22,7 +21,6 @@ export class UserProfileComponent implements OnInit {
   constructor(
     private menuListService: MenuListService,
     private userProfileService: UserProfileService,
-    private loginService: LoginService,
     public dialog: MatDialog,
   ) {
   }
@@ -51,6 +49,12 @@ export class UserProfileComponent implements OnInit {
           data: 'Project added'
         });
       });
+
+  }
+
+  save() {
+
+    this.userProfileService.save(this.professorInfo)
 
   }
 }
