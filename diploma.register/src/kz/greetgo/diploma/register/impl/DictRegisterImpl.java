@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 import kz.greetgo.depinject.core.Bean;
 import kz.greetgo.depinject.core.BeanGetter;
+import kz.greetgo.diploma.controller.model.Blog;
 import kz.greetgo.diploma.controller.model.RegistrationDict;
 import kz.greetgo.diploma.controller.model.TextPair;
 import kz.greetgo.diploma.controller.model.University;
@@ -67,6 +68,19 @@ public class DictRegisterImpl implements DictRegister {
     List<University> ret =  dictDao.get().getAllUni();
 
     return ret;
+  }
+
+  @Override
+  public void save(Blog blogToSave) {
+
+    dictDao.get().save(blogToSave);    
+    
+  }
+
+  @Override
+  public List<Blog> allBlogs() {
+
+    return dictDao.get().getAllBlogs();
   }
 
 }

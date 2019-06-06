@@ -13,10 +13,10 @@
                  #fio
                  placeholder="Name"
                  name="fio"
-                 (dblclick)="fio.readOnly = false; fio.focus()"
+                 (dblclick)="fio.focus()"
                  (blur)="fio.readOnly = true; save()"
                  [(ngModel)]="professorInfo.fio"
-                 readonly
+
           >
         </mat-form-field>
         <mat-form-field>
@@ -31,20 +31,18 @@
                  placeholder="Email"
                  name="email"
                  (dblclick)="email.readOnly = false"
-                 (blur)="email.readOnly = true; save()"
+                 (blur)="save()"
                  [(ngModel)]="professorInfo.email"
-                 #email
-                 readonly>
+                 #email>
         </mat-form-field>
         <mat-form-field>
           <input matInput
                  placeholder="Phone"
                  name="phone"
                  (dblclick)="phone.readOnly = false"
-                 (blur)="phone.readOnly = true; save()"
+                 (blur)="save()"
                  [(ngModel)]="professorInfo.phone"
-                 #phone
-                 readonly>
+                 #phone>
         </mat-form-field>
         <mat-form-field>
           <input matInput
@@ -67,6 +65,7 @@
     <div fxLayout="row">
       <button mat-button routerLink="/favorite-projects">Favorite projects</button>
       <button mat-button routerLink="/accessed-projects">Accessed projects</button>
+      <button mat-button routerLink="/blogs-article">Blog/Article</button>
     </div>
 
   </mat-card>

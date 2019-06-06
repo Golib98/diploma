@@ -25,9 +25,9 @@
                          placeholder="Name"
                          name="fio"
                          (dblclick)="fio.readOnly = false; fio.focus()"
-                         (blur)="fio.readOnly = true; save()"
+                         (blur)="save()"
                          [(ngModel)]="professorInfo.fio"
-                         readonly
+
                   >
                 </mat-form-field>
                 <mat-form-field>
@@ -42,20 +42,20 @@
                          placeholder="Email"
                          name="email"
                          (dblclick)="email.readOnly = false"
-                         (blur)="email.readOnly = true; save()"
+                         (blur)="save()"
                          [(ngModel)]="professorInfo.email"
                          #email
-                         readonly>
+                         >
                 </mat-form-field>
                 <mat-form-field>
                   <input matInput
                          placeholder="Phone"
                          name="phone"
                          (dblclick)="phone.readOnly = false"
-                         (blur)="phone.readOnly = true; save()"
+                         (blur)="save()"
                          [(ngModel)]="professorInfo.phone"
                          #phone
-                         readonly>
+                         >
                 </mat-form-field>
                 <mat-form-field>
                   <input matInput

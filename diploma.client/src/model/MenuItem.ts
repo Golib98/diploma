@@ -18,7 +18,6 @@ export class MenuItem {
       MenuItem.of("Jobs", "/jobs"),
       MenuItem.of("Blogs", "/blogs"),
       MenuItem.of("About", ""),
-      MenuItem.of("Help", ""),
       MenuItem.of("Login/Sign Up", "/registration")
     );
     return ret;
@@ -57,7 +56,6 @@ export class MenuItem {
       MenuItem.of("News", "/news"),
       MenuItem.of("Jobs", "/jobs"),
       MenuItem.of("About", ""),
-      MenuItem.of("Help", ""),
     )
     ;
 

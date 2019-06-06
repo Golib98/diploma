@@ -1,0 +1,49 @@
+<app-navbar [menuItems]="menuItems"></app-navbar>
+
+<div fxLayout="row" fxLayoutAlign="center center">
+  <form #form="ngForm" fxFlex="80" style="margin-top: 10px;" fxLayout="column" fxLayoutAlign="start stretch"
+        fxLayoutGap="10px">
+
+    <mat-form-field>
+      <input [(ngModel)]="blogToSave.title"
+             name="title"
+             matInput
+             placeholder="Title"
+             required>
+    </mat-form-field>
+
+    <mat-form-field>
+    <textarea [(ngModel)]="blogToSave.article"
+              name="article"
+              matInput
+              placeholder="Article"
+              required></textarea>
+    </mat-form-field>
+
+    <button mat-raised-button
+            fxFlexAlign="start"
+            color="primary"
+            (click)="fileInput.click()">
+      <mat-icon inline>attach_file</mat-icon>
+      Attach Image
+    </button>
+
+    <input hidden
+           #fileInput
+           type="file"
+           (change)="handleFile($event.target.files)">
+
+    <p *ngFor="let files of blogToSave.files" fxFlexAlign="start">
+      <mat-icon inline>attach_file</mat-icon>
+      {{files.name}}
+    </p>
+
+    <button (click)="saveBlog()"
+            mat-raised-button
+            fxFlexAlign="start"
+            color="primary"
+            [disabled]="form.invalid">Add
+    </button>
+
+  </form>
+</div>

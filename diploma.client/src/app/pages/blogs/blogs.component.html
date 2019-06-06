@@ -1,7 +1,7 @@
 <app-navbar [menuItems]="mi"></app-navbar>
 
 
-<div style="margin-top: 1rem;" fxLayout="row" fxLayoutAlign="center center">
+<div *ngIf="!showBig" style="margin-top: 1rem;" fxLayout="row" fxLayoutAlign="center center">
 
   <div style="margin-top: 1rem;" fxFlex="80"
        class="mat-typography"
@@ -9,13 +9,13 @@
        fxLayoutGap="1rem"
        fxLayoutAlign="start center">
 
-    <div fxFlex="30">
+    <div fxFlex="30" *ngFor="let blog of blogs">
       <div fxLayout="column">
-        <div class="news-image" [ngStyle]="{'background-image': 'url(assets/img/blog1.jpg)'}"></div>
+        <div class="news-image" [ngStyle]="{'background-image': 'url('+blog.url()+')'}"></div>
 
         <br>
 
-        <h3 class="news-title">What Does a Research Assistant Do?</h3>
+        <h3 class="news-title" (click)="current = blog; showBig = true">{{blog.title}}</h3>
 
         <div fxLayout="row" fxLayoutAlign="space-around">
           <h4>Author: Adyrbek Zhansaya</h4>
@@ -23,34 +23,52 @@
         </div>
       </div>
     </div>
-    <div fxFlex="30">
-      <div fxLayout="column">
-        <div class="news-image" [ngStyle]="{'background-image': 'url(assets/img/blog2.jpg)'}"></div>
+    <!--<div fxFlex="30">-->
+    <!--<div fxLayout="column">-->
+    <!--<div class="news-image" [ngStyle]="{'background-image': 'url(assets/img/blog2.jpg)'}"></div>-->
 
-        <br>
+    <!--<br>-->
 
-        <h3 class="news-title">Research Assistant</h3>
+    <!--<h3 class="news-title">Research Assistant</h3>-->
 
-        <div fxLayout="row" fxLayoutAlign="space-around">
-          <h4>Author: Adyrbek Zhansaya</h4>
-          <h4>Published date: 17.05.2019</h4>
-        </div>
-      </div>
-    </div>
-    <div fxFlex="30">
-      <div fxLayout="column" style="margin-top: 29px;">
-        <div class="news-image" [ngStyle]="{'background-image': 'url(assets/img/blog3.jpg)'}"></div>
+    <!--<div fxLayout="row" fxLayoutAlign="space-around">-->
+    <!--<h4>Author: Adyrbek Zhansaya</h4>-->
+    <!--<h4>Published date: 17.05.2019</h4>-->
+    <!--</div>-->
+    <!--</div>-->
+    <!--</div>-->
+    <!--<div fxFlex="30">-->
+    <!--<div fxLayout="column" style="margin-top: 29px;">-->
+    <!--<div class="news-image" [ngStyle]="{'background-image': 'url(assets/img/blog3.jpg)'}"></div>-->
 
-        <br>
+    <!--<br>-->
 
-        <h3 class="news-title">The Ethical Treatment of Research Assistants: Are We Forsaking Safety for Science?</h3>
+    <!--<h3 class="news-title">The Ethical Treatment of Research Assistants: Are We Forsaking Safety for Science?</h3>-->
 
-        <div fxLayout="row" fxLayoutAlign="space-around">
-          <h4>Author: Adyrbek Zhansaya</h4>
-          <h4>Published date: 17.05.2019</h4>
-        </div>
-      </div>
-    </div>
+    <!--<div fxLayout="row" fxLayoutAlign="space-around">-->
+    <!--<h4>Author: Adyrbek Zhansaya</h4>-->
+    <!--<h4>Published date: 17.05.2019</h4>-->
+    <!--</div>-->
+    <!--</div>-->
+    <!--</div>-->
+  </div>
+
+</div>
+
+<div *ngIf="showBig" style="margin-top: 1rem;" fxLayout="row" fxLayoutAlign="center center">
+
+  <div fxLayout="column" class="mat-typography" fxFlex="80">
+
+    <div class="news-image2" [ngStyle]="{'background-image': 'url('+current.url()+')'}"></div>
+
+    <h2>{{current.title}}</h2>
+
+
+    <p>{{current.article}}</p>
+
+    <h4>Author: Adyrbek Zhansaya</h4>
+    <h4>Published date: 17.05.2019</h4>
+
   </div>
 
 </div>
