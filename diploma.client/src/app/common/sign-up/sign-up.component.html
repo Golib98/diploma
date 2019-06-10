@@ -101,6 +101,20 @@
       </mat-select>
     </mat-form-field>
 
+    <mat-form-field *ngIf="currentUserType === RegistrationUserType.STUDENT">
+      <mat-select placeholder="You interested in" required>
+        <mat-option>
+          Research assistantship
+        </mat-option>
+        <mat-option>
+          Teaching assistantship
+        </mat-option>
+        <mat-option>
+          Graduate Assistantship
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+
   </div>
 
   <button mat-raised-button

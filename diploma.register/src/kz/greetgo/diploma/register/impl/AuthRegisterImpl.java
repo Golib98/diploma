@@ -92,10 +92,19 @@ public class AuthRegisterImpl implements AuthRegister {
     authDao.get().insertPerson(userToSave, roleId, univerId, encodedPass);
 
     Email email = new Email();
-    email.setBody("You pass is " + pass + "<br> and login " + userToSave.userName);
+    email.setBody("Dear ," + userToSave.firstName + " " + userToSave.lastName + " " + "<br>" +
+      "You have registered in Research Assistant.<br>" +
+      "To activate your account, please click on the link below: http://researchassistant.kz/registration<br>" +
+      "<br>" +
+      "Activation link (link expires after 7 days).<br>" +
+      "Store your credentials securily.<br>" +
+      "<br>" +
+      "Your login: \n" + userToSave.userName + "<br>" +
+      "Your password: \n" + pass + "<br>" +
+      "If you received this email by mistake, please ignore it.");
     email.setFrom("golibjon98@gmail.com");
     email.setTo(userToSave.email);
-    email.setSubject("Registration in diploma!");
+    email.setSubject("Confirmation of registration in Research Assistant");
 
     System.out.println("PASS " + pass);
 

@@ -31,8 +31,10 @@ public class DictRegisterImpl implements DictRegister {
     ret.faculties.add(new TextPair("123", "IS"));
 
     ret.titles = new ArrayList<>();
-    ret.titles.add(new TextPair("123", "Title1"));
-    ret.titles.add(new TextPair("123", "Title2"));
+    ret.titles.add(new TextPair("123", "Professor"));
+    ret.titles.add(new TextPair("124", "Director"));
+    ret.titles.add(new TextPair("124", "Lecturer"));
+    ret.titles.add(new TextPair("124", "Senior-lecturer"));
 
     return ret;
 

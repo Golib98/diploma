@@ -17,7 +17,7 @@ export class SignUpComponent implements OnInit {
   RegistrationUserType = RegistrationUserType;
 
   userTypes: RegistrationUser[] = [
-    new RegistrationUser('Student', RegistrationUserType.STUDENT),
+    new RegistrationUser('Assistant', RegistrationUserType.STUDENT),
     new RegistrationUser('Professor', RegistrationUserType.PROFESSOR)
   ];
 
